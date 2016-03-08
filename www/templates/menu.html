@@ -1,0 +1,58 @@
+<ion-side-menus enable-menu-with-back-views="true">
+
+<ion-side-menu-content drag-content="false">
+<ion-nav-bar class="bar-stable">
+
+<ion-nav-buttons side="left">
+<button class="button button-icon button-clear button-royal ion-navicon-round "   menu-toggle="left">
+</button>
+</ion-nav-buttons>
+
+<ion-nav-buttons side="right">
+<button class="button button-icon button-clear button-royal ion-stats-bars "   >
+</button>
+</ion-nav-buttons>
+</ion-nav-bar>
+
+<!-- É aqui que fica o conteúdo da minha ela-->
+<ion-nav-view name="menuContent"></ion-nav-view>
+
+<!-- Barra do rodapé-->
+<div class="tabs  tabs-royal tabs-icon-top ">
+  <a   ui-sref="app.areas" class="tab-item">
+    <i class="icon ion-cube"></i>
+    Áreas
+  </a>
+  <a ui-sref="app.circuitos" class="tab-item">
+    <i class="icon ion-usb"></i>
+    Circuitos
+  </a>
+  <img class="image-footer"  ui-sref="app.principal" src="img/logo-menu.png" alt="logo">
+  <a class="tab-item">
+    <i class="icon ion-calendar"></i>
+    Agenda
+  </a>
+  <a class="tab-item">
+    <i class="icon ion-gear-a"></i>
+    Configuração
+  </a>
+</div>
+
+</ion-side-menu-content>
+
+<!-- Menu em si-->
+<ion-side-menu side="left" >
+
+<ion-content class="menu">
+
+  <div class="padding center ">
+    <img class="image-menu" src="img/logo.jpg" alt="logo">
+  </div>
+
+
+</ion-content>
+
+</ion-side-menu>
+
+
+</ion-side-menus>

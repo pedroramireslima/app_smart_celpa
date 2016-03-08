@@ -1,0 +1,156 @@
+/* Empty. Add your own CSS if you like */
+.ritmos-form {
+    display: block;
+    max-width: 300px;
+    min-width: 300px;
+    border: -2px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-image{
+    width: 70%;
+    height: auto;
+}
+
+.borda{
+    border: solid gray 1px;
+    margin-bottom: 6px;
+    color: gray;
+}
+
+.center{
+    text-align: center;
+}
+
+
+.image-footer{
+    border:solid 0.2px gray;
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    border-radius: 50px;
+    background:#886aea;
+
+}
+
+.image-menu{
+    border:solid 0.2px gray;
+    width: 90px;
+    height: 90px;
+    margin-top: 30px;
+    border-radius: 45px;
+
+}
+
+.white{
+    color: white!important;
+}
+
+.trans{
+    background-color: transparent;
+}
+
+
+.menu{
+background: url("../img/bgmenu.png");
+background-repeat: no-repeat;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+
+}
+
+.backgound-content{
+    background: #dedede;
+
+}
+
+/*Classe do carrosel*/
+.carrosel{
+    margin-top: 15%;
+    margin-bottom: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+.carrosel-slide{
+    width: 100%;
+    height:100%;
+    background: url("../img/quadro.png");
+    background-color: #886aea;
+    background-repeat: no-repeat;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    text-align: center;
+
+}
+
+.carrosel-slide h2{
+    color: white;
+    font-size: 22px;
+}
+
+.carrosel-slide p{
+    color: #D8D8D8;
+    font-size: 15px;
+}
+
+.carrosel-text-bottom{
+ width: 200px;
+ height: 250px;
+ margin-left: auto;
+ margin-right: auto;
+ color: gray;
+}
+
+.teste{
+margin-top: 45%;
+}
+
+/*CSS da tela de circuitos (circuitos.html)*/
+.circuitobox{
+ margin: 1.5px 1.5px 1.5px 0.5px;
+ border-radius: 5px;
+ text-align: center;
+ background: white;
+
+}
+
+.icone-circuito{
+ font-size:110px;
+ color: #886aea;
+}
+
+.circuito-text-top{
+ margin-left: 9px;
+ margin-right: 9px;
+ color: gray;
+}
+
+
+/*CSS da tela de áreas (areas.html)*/
+.areabox{
+ margin: 1.5px 1.5px 1.5px 0.5px;
+ text-align: center;
+ background: white;
+ border-radius: 5px;
+ color: #886aea;
+ font-size: 130;
+
+}
+
+.icone-area{
+ font-size:20px;
+ color: gray;
+}
+
+.grafico-area{
+ margin-left: 10px;
+ margin-right: 10px;
+ background: #dedede;
+}

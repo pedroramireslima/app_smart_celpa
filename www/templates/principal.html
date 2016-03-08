@@ -1,0 +1,27 @@
+<ion-view view-title="Porto das dunas">
+<ion-content scroll="false" class="backgound-content">
+
+<div class="carrosel">
+    <carousel3d
+    ng-model="app.slides"
+    options="app.options">
+    <carousel3d-slide class="carrosel-slide" ng-repeat="slide in app.slides">
+    <div class="teste">
+
+        <h2>Porto das dunas</h2>
+        <p>Meta: 70Kwh</p>
+        <p>Consumo: 80Kwh</p>
+
+    </div>
+</carousel3d-slide>
+</carousel3d>
+</div>
+
+<div class="carrosel-text-bottom">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsa asperiores quam </p>
+
+</div>
+
+
+</ion-content>
+</ion-view>

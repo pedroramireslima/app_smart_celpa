@@ -9,5 +9,5 @@ This README would normally document whatever steps are necessary to get your app
       * instalção via Bower: bower install angular-carousel-3d --save
 
 * angular-chart
-   * pagina: http://jtblin.github.io/angular-chart.js/
-   * instalação: bower install angular-chart.js --save
+      * pagina: http://jtblin.github.io/angular-chart.js/
+      * instalação: bower install angular-chart.js --save

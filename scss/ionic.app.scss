@@ -247,7 +247,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .circle-icon{
-  font-size:30px ;
+   top: 15px !important;
+}
+
+.circle-text{
+    top: 15px;
+}
+
+.circle-size{
+    font-size:70px;
 }
 
 .centraliza{

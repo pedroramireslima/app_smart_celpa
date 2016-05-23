@@ -1,0 +1,47 @@
+<ion-modal-view>
+  <ion-header-bar >
+      <span class="icon-circuitos icone-circuito-title "></span >
+          <h1 class="title">Circuito 3</h1>
+          <button class="button button-clear button-primary" ng-click="circuitosDetailsModal.hide()">X</button>
+      </ion-header-bar>
+
+      <ion-content class="padding  ">
+
+          <div class="col circuitodetailsbox">
+            <div class="row ">
+                <div class="col  esquerda-details" >  R$   </div>
+                <div class="col col-60 meio-details"> 55  </div>
+                <div class="col direita-details"> ,50  </div>
+            </div>
+            <div class="progressBar">
+                <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+                <div class="text-bar">{{10}}%</div>
+            </div>
+            <p class="pot-circuito">de R$100,00</p>
+        </div>
+
+        <!--Div com anel de porcentagem-->
+        <div>
+            <div class="row">
+                <div class="col col-25 centraliza"><h3>42%</h3></div>
+                <div class="col col-50 centraliza">
+
+                <div class="c100 p55 ">
+                        <div class="slice">
+                            <div class="bar-circle"></div>
+                            <div class="fill-circle"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col col-25 centraliza"> <h5>de consumo total</h5></div>
+
+            </div>
+        </div>
+
+
+
+    </ion-content>
+
+</ion-modal-view>

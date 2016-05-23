@@ -9848,10 +9848,10 @@ a.button {
 .meio {
   font-size: 35px;
   margin-top: -5px;
-  margin-left: -30px; }
+  margin-left: -40%; }
 
 .direita {
-  margin-left: -30px; }
+  margin-left: -40%; }
 
 .progressBar {
   width: 100%;
@@ -9885,6 +9885,36 @@ a.button {
 .pot-circuito {
   font-size: 18px; }
 
+.icone-circuito-title {
+  font-size: 40px; }
+
+.circuitodetailsbox {
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+  background: white;
+  color: #d1d1d1;
+  font-size: 130; }
+
+.meio-details {
+  font-size: 35px;
+  margin-top: -5px;
+  margin-left: -50%; }
+
+.direita-details {
+  margin-left: -50%; }
+
+.circle-icon {
+  font-size: 30px; }
+
+.centraliza {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
 /*CSS da tela de áreas (areas.html)*/
 /*.areabox{
  margin: 1.5px 1.5px 1.5px 0.5px;
@@ -9906,3 +9936,4 @@ a.button {
  margin-right: 10px;
  background: #dedede;
  */
+/*/////////////////////////////////////////////////////////////////////////*/

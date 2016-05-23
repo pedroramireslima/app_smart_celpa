@@ -5,7 +5,11 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "angular-chart.js": "^0.8.8",
+    "angular-chart.js": "^0.10.2",
     "angular-carousel-3d": "*"
+  },
+  "resolutions": {
+    "angular-chart.js": "^0.8.8",
+    "Chart.js": "~1.0.1"
   }
 }

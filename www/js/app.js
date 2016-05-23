@@ -55,7 +55,7 @@ $stateProvider.state('login',{
     views: {
       'menuContent': {
         templateUrl: 'templates/circuitos.html',
-            controller: 'principalController'
+            controller: 'circuitosController'
       }
     }
   });

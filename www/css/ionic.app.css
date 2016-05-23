@@ -9818,7 +9818,7 @@ a.button {
   margin-right: auto;
   color: gray; }
 
-.teste {
+.text-inside-card {
   margin-top: 45%; }
 
 /*CSS da tela de circuitos (circuitos.html)*/
@@ -9878,6 +9878,12 @@ a.button {
   text-align: left;
   font-size: 24px;
   z-index: 530; }
+
+.icone-circuito {
+  font-size: 28px; }
+
+.pot-circuito {
+  font-size: 18px; }
 
 /*CSS da tela de áreas (areas.html)*/
 /*.areabox{

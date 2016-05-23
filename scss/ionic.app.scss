@@ -125,22 +125,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .carrosel-text-bottom{
- width: 200px;
- height: 250px;
- margin-left: auto;
- margin-right: auto;
- color: gray;
+   width: 200px;
+   height: 250px;
+   margin-left: auto;
+   margin-right: auto;
+   color: gray;
 }
 
-.teste{
+.text-inside-card{
     margin-top: 45%;
 }
 
 /*CSS da tela de circuitos (circuitos.html)*/
 .circuitobox{
- margin: 1.5px 1.5px 1.5px 0.5px;
- text-align: center;
- background: white;
+   margin: 1.5px 1.5px 1.5px 0.5px;
+   text-align: center;
+   background: white;
  //border-radius: 5px;
  color: #d1d1d1;
  font-size: 130;
@@ -151,8 +151,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 .grafico-circuito{
- margin-left: 5px;
- margin-right: 5px;
+   margin-left: 5px;
+   margin-right: 5px;
 
 }
 
@@ -179,7 +179,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .direita{
- margin-left:-30px;
+   margin-left:-30px;
 }
 .progressBar {
     width: 100%;
@@ -188,7 +188,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     background-color: #d1d1d1;
     border-radius:26px;
 }
- .sup {
+.sup {
     height: 100%;
     color: #fff;
     text-align: float left;
@@ -209,6 +209,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     z-index: 530;
 
 }
+
+.icone-circuito{
+
+    font-size: 28px;
+}
+
+.pot-circuito{
+  font-size:18px;
+}
+
 
 /*CSS da tela de áreas (areas.html)*/
 /*.areabox{

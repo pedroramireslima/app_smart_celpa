@@ -9822,13 +9822,21 @@ a.button {
   margin-top: 45%; }
 
 /*CSS da tela de circuitos (circuitos.html)*/
+.rowsqm {
+  padding: 3px;
+  width: 100%; }
+
 .circuitobox {
   margin: 1.5px 1.5px 1.5px 0.5px;
   text-align: center;
   background: white;
+  border-radius: 5px;
   color: #d1d1d1;
   font-size: 130;
-  border: solid 1px #d1d1d1; }
+  border: solid 1px #d1d1d1;
+  float: left !important;
+  padding: 5px;
+  max-width: 49%; }
 
 .grafico-circuito {
   margin-left: 5px;
@@ -9845,13 +9853,17 @@ a.button {
   font-size: 16px;
   text-align: left; }
 
-.meio {
-  font-size: 35px;
-  margin-top: -5px;
-  margin-left: -40%; }
+.left-box {
+  display: inline-block; }
 
-.direita {
-  margin-left: -40%; }
+.center-box {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 35px;
+  display: inline-block; }
+
+.right-box {
+  display: inline-block; }
 
 .progressBar {
   width: 100%;
@@ -9878,6 +9890,32 @@ a.button {
   text-align: left;
   font-size: 24px;
   z-index: 530; }
+
+.text-bar-r {
+  float: right;
+  margin-top: -20px;
+  position: inherit;
+  margin-right: 9px;
+  color: white;
+  text-align: left;
+  font-size: 24px;
+  z-index: 530; }
+
+.no-border {
+  border: none !important; }
+
+.top-20 {
+  margin-top: 20px; }
+
+.item-radio .item-content {
+  padding-left: 64px !important;
+  padding-right: 16px !important; }
+
+.item-radio .radio-icon {
+  left: 0 !important; }
+
+.icone-add {
+  font-size: 105px; }
 
 .icone-circuito {
   font-size: 28px; }
@@ -9920,6 +9958,68 @@ a.button {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center; }
+
+.circuito-text-area {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #d1d1d1;
+  background-color: #dedede; }
+
+.ion-input-select--large,
+.ion-input-select,
+select {
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  border: thin solid #dddddd;
+  font-weight: 300;
+  display: inline;
+  vertical-align: middle;
+  color: #333;
+  padding: auto 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #dedede; }
+
+.ion-input-select--large {
+  width: 50%;
+  font-size: 1.2rem;
+  text-indent: 10px;
+  padding: 0.5rem 0; }
+
+.ion-input-select--medium {
+  width: 40%;
+  font-size: 1.2rem;
+  text-indent: 10px;
+  padding: 0.5rem 0; }
+
+.bottom-button {
+  margin-top: 6px;
+  float: right;
+  border: solid 1px #dedede !important;
+  min-width: 100px; }
+
+/*CSS DA ÁREA DE CONTROLE */
+.controlebox {
+  margin: 1.5px 1.5px 1.5px 0.5px;
+  text-align: center;
+  background: white;
+  border-radius: 5px;
+  color: #d1d1d1;
+  font-size: 130;
+  border: solid 1px #d1d1d1;
+  float: left !important;
+  padding: 5px;
+  max-width: 99%; }
+
+.buttom-controlebox {
+  color: #d1d1d1; }
+
+.buttom-controlebox :hover {
+  color: #d1d1d1; }
+
+.buttom-controlebox-bottom {
+  color: #d1d1d1;
+  float: right; }
 
 /*CSS da tela de áreas (areas.html)*/
 /*.areabox{

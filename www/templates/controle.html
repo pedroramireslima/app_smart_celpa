@@ -1,0 +1,57 @@
+<ion-view view-title="Porto da Dunas">
+    <ion-content  class="backgound-content">
+
+        <div class="rowsqm">
+
+          <!--modelo do bloco-->
+          <div class="col controlebox" >
+            <div class="row ">
+              <div class="col col-75 circuito-title" >
+                Circuito 3
+            </div>
+            <div class="col ">
+               <p>VAL 06/10</p>
+
+           </div>
+       </div>
+       <hr class="horizontal-line" size="1" >
+       <div class="grafico-circuito" >
+        <div >
+          <div class="left-box" >
+            R$
+        </div>
+        <div class="center-box">
+            55
+        </div>
+        <div class="right-box">
+            ,50
+        </div>
+        <a class="button button-icon icon ion-gear-b buttom-controlebox" ng-click="openEditControle()"></a>
+    </div>
+
+    <div class="progressBar">
+      <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+      <div class="text-bar">{{80}}%</div>
+      <div class="text-bar-r" >63R$</div>
+  </div>
+
+  <a class="button button-icon  buttom-controlebox-bottom">X</a>
+
+</div>
+
+</div>
+
+
+<!--modelo do bloco-->
+<div class="col controlebox" >
+                <span class="icon-circuitos icone-add"   ng-click="openAddControle()"></span >
+<h4>Adicionar Controle</h4>
+
+</div><!-- fim da row-->
+
+
+
+
+
+</ion-content>
+</ion-view>

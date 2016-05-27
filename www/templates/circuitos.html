@@ -1,102 +1,68 @@
 
 <ion-view view-title="Porto da Dunas">
-    <ion-content  class="backgound-content">
+  <ion-content  class="backgound-content">
 
+    <div class="rowsqm">
+
+      <!--modelo do bloco-->
+      <div class="col circuitobox">
         <div class="row ">
-          <div class="col circuitobox">
-            <div class="row ">
-                <div class="col col-80 circuito-title" >
-                    Circuito 3
-                </div>
-                <div class="col ">
-                  <label class="toggle toggle-small">
-                     <input type="checkbox">
-                     <div class="track">
-                       <div class="handle">
+          <div class="col col-80 circuito-title" >
+            Circuito 3
+          </div>
+          <div class="col ">
+            <label class="toggle toggle-small">
+             <input type="checkbox">
+             <div class="track">
+               <div class="handle">
 
-                       </div>
-                   </div>
-               </label>
+               </div>
+             </div>
+           </label>
 
-           </div>
+         </div>
        </div>
        <hr class="horizontal-line" size="1" >
        <div class="grafico-circuito" ng-click="openDetailsCircuits()">
-        <div class="row ">
-            <div class="col  esquerda" >
-                R$
-            </div>
-            <div class="col col-60 meio">
-                55
-            </div>
-            <div class="col direita">
-                ,50
-            </div>
-        </div>
+         <div >
+          <div class="left-box" >
+            R$
+          </div>
+          <div class="center-box">
+            55
+          </div>
+          <div class="right-box">
+            ,50
+          </div>
 
+        </div>
         <div class="progressBar">
-            <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-            <div class="text-bar">{{10}}%</div>
+          <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+          <div class="text-bar">{{10}}%</div>
         </div>
 
         <span class="icon-circuitos icone-circuito "></span >
-            <span class="pot-circuito"> 50 KWh</span>
+          <span class="pot-circuito"> 50 KWh</span>
 
         </div>
 
-    </div>
+      </div>
 
 
-    <div class="col circuitobox">
-        <div class="row ">
-            <div class="col col-80 circuito-title" >
-                Circuito 7
-            </div>
-            <div class="col ">
-              <label class="toggle toggle-small">
-                 <input type="checkbox">
-                 <div class="track">
-                   <div class="handle">
 
-                   </div>
-               </div>
-           </label>
-
-       </div>
-   </div>
-   <hr class="horizontal-line" size="1" >
-   <div class="grafico-circuito">
-    <div class="row ">
-        <div class="col  esquerda" >
-            R$
-        </div>
-        <div class="col col-60 meio">
-            30
-        </div>
-        <div class="col direita">
-            ,00
-        </div>
-    </div>
-
-    <div class="progressBar">
-        <div class="sup" ng-style="{width: {{10}} + '%'}"> </div>
-        <div class="text-bar">{{10}}%</div>
-    </div>
-
-    <span class="icon-circuitos icone-circuito "></span >
-        <span class="pot-circuito"> 50 KWh</span>
+      <!--modelo do bloco add-->
+      <div class="col circuitobox" >
+        <span class="icon-circuitos icone-add"   ng-click="openAddCircuits()"></span >
+        <h4>Adicionar circuito</h4>
+      </div>
 
 
-    </div>
 
-</div>
-
-
-</div><!-- fim da row-->
+    </div><!-- fim da row-->
 
 
 
 
 
-</ion-content>
+  </ion-content>
 </ion-view>

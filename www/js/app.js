@@ -23,7 +23,6 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js'])
 })
 
 
-
 .config(function($stateProvider, $urlRouterProvider) {
 
 $stateProvider.state('login',{
@@ -60,12 +59,12 @@ $stateProvider.state('login',{
     }
   });
 
-   $stateProvider.state('app.areas', {
-    url: '/areas',
+   $stateProvider.state('app.controle', {
+    url: '/controle',
     views: {
       'menuContent': {
-        templateUrl: 'templates/areas.html',
-            controller: 'principalController'
+        templateUrl: 'templates/controle.html',
+            controller: 'controleController'
       }
     }
   });

@@ -24,7 +24,19 @@ $scope.circuitosDetailsModal.show();
 };
 
 
+ /* MODAL DE ADICIONAR CIRCUITOS */
+    $ionicModal.fromTemplateUrl('templates/modal/circuitos-add.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.circuitosAddModal = modal;
+    });
 
+
+    $scope.openAddCircuits= function(){
+//pega os dados para mostrar e abre modal de detalhes dos circuitos
+$scope.circuitosAddModal.show();
+};
 
 
 

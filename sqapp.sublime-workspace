@@ -1,0 +1,386 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"styl",
+				"style	Attr"
+			],
+			[
+				"mo",
+				"verbose_module	AngularJS"
+			],
+			[
+				"ci",
+				"circuitosDetailsModal"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"con",
+				"controller	AngularJS"
+			],
+			[
+				"d",
+				"dalvo2"
+			],
+			[
+				"dalvo",
+				"dalvo1"
+			],
+			[
+				"posicao",
+				"posicaodajunta2"
+			],
+			[
+				"posicao1",
+				"posicao1fuzzysugeno"
+			],
+			[
+				"tfuzz",
+				"tfuzzysugeno2"
+			],
+			[
+				"posicao2",
+				"posicao2fuzzysugeno"
+			],
+			[
+				"tfuzzy",
+				"tfuzzysugeno"
+			],
+			[
+				"alvo",
+				"alvo2"
+			],
+			[
+				"tfuz",
+				"tfuzzy1"
+			],
+			[
+				"cos",
+				"capricornus	\\capricornus"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "ionic.project",
+			"settings":
+			{
+				"buffer_size": 153,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"upd",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 746.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/phelipe/Documentos/programas/sqapp"
+	],
+	"file_history":
+	[
+		"/home/phelipe/Área de Trabalho/trabalho de controle/controle.sublime-project",
+		"/home/phelipe/Área de Trabalho/SQMicroredes/index.html",
+		"/home/phelipe/Área de Trabalho/SQMicroredes/view/chartsolar.html",
+		"/home/phelipe/Área de Trabalho/SQMicroredes/js/controllers/chartSolarController.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/controle-add.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/controle.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/circuitos.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/circuitos-details.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/menu.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/app.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/index.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers/circuitosController.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/circuitos-add.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/principal.html",
+		"/home/phelipe/Documentos/programas/sqapp/gulpfile.js",
+		"/home/phelipe/.config/sublime-text-3/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
+		"/home/phelipe/Documentos/programas/sqapp/scss/ionic.app.scss",
+		"/home/phelipe/Documentos/programas/sqapp/www/css/ionic.app.css",
+		"/home/phelipe/Documentos/programas/sqapp/www/css/style.css",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/services/temporario.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/services/smartqConstantsService.js",
+		"/home/phelipe/Documentos/programas/ritmosmobileapp/js/controllers/HomeController.js",
+		"/home/phelipe/Documentos/programas/ritmosmobileapp/js/controllers/EventsController.js",
+		"/home/phelipe/Documentos/programas/ritmosmobileapp/ritmosapp.sublime-project",
+		"/home/phelipe/Documentos/programas/mestrado/planejamento/teste.jl",
+		"/home/phelipe/Documentos/programas/mestrado/planejamento/planejamento.jl",
+		"/home/phelipe/Documentos/programas/mestrado/sbai/sbai.jl",
+		"/home/phelipe/Documentos/programas/mestrado/sbai/sbaitrajetoria.jl",
+		"/home/phelipe/Documentos/programas/mestrado/cbic/cbic.jl",
+		"/home/phelipe/Documentos/programas/mestrado/pid.jl",
+		"/home/phelipe/Documentos/programas/mestrado/t.jl",
+		"/home/phelipe/Documentos/programas/mestrado/mestrado.sublime-project",
+		"/home/phelipe/Documentos/programas/mestrado/ordem/cbic.jl",
+		"/home/phelipe/Documentos/programas/mestrado/tetando.jl",
+		"/home/phelipe/Documentos/programas/mestrado/teste.jl",
+		"/home/phelipe/Documentos/programas/mestrado/trajetoria.jl",
+		"/home/phelipe/Documentos/programas/mestrado/main.jl",
+		"/home/phelipe/Documentos/programas/mestrado/PID.jl",
+		"/home/phelipe/Documentos/programas/mestrado/pd.jl",
+		"/home/phelipe/Documentos/programas/mestrado/pdfuzzy.jl",
+		"/home/phelipe/Documentos/programas/mestrado/graficos.jl",
+		"/home/phelipe/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/phelipe/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/phelipe/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/phelipe/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			".row",
+			".col",
+			"params",
+			"selected",
+			"toggleLike",
+			"togglel",
+			"hideLoading",
+			"cryp",
+			"Cri",
+			"C",
+			"pass",
+			"config",
+			"get",
+			"config",
+			"entrada",
+			"posicaoalvo1",
+			"minimap"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ionic.project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								126,
+								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sqapp.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Área de Trabalho/trabalho de controle/controle.sublime-project"
+			],
+			[
+				"sq",
+				"~/Documentos/programas/Smartq/Smartqnew.sublime-workspace"
+			],
+			[
+				"sqm",
+				"~/Documentos/programas/SQMicroredes/sqmicroredes.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 230.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

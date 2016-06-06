@@ -1,0 +1,91 @@
+<ion-modal-view>
+  <ion-header-bar >
+    <h1 class="title">Casa na Serra</h1>
+    <button class="button button-clear button-primary" ng-click="quadrosModal.hide()">X</button>
+  </ion-header-bar>
+
+  <ion-content class="padding  ">
+    <div class="col circuitodetailsbox">
+     <div class="value-title">
+      <p>50%</p>
+    </div>
+    <div class="progressBar">
+      <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+    </div>
+    <p class="pot-circuito">de R$100,00</p>
+  </div>
+
+  <!--Div do gráfico-->
+  <div>
+    <canvas id="bar" class="chart chart-bar"
+    chart-data="data" chart-labels="labels" chart-series="series">
+  </canvas>
+</div>
+
+<!--Quadros de Fatura-->
+
+<div class="bar-list">
+  <div class="row">
+
+    <!--modelo do bloco-->
+    <div class="col circuitobox">
+      <div class="row ">
+        <div class="col col-70 " >
+          Vencimento
+        </div>
+        <div class="col " >
+          22/10
+        </div>
+      </div>
+      <hr class="horizontal-line" size="1" >
+      <p>ciclo tarifário</p>
+      22,90
+    </div>
+
+    <div class="col circuitobox">
+      <div class="row ">
+        <div class="col col-70 " >
+          Bandeira
+        </div>
+        <div class="col " >
+          3,30R$
+        </div>
+      </div>
+      <hr class="horizontal-line" size="1" >
+      13,40
+    </div>
+
+
+  </div><!-- fim da row-->
+</div>
+
+
+
+
+<!--Parte da lista de barras-->
+<div class="bar-list">
+  <div class="progressBar ">
+    <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+    <div class="text-bar">Ar condicionado</div>
+    <div class="text-bar-r" >63R$</div>
+  </div>
+
+
+  <div class="progressBar ">
+    <div class="sup" ng-style="{width: {{50}} + '%'}"> </div>
+    <div class="text-bar">Ar condicionado </div>
+    <div class="text-bar-r" >63R$</div>
+  </div>
+
+  <div class="progressBar ">
+    <div class="sup" ng-style="{width: {{10}} + '%'}"> </div>
+    <div class="text-bar">Circuito 5 </div>
+    <div class="text-bar-r" >63R$</div>
+  </div>
+
+</div>
+
+
+</ion-content>
+
+</ion-modal-view>

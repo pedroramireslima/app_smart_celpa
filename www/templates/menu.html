@@ -1,16 +1,19 @@
 <ion-side-menus enable-menu-with-back-views="true">
 
-<ion-side-menu-content drag-content="false">
-<ion-nav-bar class="bar-stable">
+  <ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-stable">
 
+<!--
 <ion-nav-buttons side="left">
 <button class="button button-icon button-clear button-royal ion-navicon-round "   menu-toggle="left">
 </button>
 </ion-nav-buttons>
+-->
+
 
 <ion-nav-buttons side="right">
-<button class="button button-icon button-clear button-royal ion-stats-bars "   >
-</button>
+  <button class="button button-icon button-clear button-royal ion-stats-bars "  ng-click="openQuadros()" >
+  </button>
 </ion-nav-buttons>
 </ion-nav-bar>
 
@@ -32,7 +35,7 @@
     <i class="icon ion-calendar"></i>
     Agenda
   </a>
-  <a class="tab-item">
+  <a class="tab-item" ng-click="openConfig()">
     <i class="icon ion-gear-a"></i>
     Configuração
   </a>
@@ -41,6 +44,7 @@
 </ion-side-menu-content>
 
 <!-- Menu em si-->
+<!--
 <ion-side-menu side="left" >
 
 <ion-content class="menu">
@@ -53,6 +57,6 @@
 </ion-content>
 
 </ion-side-menu>
-
+-->
 
 </ion-side-menus>

@@ -9868,6 +9868,7 @@ a.button {
 .progressBar {
   width: 100%;
   height: 30px;
+  margin-top: 4px;
   border: 1px solid #d1d1d1;
   background-color: #d1d1d1;
   border-radius: 26px; }
@@ -10021,7 +10022,20 @@ select {
   color: #d1d1d1;
   float: right; }
 
-/*CSS da tela de áreas (areas.html)*/
+/*CSS área de quadros*/
+.value-title {
+  font-size: 50px;
+  margin-top: 17px;
+  margin-bottom: 17px; }
+
+.bar-list {
+  margin-top: 7px !important; }
+
+.item-list-percent {
+  margin-top: 4px; }
+
+/*CSS da tela de áreas
+ (areas.html)*/
 /*.areabox{
  margin: 1.5px 1.5px 1.5px 0.5px;
  text-align: center;

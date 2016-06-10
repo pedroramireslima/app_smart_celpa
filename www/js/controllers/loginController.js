@@ -2,7 +2,7 @@
 *  Controller da tela de login
 */
 angular.module('smartq').controller('loginController', function($scope,$http){
-console.log( "teste");
+
 
 $scope.loginSystem = function()
 {

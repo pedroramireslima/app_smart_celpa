@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"function"
+			],
+			[
+				"modul",
+				"verbose_module	AngularJS"
+			],
+			[
+				"modu",
+				"verbose_module	AngularJS"
+			],
+			[
+				"smar",
+				"smartqService"
+			],
+			[
+				"s",
+				"SERVER"
+			],
+			[
+				"con",
+				"const"
+			],
+			[
 				"styl",
 				"style	Attr"
 			],
@@ -18,14 +42,6 @@
 			[
 				"$sc",
 				"$scope	AngularJS"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"con",
-				"controller	AngularJS"
 			],
 			[
 				"d",
@@ -72,10 +88,26 @@
 	"buffers":
 	[
 		{
-			"file": "ionic.project",
+			"file": "www/js/services/smartqService.js",
 			"settings":
 			{
-				"buffer_size": 153,
+				"buffer_size": 729,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/controllers/principalController.js",
+			"settings":
+			{
+				"buffer_size": 1802,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/templates/principal.html",
+			"settings":
+			{
+				"buffer_size": 662,
 				"line_ending": "Unix"
 			}
 		}
@@ -149,31 +181,44 @@
 	},
 	"expanded_folders":
 	[
-		"/home/phelipe/Documentos/programas/sqapp"
+		"/home/phelipe/Documentos/programas/sqapp",
+		"/home/phelipe/Documentos/programas/sqapp/www",
+		"/home/phelipe/Documentos/programas/sqapp/www/js",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/services",
+		"/home/phelipe/Documentos/programas/sqapp/www/lib",
+		"/home/phelipe/Documentos/programas/sqapp/www/lib/ionic",
+		"/home/phelipe/Documentos/programas/sqapp/www/lib/ionic/js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates"
 	],
 	"file_history":
 	[
+		"/home/phelipe/Documentos/programas/sqapp/www/index.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/services/smartqConstantsService.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers/loginController.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/quadros.html",
+		"/home/phelipe/Documentos/programas/sqapp/scss/ionic.app.scss",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/circuitos.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers/principalController.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/menu.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/config.html",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/app.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/js/directives/accordion.js",
 		"/home/phelipe/Área de Trabalho/trabalho de controle/controle.sublime-project",
 		"/home/phelipe/Área de Trabalho/SQMicroredes/index.html",
 		"/home/phelipe/Área de Trabalho/SQMicroredes/view/chartsolar.html",
 		"/home/phelipe/Área de Trabalho/SQMicroredes/js/controllers/chartSolarController.js",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/controle-add.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/controle.html",
-		"/home/phelipe/Documentos/programas/sqapp/www/templates/circuitos.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/circuitos-details.html",
-		"/home/phelipe/Documentos/programas/sqapp/www/templates/menu.html",
-		"/home/phelipe/Documentos/programas/sqapp/www/js/app.js",
-		"/home/phelipe/Documentos/programas/sqapp/www/index.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers/circuitosController.js",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/modal/circuitos-add.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/principal.html",
 		"/home/phelipe/Documentos/programas/sqapp/gulpfile.js",
 		"/home/phelipe/.config/sublime-text-3/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
-		"/home/phelipe/Documentos/programas/sqapp/scss/ionic.app.scss",
 		"/home/phelipe/Documentos/programas/sqapp/www/css/ionic.app.css",
 		"/home/phelipe/Documentos/programas/sqapp/www/css/style.css",
 		"/home/phelipe/Documentos/programas/sqapp/www/js/services/temporario.js",
-		"/home/phelipe/Documentos/programas/sqapp/www/js/services/smartqConstantsService.js",
 		"/home/phelipe/Documentos/programas/ritmosmobileapp/js/controllers/HomeController.js",
 		"/home/phelipe/Documentos/programas/ritmosmobileapp/js/controllers/EventsController.js",
 		"/home/phelipe/Documentos/programas/ritmosmobileapp/ritmosapp.sublime-project",
@@ -201,7 +246,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -249,30 +294,88 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "ionic.project",
-					"semi_transient": true,
+					"file": "www/js/services/smartqService.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 153,
+						"buffer_size": 729,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								126,
-								126
+								715,
+								715
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/js/controllers/principalController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								695,
+								695
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/templates/principal.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -348,7 +451,7 @@
 		[
 			[
 				"",
-				"~/Área de Trabalho/trabalho de controle/controle.sublime-project"
+				"~/Documentos/programas/SQMicroredes/SQM.sublime-project"
 			],
 			[
 				"sq",
@@ -378,7 +481,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 230.0,
+	"side_bar_width": 253.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

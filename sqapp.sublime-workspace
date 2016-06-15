@@ -99,7 +99,7 @@
 			"file": "www/js/controllers/principalController.js",
 			"settings":
 			{
-				"buffer_size": 1802,
+				"buffer_size": 1867,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,7 +107,7 @@
 			"file": "www/templates/principal.html",
 			"settings":
 			{
-				"buffer_size": 662,
+				"buffer_size": 796,
 				"line_ending": "Unix"
 			}
 		}
@@ -182,7 +182,6 @@
 	"expanded_folders":
 	[
 		"/home/phelipe/Documentos/programas/sqapp",
-		"/home/phelipe/Documentos/programas/sqapp/www",
 		"/home/phelipe/Documentos/programas/sqapp/www/js",
 		"/home/phelipe/Documentos/programas/sqapp/www/js/controllers",
 		"/home/phelipe/Documentos/programas/sqapp/www/js/services",
@@ -294,7 +293,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -331,15 +330,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1802,
+						"buffer_size": 1867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								695,
-								695
+								208,
+								208
 							]
 						],
 						"settings":
@@ -352,7 +351,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -361,15 +360,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 662,
+						"buffer_size": 796,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								102,
-								102
+								175,
+								175
 							]
 						],
 						"settings":
@@ -382,7 +381,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

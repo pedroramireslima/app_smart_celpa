@@ -1,5 +1,9 @@
 
-angular.module('smartq').controller('circuitosController', function($scope, $ionicModal){
+angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService){
+
+$scope.app={};
+$scope.app.circuitos=smartqService.getCircuitos();
+
 
 
  $scope.labels = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL','AGO','SET','OUT','NOV','DEZ'];
@@ -8,6 +12,9 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
   $scope.data = [
     [65, 59, 80, 81, 56, 55, 40,28, 48, 40, 19, 86]
   ];
+
+
+
 
 
     /* MODAL DOS DETALHES DOS CIRCUiTOS */

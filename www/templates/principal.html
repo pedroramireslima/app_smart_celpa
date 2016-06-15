@@ -4,7 +4,7 @@
         <div class="carrosel"  >
             <carousel3d
             ng-model="app.slides"
-            options="app.options" on-slide-change="changeSlide(index)" on-selected-click="teste('foi clicado no ' + index)">
+            options="app.options" on-slide-change="changeSlide(index)" on-selected-click="changeQuadro(index)">
             <carousel3d-slide class="carrosel-slide" ng-repeat="slide in app.slides track by slide.id" >
                 <div class="text-inside-card">
 

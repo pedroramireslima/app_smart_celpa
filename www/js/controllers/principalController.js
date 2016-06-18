@@ -1,4 +1,4 @@
-angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService){
+angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading){
 
 
 
@@ -20,6 +20,8 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     /*FUNÇÕES QUE PEGA DADOS DOS SLIDES DO SERVER E EXIBE*/
 
     function getServeQuadros() {
+        loading.show();
+
         smartqService.getServerQuadros()
         .then(function(json){
          smartqService.setQuadros(json.data);
@@ -28,7 +30,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
          $scope.description=$scope.app.slides[0].description;
          _quadroAtual=$scope.app.slides[0].id;
          getServerCircuitos(_quadroAtual);
-
+          loading.hide();
      },function(){
         getServeQuadros();
     });

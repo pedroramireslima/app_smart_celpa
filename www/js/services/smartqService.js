@@ -26,16 +26,27 @@ var _setCircuitos = function (value) {
 
 //funções para pegar dado no servidor
 var _getServerQuadros = function (){
-    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token=28682f337db47de21ac469396466c333",{timeout: 30000});
+    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token="+config.SERVER.token,{timeout: 30000});
 
 };
 
 //funções para pegar circuitos do quadro atual no servidor
 var _getServerCircuitos = function (id) {
-    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+id+"/circuits.json?access_token=28682f337db47de21ac469396466c333",{timeout: 30000});
-
+    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+id+"/circuits.json?access_token="+config.SERVER.token,{timeout: 30000});
 
 };
+
+//Pega detalhes de um circuito
+var _getServeCircuitoDetails = function (panel_id,circuito_id) {
+    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+".json?access_token="+config.SERVER.token,{timeout: 30000});
+};
+
+//Pega detalhes de um quadro
+var _getServerQuadrosDetails = function (id){
+    return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+id+".json?access_token="+config.SERVER.token,{timeout: 30000});
+
+};
+
 
 //retorno do service
 return {
@@ -44,7 +55,9 @@ return {
     setQuadros: _setQuadros,
     getServerCircuitos :  _getServerCircuitos,
     getCircuitos: _getCircuitos,
-    setCircuitos: _setCircuitos
+    setCircuitos: _setCircuitos,
+    getServerQuadrosDetails:_getServerQuadrosDetails,
+    getServeCircuitoDetails:_getServeCircuitoDetails
 };
 
 

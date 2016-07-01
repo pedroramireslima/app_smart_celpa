@@ -24,14 +24,15 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
         smartqService.getServerQuadros()
         .then(function(json){
-         smartqService.setQuadros(json.data);
-         console.log(smartqService.getQuadros());
-         $scope.app.slides=smartqService.getQuadros();
-         $scope.description=$scope.app.slides[0].description;
-         _quadroAtual=$scope.app.slides[0].id;
-         getServerCircuitos(_quadroAtual);
-          loading.hide();
-     },function(){
+           smartqService.setQuadros(json.data);
+           console.log(smartqService.getQuadros());
+           $scope.app.slides=smartqService.getQuadros();
+           $scope.description=$scope.app.slides[0].description;
+           _quadroAtual=$scope.app.slides[0].id;
+           getServerCircuitos(_quadroAtual);
+
+           loading.hide();
+       },function(){
         getServeQuadros();
     });
 
@@ -40,11 +41,16 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     /*FUNÇÃO QUE PEGA CIRCUITO*/
     function getServerCircuitos(id){
+        loading.show();
+
         smartqService.getServerCircuitos(id).then(function (json) {
             smartqService.setCircuitos(json.data);
             console.log(json.data);
+
+            loading.hide();
         },function (json) {
             getServerCircuitos(id);
+
         });
 
     }
@@ -55,11 +61,11 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         $scope.description=$scope.app.slides[index].description;
     }
 
-/*FUNÇÃO QUE MODIFICA O QUADRO ATUAL*/
-$scope.changeQuadro=function(index){
-    _quadroAtual=$scope.app.slides[index].id;
-    getServerCircuitos(_quadroAtual);
-}
+    /*FUNÇÃO QUE MODIFICA O QUADRO ATUAL*/
+    $scope.changeQuadro=function(index){
+        _quadroAtual=$scope.app.slides[index].id;
+        getServerCircuitos(_quadroAtual);
+    }
 
 
 //inicializa tela com dados do server

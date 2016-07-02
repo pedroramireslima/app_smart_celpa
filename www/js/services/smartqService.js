@@ -5,6 +5,7 @@ angular.module('smartq').factory('smartqService', function($http,config){
 //variáveis que guardam os valores dos jsons localmente
 var _quadros = {};
 var _circuitos={};
+var _quadro_atual={};
 //funções para pegar dado local
 var _getQuadros = function (){
     return _quadros;
@@ -22,6 +23,13 @@ var _setCircuitos = function (value) {
     _circuitos=value;
 }
 
+var _getQuadroAtual = function (){
+    return _quadro_atual;
+};
+
+var _setQuadroAtual = function (value) {
+    _quadro_atual=value;
+}
 
 
 //funções para pegar dado no servidor
@@ -57,7 +65,9 @@ return {
     getCircuitos: _getCircuitos,
     setCircuitos: _setCircuitos,
     getServerQuadrosDetails:_getServerQuadrosDetails,
-    getServeCircuitoDetails:_getServeCircuitoDetails
+    getServeCircuitoDetails:_getServeCircuitoDetails,
+    getQuadroAtual:_getQuadroAtual,
+    setQuadroAtual:_setQuadroAtual
 };
 
 

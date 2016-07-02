@@ -1,5 +1,5 @@
-<ion-view view-title="Porto das dunas">
-    <ion-content class="backgound-content">
+<ion-view view-title="{{quadro_atual.break_panel.name}}">
+    <ion-content class="backgound-content" >
 
         <div class="carrosel"  >
             <carousel3d
@@ -9,8 +9,8 @@
                 <div class="text-inside-card">
 
                     <h2>{{slide.name}}</h2>
-                    <p>{{slide.goal}}</p>
-                    <p>{{slide.total_energy}}</p>
+                    <p>{{slide.goal.toFixed(2)}}</p>
+                    <p>{{slide.total_energy.toFixed(2)}}</p>
 
                 </div>
 

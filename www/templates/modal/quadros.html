@@ -1,18 +1,18 @@
 <ion-modal-view>
   <ion-header-bar >
-    <h1 class="title">Casa na Serra</h1>
-    <button class="button button-clear button-primary" ng-click="quadrosModal.hide()">X</button>
+    <h1 class="title">{{quadro_atual.break_panel.name}}</h1>
+    <button class="button button-clear button-primary" ng-click="closeQuadros()">X</button>
   </ion-header-bar>
 
   <ion-content class="padding  ">
     <div class="col circuitodetailsbox">
      <div class="value-title">
-      <p>50%</p>
+      <p>{{quadro_atual.percent}}%</p>
     </div>
     <div class="progressBar">
       <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
     </div>
-    <p class="pot-circuito">de R$100,00</p>
+    <p class="pot-circuito">de R${{quadro_atual.break_panel.goal.toFixed(2)}}</p>
   </div>
 
   <!--Div do gráfico-->
@@ -34,12 +34,12 @@
           Vencimento
         </div>
         <div class="col " >
-          22/10
+          {{quadro_atual.break_panel.due}}/10
         </div>
       </div>
       <hr class="horizontal-line" size="1" >
       <p>ciclo tarifário</p>
-      22,90
+      {{quadro_atual.break_panel.first_day_of_period}}/09
     </div>
 
     <div class="col circuitobox">
@@ -48,7 +48,7 @@
           Bandeira
         </div>
         <div class="col " >
-          3,30R$
+          {{quadro_atual.consumer_type.tax}} R$
         </div>
       </div>
       <hr class="horizontal-line" size="1" >
@@ -64,23 +64,10 @@
 
 <!--Parte da lista de barras-->
 <div class="bar-list">
-  <div class="progressBar ">
+  <div class="progressBar "  ng-repeat="circuito in quadro_atual.circuits">
     <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-    <div class="text-bar">Ar condicionado</div>
-    <div class="text-bar-r" >63R$</div>
-  </div>
-
-
-  <div class="progressBar ">
-    <div class="sup" ng-style="{width: {{50}} + '%'}"> </div>
-    <div class="text-bar">Ar condicionado </div>
-    <div class="text-bar-r" >63R$</div>
-  </div>
-
-  <div class="progressBar ">
-    <div class="sup" ng-style="{width: {{10}} + '%'}"> </div>
-    <div class="text-bar">Circuito 5 </div>
-    <div class="text-bar-r" >63R$</div>
+    <div class="text-bar">{{circuito.name}}</div>
+    <div class="text-bar-r" >{{(circuito.total_energy*quadro_atual.consumer_type.tax).toFixed(2) }}R$</div>
   </div>
 
 </div>

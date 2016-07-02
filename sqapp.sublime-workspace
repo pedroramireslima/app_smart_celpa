@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"getse",
+				"_getServeCircuitoDetails"
+			],
+			[
+				"getser",
+				"_getServerQuadrosDetails"
+			],
+			[
 				"fun",
 				"fun	Function"
 			],
@@ -91,7 +99,15 @@
 			"file": "www/js/services/smartqService.js",
 			"settings":
 			{
-				"buffer_size": 1268,
+				"buffer_size": 1867,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/services/smartqConstantsService.js",
+			"settings":
+			{
+				"buffer_size": 224,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,15 +115,7 @@
 			"file": "www/js/controllers/principalController.js",
 			"settings":
 			{
-				"buffer_size": 2452,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/js/services/loading.js",
-			"settings":
-			{
-				"buffer_size": 559,
+				"buffer_size": 2543,
 				"line_ending": "Unix"
 			}
 		},
@@ -115,23 +123,7 @@
 			"file": "scss/ionic.app.scss",
 			"settings":
 			{
-				"buffer_size": 7537,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/css/ionic.app.css",
-			"settings":
-			{
-				"buffer_size": 254595,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/loading.html",
-			"settings":
-			{
-				"buffer_size": 27,
+				"buffer_size": 7559,
 				"line_ending": "Unix"
 			}
 		}
@@ -206,8 +198,6 @@
 	"expanded_folders":
 	[
 		"/home/phelipe/Documentos/programas/sqapp",
-		"/home/phelipe/Documentos/programas/sqapp/scss",
-		"/home/phelipe/Documentos/programas/sqapp/www",
 		"/home/phelipe/Documentos/programas/sqapp/www/css",
 		"/home/phelipe/Documentos/programas/sqapp/www/img",
 		"/home/phelipe/Documentos/programas/sqapp/www/js",
@@ -216,6 +206,8 @@
 	],
 	"file_history":
 	[
+		"/home/phelipe/Documentos/programas/sqapp/www/js/services/loading.js",
+		"/home/phelipe/Documentos/programas/sqapp/www/templates/loading.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/css/ionic.app.css",
 		"/home/phelipe/Documentos/programas/sqapp/www/templates/principal.html",
 		"/home/phelipe/Documentos/programas/sqapp/www/index.html",
@@ -317,7 +309,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -326,15 +318,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1268,
+						"buffer_size": 1867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								933,
-								933
+								1497,
+								1497
 							]
 						],
 						"settings":
@@ -344,65 +336,32 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 283.0,
+						"translation.y": 643.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "www/js/controllers/principalController.js",
+					"file": "www/js/services/smartqConstantsService.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2452,
+						"buffer_size": 224,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								292,
-								292
+								215,
+								215
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 64.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "www/js/services/loading.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 559,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								266,
-								266
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -412,20 +371,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "scss/ionic.app.scss",
+					"buffer": 2,
+					"file": "www/js/controllers/principalController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7537,
+						"buffer_size": 2543,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6218,
-								6218
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scss/ionic.app.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6432,
+								6432
 							]
 						],
 						"settings":
@@ -435,69 +424,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7828.0,
+						"translation.y": 7521.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/css/ionic.app.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 254595,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								254506,
-								254506
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 194066.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "www/templates/loading.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

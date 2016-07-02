@@ -6,6 +6,7 @@ angular.module('smartq').factory('smartqService', function($http,config){
 var _quadros = {};
 var _circuitos={};
 var _quadro_atual={};
+var _circuito_atual={};
 //funções para pegar dado local
 var _getQuadros = function (){
     return _quadros;
@@ -29,6 +30,14 @@ var _getQuadroAtual = function (){
 
 var _setQuadroAtual = function (value) {
     _quadro_atual=value;
+}
+
+var _getCircuitoAtual = function (){
+    return _circuito_atual;
+};
+
+var _setCircuitoAtual = function (value) {
+    _circuito_atual=value;
 }
 
 
@@ -67,7 +76,9 @@ return {
     getServerQuadrosDetails:_getServerQuadrosDetails,
     getServeCircuitoDetails:_getServeCircuitoDetails,
     getQuadroAtual:_getQuadroAtual,
-    setQuadroAtual:_setQuadroAtual
+    setQuadroAtual:_setQuadroAtual,
+    getCircuitoAtual:_getCircuitoAtual,
+    setCircuitoAtual:_setCircuitoAtual
 };
 
 

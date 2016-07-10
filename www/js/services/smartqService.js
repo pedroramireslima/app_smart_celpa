@@ -59,9 +59,6 @@ var _quadrosDetalhes=function () {
   previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
   previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
 
-console.log(measures_b_tuple);
-console.log(measures_b_tuple_diff);
-console.log(previsions_b_tuple);
 
   circuito= _quadro_atual.circuits;
   circuito=circuito.map(function(atual){

@@ -1,10 +1,8 @@
 angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading){
 
     loading.show();
-    $scope.app={"slides":[],"description":"","options":{}};
-    $scope.quadro_detalhes={};
 
-
+    $scope.app={"slides":[],"description":"","options":{},"quadro_detalhes":{}};
     $scope.app.options = {
         visible: 5,
         perspective: 35,
@@ -16,6 +14,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         space: 120
     };
 
+
     var _quadroAtual=0;
 
     /*FUNÇÕES QUE PEGA DADOS DOS SLIDES DO SERVER E EXIBE*/
@@ -25,6 +24,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         smartqService.getServerQuadros()
         .then(function(json){
            smartqService.setQuadros(json.data);
+           console.log(json.data);
            $scope.app.slides=smartqService.getQuadros();
            $scope.app.description=$scope.app.slides[0].description;
            _quadroAtual=$scope.app.slides[0].id;
@@ -58,11 +58,10 @@ loading.show();
     function getServeQuadroDetails(id){
         smartqService.getServerQuadrosDetails(id).then(function (json) {
             smartqService.setQuadroAtual(json.data);
-             $scope.quadro_detalhes=smartqService.quadrosDetalhes();//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-             console.log($scope.quadro_detalhes);
+             $scope.app.quadro_detalhes=smartqService.quadrosDetalhes();
              loading.hide();
          },function (json) {
-            loading.hide();
+           // loading.hide();
             console.log("problema pegando quadros");
             getServeQuadroDetails(id);
         });
@@ -108,7 +107,6 @@ loading.show();
     };
 
 
-//TODO: Correção dos modais não atualizando
 
 
 /* MODAL  QUADROS */
@@ -124,11 +122,7 @@ $scope.openQuadros= function(){
     $scope.quadrosModal.show();
 };
 
-$scope.closeQuadros= function(){
-    $scope.quadrosModal.hide();
 
-
-};
 
 
 //inicializa tela com dados do server

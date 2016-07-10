@@ -1,25 +1,35 @@
 <ion-modal-view>
   <ion-header-bar >
-    <h1 class="title">{{quadro_detalhes.nome}}</h1>
-    <button class="button button-clear button-primary" ng-click="closeQuadros()">X</button>
+    <h1 class="title">{{app.quadro_detalhes.nome}}</h1>
+    <button class="button button-clear button-primary" ng-click="quadrosModal.hide()">X</button>
   </ion-header-bar>
 
   <ion-content class="padding  ">
     <div class="col circuitodetailsbox">
      <div class="value-title">
-      <p>{{quadro_detalhes.percentual}}%</p>
+      <p>{{app.quadro_detalhes.percentual}}%</p>
     </div>
     <div class="progressBar">
-      <div class="sup" style="width: {{quadro_detalhes.percentual}}%"> </div>
+      <div class="sup" style="width: {{app.quadro_detalhes.percentual}}%"> </div>
     </div>
-    <p class="pot-circuito">de R${{quadro_detalhes.alvo}}</p>
+    <p class="pot-circuito">de R${{app.quadro_detalhes.alvo}}</p>
   </div>
 
   <!--Div do gráfico-->
   <div>
     <canvas id="bar" class="chart chart-bar"
-    chart-data="quadro_detalhes.measures_b_tuple[1]" chart-labels="quadro_detalhes.measures_b_tuple[0]" chart-series="quadro_detalhes.series">
+    chart-data="app.quadro_detalhes.measures_b_tuple[1]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-series="app.quadro_detalhes.series">
   </canvas>
+  <!--
+  <canvas id="bar" class="chart chart-bar"
+    chart-data="app.quadro_detalhes.measures_b_tuple_diff[1]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
+  </canvas>
+  <canvas id="bar" class="chart chart-bar"
+    chart-data="app.quadro_detalhes.previsions_b_tuple[1]" chart-labels="app.quadro_detalhes.previsions_b_tuple[0]" chart-series="app.quadro_detalhes.series">
+  </canvas>
+-->
+
+
 </div>
 
 <!--Quadros de Fatura-->
@@ -34,12 +44,12 @@
           Vencimento
         </div>
         <div class="col " >
-          {{quadro_detalhes.due}}/10
+          {{app.quadro_detalhes.due}}/10
         </div>
       </div>
       <hr class="horizontal-line" size="1" >
       <p>ciclo tarifário</p>
-      {{quadro_detalhes.first_day_of_period}}/09
+      {{app.quadro_detalhes.first_day_of_period}}/09
     </div>
 
     <div class="col circuitobox">
@@ -48,7 +58,7 @@
           Bandeira
         </div>
         <div class="col " >
-          {{quadro_detalhes.taxa}} R$
+          {{app.quadro_detalhes.taxa}} R$
         </div>
       </div>
       <hr class="horizontal-line" size="1" >
@@ -64,7 +74,7 @@
 
 <!--Parte da lista de barras-->
 <div class="bar-list">
-  <div class="progressBar "  ng-repeat="circuito in quadro_detalhes.circuitos">
+  <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  track by circuito.id">
     <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
     <div class="text-bar">{{circuito.name}}</div>
     <div class="text-bar-r" >{{circuito.valor }}R$</div>

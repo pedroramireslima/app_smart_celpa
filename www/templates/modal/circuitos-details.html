@@ -1,7 +1,7 @@
 <ion-modal-view>
   <ion-header-bar >
       <span class="icon-circuitos icone-circuito-title "></span >
-          <h1 class="title">Circuito 3</h1>
+          <h1 class="title">{{app.circuitoAtual.circuit.name}}</h1>
           <button class="button button-clear button-primary" ng-click="circuitosDetailsModal.hide()">X</button>
       </ion-header-bar>
 
@@ -51,7 +51,7 @@
         <!--Div do gráfico-->
         <div>
             <canvas id="bar" class="chart chart-bar"
-            chart-data="data" chart-labels="labels" chart-series="series">
+            chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="series">
         </canvas>
     </div>
 
@@ -60,44 +60,44 @@
     <h4>Dados</h4>
     <hr class="horizontal-line" size="1" >
         <div class="row">
-            <div class="col col-80">Consumo próximo mês</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Consumo próximo mês</div>
+            <div class="col col-30">85KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Média mensal</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Média mensal</div>
+            <div class="col col-30">85KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Tensão</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Tensão</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.voltage}}V</div>
         </div>
         <div class="row">
-            <div class="col col-80">Corrente</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Corrente</div>
+            <div class="col col-30">85KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Potência Ativa</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Potência Ativa</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.active_power}}KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Potência Reativa</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Potência Aparente</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power}}KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Fator de Potência</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Fator de Potência</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Energia Ativa</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Energia Ativa</div>
+            <div class="col col-30">85KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">energia Reativa</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">energia Reativa</div>
+            <div class="col col-30">85KWh</div>
         </div>
         <div class="row">
-            <div class="col col-80">Frequencia de rede</div>
-            <div class="col col-20">85KWh</div>
+            <div class="col col-70">Frequencia de rede</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency}}Hz</div>
         </div>
 
     </div>

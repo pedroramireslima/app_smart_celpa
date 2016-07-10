@@ -2,13 +2,27 @@
 
 [![Bower version](https://badge.fury.io/bo/angular-chart.js.svg)](http://badge.fury.io/bo/angular-chart.js)
 [![npm version](https://badge.fury.io/js/angular-chart.js.svg)](http://badge.fury.io/js/angular-chart.js)
-[![Build Status](https://travis-ci.org/jtblin/angular-chart.js.png)](https://travis-ci.org/jtblin/angular-chart.js)
-[![Code Climate](https://codeclimate.com/github/jtblin/angular-chart.js/badges/gpa.svg)](https://codeclimate.com/github/jtblin/angular-chart.js)
+[![Build Status](https://travis-ci.org/jtblin/angular-chart.js.svg?branch=master)](https://travis-ci.org/jtblin/angular-chart.js)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/6aa5ba92f4984a24874e5976ee541623)](https://www.codacy.com/app/jtblin/angular-chart-js)
 [![Code Coverage](https://d3s6mut3hikguw.cloudfront.net/github/jtblin/angular-chart.js/badges/coverage.svg)](https://codeclimate.com/github/jtblin/angular-chart.js)
+[![npm](https://img.shields.io/npm/dm/angular-chart.js.svg?maxAge=2592000)](https://www.npmjs.com/package/angular-chart.js)
 
 Beautiful, reactive, responsive charts for Angular.JS using [Chart.js](http://www.chartjs.org/). 
 
 [Demo](http://jtblin.github.io/angular-chart.js/)
+
+# v0.x - Chart.js v1.1.x - stable
+
+This is the stable version of angular-chart.js that uses the v1.1.x version of Chart.js.
+
+# v1.0.0-alpha - Chart.js v2.0.x
+
+If you are interested by the 2.0 version of Chart.js, please checkout the 
+[chartjs-2.0 branch](https://github.com/jtblin/angular-chart.js/tree/chartjs-2.0). Report issues
+and feedback for this version by opening issues labelled with `v1.x`.
+
+See https://github.com/jtblin/angular-chart.js/issues/123 for more details and subscribe to it to get 
+the latest progress on Chart.js 2.0 integration.
 
 # Installation
 
@@ -134,6 +148,7 @@ angular-chart.js emits the following events on the `scope` and pass the chart as
 
 * `create`: when chart is created
 * `update`: when chart is updated
+* `destroy`: when chart is destroyed
 
 ```
 $scope.$on('create', function (event, chart) {
@@ -155,17 +170,6 @@ via a function through the `getColour` attribute.
 Hex colours are converted to Chart.js colours automatically, 
 including different shades for highlight, fill, stroke, etc.
 
-# Issues
-
-**Issues or feature requests for Chart.js (e.g. new chart type, new axis, etc.) need to be opened on 
-[Chart.js issues tracker](https://github.com/nnnick/Chart.js/issues)**
-
-**For general questions about usage, please use [http://stackoverflow.com/](http://stackoverflow.com/)**
- 
-Please check if issue exists first, otherwise open issue in [github](https://github.com/jtblin/angular-chart.js/issues). 
-**Ensure you add a link to a plunker, jsbin, or equivalent.** 
-Here is a [jsbin template](http://jsbin.com/dufibi/3/edit?html,js,output) for convenience.
-
 ## Browser compatibility
 
 For IE8 and older browsers, you will need 
@@ -184,16 +188,22 @@ You also need to have  ```height``` and ```width``` attributes for the ```<canva
 </head>
 ```
 
+# Issues
+
+**Issues or feature requests for Chart.js (e.g. new chart type, new axis, etc.) need to be opened on 
+[Chart.js issues tracker](https://github.com/nnnick/Chart.js/issues)**
+
+**For general questions about usage, please use [http://stackoverflow.com/](http://stackoverflow.com/)**
+ 
+Please check if issue exists first, otherwise open issue in [github](https://github.com/jtblin/angular-chart.js/issues). 
+**Ensure you add a link to a plunker, jsbin, or equivalent.** 
+Here is a [jsbin template](http://jsbin.com/dufibi/3/edit?html,js,output) for convenience.
+
 # Contributing
  
 Pull requests welcome!
 
-1. Fork the repo
-1. Install dependencies: `npm install` and `bower install`
-1. Make your changes
-1. Install [GraphicsMagick](http://www.graphicsmagick.org/)
-1. Run tests: `npm test`
-1. Submit pull request
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Contributors
 

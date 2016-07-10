@@ -1,15 +1,14 @@
 {
-  "name": "HelloIonic",
+  "name": "sqapp",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "angular-chart.js": "^0.10.2",
-    "angular-carousel-3d": "*"
+    "angular-carousel-3d": "*",
+    "angular-chart.js": "^1.0.0"
   },
   "resolutions": {
-    "angular-chart.js": "^0.8.8",
-    "Chart.js": "~1.0.1"
+    "angular-chart.js": "^0.8.8"
   }
 }

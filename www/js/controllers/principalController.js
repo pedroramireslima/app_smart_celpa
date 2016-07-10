@@ -1,12 +1,9 @@
 angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading){
 
+    loading.show();
+    $scope.app={"slides":[],"description":"","options":{}};
+    $scope.quadro_detalhes={};
 
-    $scope.app={};
-    $scope.app.slides=[];
-    $scope.description="";
-    $scope.app.quadro_atual={};
-
-    $scope.app.quadrosModal={};
 
     $scope.app.options = {
         visible: 5,
@@ -24,18 +21,16 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     /*FUNÇÕES QUE PEGA DADOS DOS SLIDES DO SERVER E EXIBE*/
 
     function getServeQuadros() {
-        loading.show();
 
         smartqService.getServerQuadros()
         .then(function(json){
            smartqService.setQuadros(json.data);
-           // console.log(smartqService.getQuadros());
            $scope.app.slides=smartqService.getQuadros();
-           $scope.description=$scope.app.slides[0].description;
+           $scope.app.description=$scope.app.slides[0].description;
            _quadroAtual=$scope.app.slides[0].id;
            getServerCircuitos(_quadroAtual);
-           getServeQuadroDetails(_quadroAtual);
-//           loading.hide();
+
+
        },function(){
         loading.hide();
         console.log("problema");
@@ -47,12 +42,10 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     /*FUNÇÃO QUE PEGA CIRCUITO*/
     function getServerCircuitos(id){
-        loading.show();
-
+loading.show();
         smartqService.getServerCircuitos(id).then(function (json) {
             smartqService.setCircuitos(json.data);
-            console.log(json.data);
-            loading.hide();
+            getServeQuadroDetails(_quadroAtual);
         },function (json) {
             getServerCircuitos(id);
             console.log("problema pegando circuitos");
@@ -63,21 +56,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     /*FUNÇÃO QUE PEGA DETALHES DO QUADRO ATUAL*/
     function getServeQuadroDetails(id){
-        loading.show();
         smartqService.getServerQuadrosDetails(id).then(function (json) {
             smartqService.setQuadroAtual(json.data);
-            $scope.app.quadro_atual=smartqService.getQuadroAtual();
-            $scope.app.quadro_atual.percent=$scope.app.quadro_atual.break_panel.total_energy / $scope.app.quadro_atual.break_panel.goal * $scope.app.quadro_atual.consumer_type.tax * 100;
-            $scope.app.quadro_atual.percent=parseFloat($scope.app.quadro_atual.percent).toFixed(2);
-            if ( $scope.app.quadro_atual.percent==Infinity) {
-                $scope.app.quadro_atual.percent="-";
-            }
-            $scope.app.quadro_atual.goal_money=$scope.app.quadro_atual.break_panel.goal * $scope.app.quadro_atual.consumer_type.tax ;
-
-            console.log($scope.app.quadro_atual);
-            loading.hide();
-            //console.log($scope.quadro_atual.percent);
-        },function (json) {
+             $scope.quadro_detalhes=smartqService.quadrosDetalhes();//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+             console.log($scope.quadro_detalhes);
+             loading.hide();
+         },function (json) {
             loading.hide();
             console.log("problema pegando quadros");
             getServeQuadroDetails(id);
@@ -92,7 +76,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     /*FUNÇÃO QUE DETECTA SE SLIDE MODIFICOU*/
 
     $scope.changeSlide=function(index){
-        $scope.description=$scope.app.slides[index].description;
+        $scope.app.description=$scope.app.slides[index].description;
     }
 
 
@@ -101,16 +85,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         _quadroAtual=$scope.app.slides[index].id;
         getServerCircuitos(_quadroAtual);
         getServeQuadroDetails(_quadroAtual);
+
+        smartqService.quadrosDetalhes();
     }
 
 
 
-    $scope.labels = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL','AGO','SET','OUT','NOV','DEZ'];
-    $scope.series = ['POTENCIA'];
-
-    $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40,28, 48, 40, 19, 86]
-    ];
 
 
 
@@ -128,27 +108,26 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     };
 
 
-    /* MODAL  QUADROS */
-
-    $ionicModal.fromTemplateUrl('templates/modal/quadros.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.quadrosModal = modal;
-    });
+//TODO: Correção dos modais não atualizando
 
 
+/* MODAL  QUADROS */
+$ionicModal.fromTemplateUrl('templates/modal/quadros.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+}).then(function(modal) {
+    $scope.quadrosModal = modal;
+});
 
-    $scope.openQuadros= function(){
-    //pega os dados para mostrar e abre modal de detalhes dos circuitos
+
+$scope.openQuadros= function(){
     $scope.quadrosModal.show();
 };
 
 $scope.closeQuadros= function(){
     $scope.quadrosModal.hide();
 
-    //$scope.quadrosModal.remove();
-    $scope.currentUrl = {};
+
 };
 
 

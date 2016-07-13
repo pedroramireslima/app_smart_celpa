@@ -52,13 +52,15 @@ var _quadrosDetalhes=function () {
   days_in_m=_quadro_atual.days_in_m;
   measures_b_tuple=_convertTupla(_quadro_atual.measures_b_tuple);
   measures_b_tuple[0]=measures_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
+  measures_b_tuple[1]=[measures_b_tuple[1]];
 
   measures_b_tuple_diff=_convertTupla(_quadro_atual.measures_b_tuple_diff);
   measures_b_tuple_diff[0]=measures_b_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
+  measures_b_tuple_diff[1]=[measures_b_tuple_diff[1]]
 
   previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
   previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-
+  previsions_b_tuple[1]=[previsions_b_tuple[1]];
 
   circuito= _quadro_atual.circuits;
   circuito=circuito.map(function(atual){
@@ -81,7 +83,7 @@ var _quadrosDetalhes=function () {
 function buscaById(array,id){
     var position=0;
     for (var i = 0; i < array.length; i++) {
-     if (array[i].id == id) {
+       if (array[i].id == id) {
         position=i;
         i=array.length+2;
     }

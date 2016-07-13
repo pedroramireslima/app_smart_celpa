@@ -13,7 +13,7 @@
             R$
           </div>
           <div class="center-box">
-            55
+            {{app.circuitoAtual.value}}
           </div>
           <div class="right-box">
             ,50
@@ -21,19 +21,19 @@
 
         </div>
             <div class="progressBar">
-                <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-                <div class="text-bar">{{10}}%</div>
+                <div class="sup"  style="width: {{app.circuitoAtual.percent_money}}%;"> </div>
+                <div class="text-bar">{{app.circuitoAtual.percent_money}}%</div>
             </div>
-            <p class="pot-circuito">de R$100,00</p>
+            <p class="pot-circuito">de R${{app.circuitoAtual.total}}</p>
         </div>
 
         <!--Div com anel de porcentagem-->
         <div>
             <div class="row">
-                <div class="col col-25 centraliza"><h3>42%</h3></div>
+                <div class="col col-25 centraliza"><h3>{{app.circuitoAtual.percent_consumo}}%</h3></div>
                 <div class="col col-50 centraliza">
 
-                    <div class="c100 p55 " >
+                    <div class="c100 p{{app.circuitoAtual.percent_consumo}} " >
 <span class="circle-icon">  <span class="icon-smartquadros circle-size" ></span ></span >
                         <div class="slice">
                           <div class="bar-circle"></div>
@@ -59,45 +59,38 @@
     <div>
     <h4>Dados</h4>
     <hr class="horizontal-line" size="1" >
-        <div class="row">
-            <div class="col col-70">Consumo próximo mês</div>
-            <div class="col col-30">85KWh</div>
-        </div>
-        <div class="row">
-            <div class="col col-70">Média mensal</div>
-            <div class="col col-30">85KWh</div>
-        </div>
+
         <div class="row">
             <div class="col col-70">Tensão</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.voltage}}V</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Corrente</div>
-            <div class="col col-30">85KWh</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Potência Ativa</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.active_power}}KWh</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Potência Aparente</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power}}KWh</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power+" VA"}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Fator de Potência</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}KWh</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Energia Ativa</div>
-            <div class="col col-30">85KWh</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.import_active_energy+" Kwh"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">energia Reativa</div>
-            <div class="col col-30">85KWh</div>
+            <div class="col col-70">Energia Reativa</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.import_reactive_energy+" Kwh"}}</div>
         </div>
         <div class="row">
             <div class="col col-70">Frequencia de rede</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency}}Hz</div>
+            <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency+" Hz"}}</div>
         </div>
 
     </div>

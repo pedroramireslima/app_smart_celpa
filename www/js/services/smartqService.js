@@ -75,6 +75,7 @@ if ( percentual_quadro==Infinity) {
         atual.percent="-";
     }
     atual.valor=parseFloat((atual.total_energy)*taxa).toFixed(2);
+   atual.panel_id=_quadro_atual.break_panel.id;
 
     return atual;
 });

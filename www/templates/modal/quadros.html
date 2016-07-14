@@ -76,7 +76,7 @@
   <div class="bar-list">
     <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  ">
       <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
-      <div class="text-bar reduz">{{circuito.name}}</div>
+      <div class="text-bar reduz" ng-click="openDetailsCircuits(circuito.panel_id,circuito.id)">{{circuito.name}}</div>
       <div class="text-bar-r" >R${{circuito.valor }}</div>
     </div>
 

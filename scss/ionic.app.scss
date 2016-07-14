@@ -34,6 +34,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   margin-right: auto;
 }
 
+.reduz{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .logo-image{
   width: 70%;
   height: auto;
@@ -214,6 +220,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .text-bar{
+  width:70%;
   margin-top:-23px;
   position:inherit;
   margin-left:9px;

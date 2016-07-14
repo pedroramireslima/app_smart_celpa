@@ -13,10 +13,10 @@
             R$
           </div>
           <div class="center-box">
-            {{app.circuitoAtual.value}}
+            {{app.circuitoAtual.reais}}
           </div>
           <div class="right-box">
-            ,50
+            ,{{app.circuitoAtual.centavos}}
           </div>
 
         </div>
@@ -51,7 +51,7 @@
         <!--Div do gráfico-->
         <div>
             <canvas id="bar" class="chart chart-bar"
-            chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="series">
+            chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="app.series">
         </canvas>
     </div>
 

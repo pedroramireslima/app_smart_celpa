@@ -14,7 +14,7 @@ var _getQuadros = function (){
 
 var _setQuadros = function (value) {
     _quadros=value;
-}
+};
 
 var _getCircuitos = function (){
     return _circuitos;
@@ -22,7 +22,7 @@ var _getCircuitos = function (){
 
 var _setCircuitos = function (value) {
     _circuitos=value;
-}
+};
 
 var _getQuadroAtual = function (){
     return _quadro_atual;
@@ -30,7 +30,7 @@ var _getQuadroAtual = function (){
 
 var _setQuadroAtual = function (value) {
     _quadro_atual=value;
-}
+};
 
 var _getCircuitoAtual = function (){
     return _circuito_atual;
@@ -38,12 +38,17 @@ var _getCircuitoAtual = function (){
 
 var _setCircuitoAtual = function (value) {
     _circuito_atual=value;
-}
+};
 
 
 var _quadrosDetalhes=function () {
   nome=  _quadro_atual.break_panel.name;
   percentual_quadro= parseFloat(_quadro_atual.break_panel.total_energy / _quadro_atual.break_panel.goal * _quadro_atual.consumer_type.tax * 100).toFixed(2);
+if ( percentual_quadro==Infinity) {
+        percentual_quadro="-";
+    }
+
+
   alvo=  _quadro_atual.break_panel.goal.toFixed(2);
   taxa= _quadro_atual.consumer_type.tax;
   due= _quadro_atual.break_panel.due;
@@ -56,7 +61,7 @@ var _quadrosDetalhes=function () {
 
   measures_b_tuple_diff=_convertTupla(_quadro_atual.measures_b_tuple_diff);
   measures_b_tuple_diff[0]=measures_b_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-  measures_b_tuple_diff[1]=[measures_b_tuple_diff[1]]
+  measures_b_tuple_diff[1]=[measures_b_tuple_diff[1]];
 
   previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
   previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
@@ -64,9 +69,8 @@ var _quadrosDetalhes=function () {
 
   circuito= _quadro_atual.circuits;
   circuito=circuito.map(function(atual){
-    auxiliar=buscaById(_circuitos , atual.id);
     atual.total_energy=parseFloat(atual.total_energy).toFixed(2);
-    atual.percent=parseFloat((atual.total_energy/auxiliar.goal)*taxa*100).toFixed(2);
+    atual.percent=Math.round((atual.total_energy/_quadro_atual.break_panel.total_energy)*100);
     if ( atual.percent==Infinity) {
         atual.percent="-";
     }
@@ -75,28 +79,9 @@ var _quadrosDetalhes=function () {
     return atual;
 });
 
-
   return {"nome": nome, "percentual":percentual_quadro,"alvo":alvo,"taxa":taxa,"days_in_m":days_in_m,"measures_b_tuple":measures_b_tuple, "measures_b_tuple_diff":measures_b_tuple_diff, "previsions_b_tuple": previsions_b_tuple, "circuitos":circuito,"first_day_of_period":primeiro_dia,"due":due,"series":series};
 };
 
-//Função que busca no array o elemento que possui um objeto com o id
-function buscaById(array,id){
-    var position=0;
-    for (var i = 0; i < array.length; i++) {
-       if (array[i].id == id) {
-        position=i;
-        i=array.length+2;
-    }
-}
-
-//função que converte para dia
-function convertDia(dado) {
-
-}
-
-
-return array[position];
-}
 
 
 
@@ -135,7 +120,7 @@ var _convertTupla = function (data) {
       array_2.push(atual[1]);
   });
 
-    return [array_1, array_2]
+    return [array_1, array_2];
 
 };
 

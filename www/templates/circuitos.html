@@ -1,5 +1,5 @@
 
-<ion-view view-title="Porto da Dunas" >
+<ion-view view-title="{{app.quadro.break_panel.name}}" >
   <ion-content  class="backgound-content"  >
 
     <div class="rowsqm">
@@ -7,7 +7,7 @@
       <!--modelo do bloco-->
       <div class="col circuitobox" ng-repeat="circuito in app.circuitos ">
         <div class="row ">
-          <div class="col col-80 circuito-title" >
+          <div class="col col-80 circuito-title reduz" >
             {{circuito.name}}
           </div>
           <div class="col ">
@@ -29,16 +29,16 @@
             R$
           </div>
           <div class="center-box">
-            55
+            {{circuito.reais}}
           </div>
           <div class="right-box">
-            ,50
+            ,{{circuito.centavos}}
           </div>
 
         </div>
         <div class="progressBar">
-          <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-          <div class="text-bar">{{10}}%</div>
+          <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+          <div class="text-bar">{{circuito.percent}}%</div>
         </div>
 
         <span class="icon-circuitos icone-circuito "></span >

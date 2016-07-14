@@ -20,67 +20,67 @@
     <canvas id="bar" class="chart chart-bar"
     chart-data="app.quadro_detalhes.measures_b_tuple[1]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-series="app.quadro_detalhes.series">
   </canvas>
-  <!--
-  <canvas id="bar" class="chart chart-bar"
-    chart-data="app.quadro_detalhes.measures_b_tuple_diff[1]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
-  </canvas>
-  <canvas id="bar" class="chart chart-bar"
-    chart-data="app.quadro_detalhes.previsions_b_tuple[1]" chart-labels="app.quadro_detalhes.previsions_b_tuple[0]" chart-series="app.quadro_detalhes.series">
-  </canvas>
--->
+      <!--
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="app.quadro_detalhes.measures_b_tuple_diff[1]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
+      </canvas>
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="app.quadro_detalhes.previsions_b_tuple[1]" chart-labels="app.quadro_detalhes.previsions_b_tuple[0]" chart-series="app.quadro_detalhes.series">
+      </canvas>
+    -->
 
 
-</div>
-
-<!--Quadros de Fatura-->
-
-<div class="bar-list">
-  <div class="row">
-
-    <!--modelo do bloco-->
-    <div class="col circuitobox">
-      <div class="row ">
-        <div class="col col-70 " >
-          Vencimento
-        </div>
-        <div class="col " >
-          {{app.quadro_detalhes.due}}/10
-        </div>
-      </div>
-      <hr class="horizontal-line" size="1" >
-      <p>ciclo tarifário</p>
-      {{app.quadro_detalhes.first_day_of_period}}/09
-    </div>
-
-    <div class="col circuitobox">
-      <div class="row ">
-        <div class="col col-70 " >
-          Bandeira
-        </div>
-        <div class="col " >
-          {{app.quadro_detalhes.taxa}} R$
-        </div>
-      </div>
-      <hr class="horizontal-line" size="1" >
-      13,40
-    </div>
-
-
-  </div><!-- fim da row-->
-</div>
-
-
-
-
-<!--Parte da lista de barras-->
-<div class="bar-list">
-  <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  track by circuito.id">
-    <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
-    <div class="text-bar">{{circuito.name}}</div>
-    <div class="text-bar-r" >{{circuito.valor }}R$</div>
   </div>
 
-</div>
+  <!--Quadros de Fatura-->
+
+  <div class="bar-list">
+    <div class="row">
+
+      <!--modelo do bloco-->
+      <div class="col circuitobox">
+        <div class="row ">
+          <div class="col col-70 " >
+            Vencimento
+          </div>
+          <div class="col " >
+            {{app.quadro_detalhes.due}}/10
+          </div>
+        </div>
+        <hr class="horizontal-line" size="1" >
+        <p>ciclo tarifário</p>
+        {{app.quadro_detalhes.first_day_of_period}}/09
+      </div>
+
+      <div class="col circuitobox">
+        <div class="row ">
+          <div class="col col-70 " >
+            Bandeira:
+          </div>
+          <div class="col " >
+            {{app.quadro_detalhes.taxa}} R$
+          </div>
+        </div>
+        <hr class="horizontal-line" size="1" >
+        13,40
+      </div>
+
+
+    </div><!-- fim da row-->
+  </div>
+
+
+
+
+  <!--Parte da lista de barras-->
+  <div class="bar-list">
+    <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  ">
+      <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+      <div class="text-bar reduz">{{circuito.name}}</div>
+      <div class="text-bar-r" >R${{circuito.valor }}</div>
+    </div>
+
+  </div>
 
 
 </ion-content>

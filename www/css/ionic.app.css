@@ -9742,6 +9742,11 @@ a.button {
   margin-left: auto;
   margin-right: auto; }
 
+.reduz {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .logo-image {
   width: 70%;
   height: auto; }
@@ -9884,6 +9889,7 @@ a.button {
   background-color: #886aea; }
 
 .text-bar {
+  width: 70%;
   margin-top: -23px;
   position: inherit;
   margin-left: 9px;

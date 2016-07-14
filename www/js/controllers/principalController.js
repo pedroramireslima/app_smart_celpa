@@ -32,7 +32,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         },function (json) {
             getServerCircuitos(id);
             console.log("problema pegando circuitos");
-        });
+        });0
 
     }
 

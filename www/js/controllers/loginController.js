@@ -4,68 +4,79 @@
 angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location){
 
 
-    var Oauth={};
-    Oauth.url="http://52.20.21.167:3500/oauth/";
-    Oauth.client_id= "5f7396418354799903da39cfbf7dbe11";
-    Oauth.client_secret= "9a41e2c35f4a143f7aae1d96b8cb8e18";
+  var Oauth={};
+  Oauth.url="http://52.20.21.167:3500/oauth/";
+  Oauth.client_id= "5f7396418354799903da39cfbf7dbe11";
+  Oauth.client_secret= "9a41e2c35f4a143f7aae1d96b8cb8e18";
 
-    var _quadroAtual = 0;
+  var _quadroAtual = 0;
 
 ///////////////////////////////////////////////////////////////////////////////
 $scope.doLogin = function (argument) {
-    getServeQuadros();
+  getServeQuadros();
 };
 
 
 function getServeQuadros() {
 
-    smartqService.getServerQuadros()
-    .then(function(json){
-       smartqService.setQuadros(json.data);
+  smartqService.getServerQuadros()
+  .then(function(json){
+   smartqService.setQuadros(json.data);
           // console.log(json.data);
 
-           _quadroAtual=json.data[0].id;
-           getServerCircuitos(_quadroAtual);
+          _quadroAtual=json.data[0].id;
+
+          getServerCircuitos(_quadroAtual);
 
 
-       },function(){
-        loading.hide();
-        console.log("problema");
-        getServeQuadros();
-    });
+        },function(){
+          loading.hide();
+          console.log("problema");
+          getServeQuadros();
+        });
 
 }
 
 
 /*FUNÇÃO QUE PEGA CIRCUITO*/
 function getServerCircuitos(id){
-    loading.show();
-    smartqService.getServerCircuitos(id).then(function (json) {
-        //console.log(json.data);
+  loading.show();
+  smartqService.getServerCircuitos(id).then(function (json) {
+    console.log(json.data);
 
-        smartqService.setCircuitos(json.data);
-        getServeQuadroDetails(_quadroAtual);
-    },function (json) {
-        getServerCircuitos(id);
-        console.log("problema pegando circuitos");
-    });
+    smartqService.setCircuitos(json.data);
+    getServerControle(_quadroAtual);
+ //getServeQuadroDetails(_quadroAtual);
+
+  },function (json) {
+    getServerCircuitos(id);
+    console.log("problema pegando circuitos");
+  });
 
 }
 
-
+/*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
+function getServerControle(id) {
+  smartqService.getServeControle(id).then(function (json) {
+    smartqService.setControle(json.data);
+    getServeQuadroDetails(_quadroAtual);
+  },function (argument) {
+    getServerControle(id);
+  });
+}
 
 /*FUNÇÃO QUE PEGA DETALHES DO QUADRO ATUAL*/
 function getServeQuadroDetails(id){
-    smartqService.getServerQuadrosDetails(id).then(function (json) {
+  smartqService.getServerQuadrosDetails(id).then(function (json) {
        // console.log(json.data);
 
-        smartqService.setQuadroAtual(json.data);
-        $location.path( "app/principal");
-    },function (json) {
+       smartqService.setQuadroAtual(json.data);
+       $location.path( "app/principal");
+     },function (json) {
            // loading.hide();
            console.log("problema pegando quadros");
            getServeQuadroDetails(id);
-       });
+         });
 
 
 
@@ -79,7 +90,7 @@ function getServeQuadroDetails(id){
 $scope.loginSystem = function(){
 
 
-    var url = Oauth.url+'new?client_id='+ Oauth.client_id + '&client_secret='+ Oauth.client_secret +'&redirect_uri=http://localhost' ;
+  var url = Oauth.url+'new?client_id='+ Oauth.client_id + '&client_secret='+ Oauth.client_secret +'&redirect_uri=http://localhost' ;
 //url="http://52.20.21.167:3500/oauth/token?client_id=5f7396418354799903da39cfbf7dbe11&client_secret=9a41e2c35f4a143f7aae1d96b8cb8e18&email=operador@smartq.com.br&password=smartquadro";
  // Open in app browser
  window.open(url,'_blank');

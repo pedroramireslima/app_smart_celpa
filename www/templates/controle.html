@@ -1,13 +1,13 @@
-<ion-view view-title="Porto da Dunas">
+<ion-view view-title="{{app.quadro.break_panel.name}}" >
   <ion-content  class="backgound-content">
 
     <div class="rowsqm">
 
       <!--modelo do bloco-->
-      <div class="col controlebox" >
+      <div class="col controlebox" ng-repeat="circuito in app.controle">
         <div class="row ">
           <div class="col col-75 circuito-title" >
-            Circuito 3
+            {{circuito.name}}
           </div>
           <div class="col ">
            <p>VAL 06/10</p>

@@ -1,12 +1,12 @@
 
 angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService){
 
-  //$scope.app={};
+
   $scope.app.circuitos=smartqService.getCircuitos();
   $scope.app.quadro=smartqService.getQuadroAtual();
   $scope.app.circuitoAtual={};
 $scope.app.series = ['POTENCIA'];
-console.log("circuitos");
+
 
 for (var i = 0; i < $scope.app.circuitos.length; i++) {
   $scope.app.circuitos[i].value =parseFloat($scope.app.quadro.consumer_type.tax*$scope.app.circuitos[i].total_energy).toFixed(2);

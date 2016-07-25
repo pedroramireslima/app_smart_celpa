@@ -69,6 +69,18 @@ $stateProvider.state('login',{
     }
   });
 
+   $stateProvider.state('app.agendamento', {
+    url: '/agendamento',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/agendamento.html',
+            controller: 'principalController'//controller: 'controleAgendamento'
+      }
+    }
+  });
+
+
+
 
 
   // if none of the above states are matched, use this as the fallback

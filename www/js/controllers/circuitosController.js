@@ -1,5 +1,5 @@
 
-angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService){
+angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService,$filter){
 
 
   $scope.app.circuitos=smartqService.getCircuitos();
@@ -19,7 +19,8 @@ $scope.app.circuitos[i].percent=Math.round($scope.app.circuitos[i].total_energy/
 
 }
 
-
+//ordena do de maior energia para o de menor energia
+$scope.app.circuitos=$filter('orderBy')($scope.app.circuitos, "total_energy",true);
 
 /* MODAL DOS DETALHES DOS CIRCUiTOS */
 $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {
@@ -28,6 +29,30 @@ $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {
 }).then(function(modal) {
   $scope.circuitosDetailsModal = modal;
 });
+
+
+// MODIFICA O ESTADO DO CIRCUITO
+$scope.setState=function (quadro_id,circuito_id,estado) {
+  console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado);
+if (estado===true) {
+  estado=1;
+}
+else{
+  estado=2;
+}
+
+ smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
+  if (json.data=="ok") {
+    console.log("tudo certo");
+  }
+ },function (json) {
+   console.log("Erro ");
+ });
+
+//NOTE: Colocar para pegar os circuitos após setar o estado
+
+};
+
 
 
 $scope.openDetailsCircuits= function(quadro,id){

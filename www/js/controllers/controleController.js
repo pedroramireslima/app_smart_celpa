@@ -22,7 +22,7 @@ if ($scope.app.controle[i].centavos_goal<10) {
 
 
 
-$scope.app.controle[i].percent=Math.round($scope.app.controle[i].total_energy/$scope.app.quadro.break_panel.total_energy*100);
+$scope.app.controle[i].percent=Math.round($scope.app.controle[i].value/$scope.app.controle[i].value_goal*100);
 
 }
 

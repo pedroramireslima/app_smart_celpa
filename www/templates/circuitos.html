@@ -11,8 +11,8 @@
             {{circuito.name}}
           </div>
           <div class="col ">
-            <label class="toggle toggle-small">
-             <input type="checkbox">
+            <label class="toggle toggle-small" >
+             <input type="checkbox" ng-model="circuito.relay_state" ng-click="setState(circuito.break_panel_id,circuito.id,circuito.relay_state)">
              <div class="track">
                <div class="handle">
 

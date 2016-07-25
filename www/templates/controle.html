@@ -21,21 +21,26 @@
             R$
           </div>
           <div class="center-box">
-            55
+            {{circuito.reais_goal}}
           </div>
           <div class="right-box">
-            ,50
+            ,{{circuito.centavos_goal}}
           </div>
+     <!--
           <a class="button button-icon icon ion-gear-b buttom-controlebox" ng-click="openEditControle()"></a>
+     -->
+
         </div>
 
         <div class="progressBar">
           <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-          <div class="text-bar">{{80}}%</div>
-          <div class="text-bar-r" >63R$</div>
+          <div class="text-bar">{{circuito.percent}}%</div>
+          <div class="text-bar-r" >{{circuito.value}}R$</div>
         </div>
 
+<!--
         <a class="button button-icon  buttom-controlebox-bottom">X</a>
+-->
 
       </div>
 

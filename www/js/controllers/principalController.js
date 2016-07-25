@@ -1,4 +1,4 @@
-angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading){
+angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter){
     loading.show();
 
     $scope.app={};
@@ -54,9 +54,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     function getServeQuadroDetails(id){
         smartqService.getServerQuadrosDetails(id).then(function (json) {
 
+
             smartqService.setQuadroAtual(json.data);
 
             $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
+
+
+
             loading.hide();
 
             //console.log($scope.app.quadro_detalhes);
@@ -168,7 +172,8 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 $scope.openQuadros= function(){
     $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
-  //  console.log($scope.app.quadro_detalhes);
+    $scope.app.quadro_detalhes.circuitos=$filter('orderBy')($scope.app.quadro_detalhes.circuitos, "percent",true);
+
     $scope.quadrosModal.show();
 };
 

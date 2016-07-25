@@ -129,6 +129,15 @@ var _getServerQuadrosDetails = function (id){
 };
 
 
+//Liga/desliga circuito
+var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
+estado = 1;
+    return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
+
+
+
+};
+
 
 //Converte tupla para formato de gráficos
 var _convertTupla = function (data) {
@@ -163,7 +172,8 @@ return {
   quadrosDetalhes:_quadrosDetalhes,
   getServeControle:_getServeControle,
   getControle:_getControle,
-  setControle:_setControle
+  setControle:_setControle,
+  setEstadoCircuito:_setEstadoCircuito
 };
 
 

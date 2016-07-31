@@ -13,6 +13,7 @@ var _getControle = function (){
   return _circuito_controle;
 };
 
+
 var _setControle = function (value) {
   _circuito_controle=value;
 };
@@ -110,7 +111,9 @@ var _getServerCircuitos = function (id) {
 
 };
 
+
 //Pega detalhes de um circuito
+
 var _getServeCircuitoDetails = function (panel_id,circuito_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+".json?access_token="+config.SERVER.token,{timeout: 30000});
 };

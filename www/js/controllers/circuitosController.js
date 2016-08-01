@@ -7,6 +7,25 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
   $scope.app.circuitoAtual={};
   $scope.app.series = ['POTENCIA'];
 
+ $scope.datasetOverride = [
+    {
+        label: "Medição",
+        borderWidth: 1,
+        type: 'bar'
+    },
+    {
+        label: "Previsão",
+        borderWidth: 1,
+        type: 'bar'
+    },
+    {
+        label: "Desejado",
+        borderWidth: 3,
+        type: 'line'
+    }
+    ];
+
+
   function formata_circuito() {
     for (var i = 0; i < $scope.app.circuitos.length; i++) {
       $scope.app.circuitos[i].value =parseFloat($scope.app.quadro.consumer_type.tax*$scope.app.circuitos[i].total_energy).toFixed(2);
@@ -75,12 +94,13 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
    console.log("Erro ");
  });*/
 
-//NOTE: Colocar para pegar os circuitos após setar o estado
+//TODO: Colocar para pegar os circuitos após setar o estado
 
 
 };
 
 
+//TODO: Colocar para pegar somente os sete
 
 $scope.openDetailsCircuits= function(quadro,id){
   smartqService.getServeCircuitoDetails(quadro,id).then(function (json) {
@@ -108,14 +128,18 @@ $scope.openDetailsCircuits= function(quadro,id){
     json.data.last_measure.line_frequency=parseFloat(json.data.last_measure.line_frequency).toFixed(2);
 
     json.data.goal_tuple=smartqService.convertTupla( json.data.goal_tuple);
+json.data.previsions_c_tuple_money=smartqService.convertTupla( json.data.previsions_c_tuple_money);
+
+
     json.data.measures_c_tuple[0]=json.data.measures_c_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-    json.data.measures_c_tuple[1]=[json.data.measures_c_tuple[1]];
+
 
     json.data.measures_c_tuple_diff[0]=json.data.measures_c_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-    json.data.measures_c_tuple_diff[1]=[json.data.measures_c_tuple_diff[1]];
+    json.data.measures_c_tuple_diff[1]=json.data.measures_c_tuple_diff[1];
     json.data.goal_tuple[0]=json.data.goal_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-    json.data.goal_tuple[1]=[json.data.goal_tuple[1]];
 
+
+console.log(json.data);
     smartqService.setCircuitoAtual(json.data);
     $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
 

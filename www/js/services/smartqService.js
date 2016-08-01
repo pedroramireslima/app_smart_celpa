@@ -52,8 +52,9 @@ var _setCircuitoAtual = function (value) {
   _circuito_atual=value;
 };
 
-
+//TODO: colocar para pegar só os sete
 var _quadrosDetalhes=function () {
+  console.log(_quadro_atual);
   nome=  _quadro_atual.break_panel.name;
   percentual_quadro= parseFloat(_quadro_atual.break_panel.total_energy / _quadro_atual.break_panel.goal * _quadro_atual.consumer_type.tax * 100).toFixed(2);
   if ( percentual_quadro==Infinity) {
@@ -69,15 +70,15 @@ var _quadrosDetalhes=function () {
   days_in_m=_quadro_atual.days_in_m;
   measures_b_tuple=_convertTupla(_quadro_atual.measures_b_tuple);
   measures_b_tuple[0]=measures_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-  measures_b_tuple[1]=[measures_b_tuple[1]];
 
   measures_b_tuple_diff=_convertTupla(_quadro_atual.measures_b_tuple_diff);
   measures_b_tuple_diff[0]=measures_b_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-  measures_b_tuple_diff[1]=[measures_b_tuple_diff[1]];
+
+goal_b_tuple=_convertTupla(_quadro_atual.goal_tuple);
 
   previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
   previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-  previsions_b_tuple[1]=[previsions_b_tuple[1]];
+
 
   circuito= _quadro_atual.circuits;
   circuito=circuito.map(function(atual){
@@ -92,7 +93,7 @@ var _quadrosDetalhes=function () {
     return atual;
   });
 
-  return {"nome": nome, "percentual":percentual_quadro,"alvo":alvo,"taxa":taxa,"days_in_m":days_in_m,"measures_b_tuple":measures_b_tuple, "measures_b_tuple_diff":measures_b_tuple_diff, "previsions_b_tuple": previsions_b_tuple, "circuitos":circuito,"first_day_of_period":primeiro_dia,"due":due,"series":series};
+  return {"nome": nome, "percentual":percentual_quadro,"alvo":alvo,"taxa":taxa,"days_in_m":days_in_m,"measures_b_tuple":measures_b_tuple, "measures_b_tuple_diff":measures_b_tuple_diff, "previsions_b_tuple": previsions_b_tuple, "circuitos":circuito,"first_day_of_period":primeiro_dia,"due":due,"series":series,"goal_b_tuple":goal_b_tuple};
 };
 
 

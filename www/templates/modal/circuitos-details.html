@@ -50,9 +50,16 @@
 
         <!--Div do gráfico-->
         <div>
-            <canvas id="bar" class="chart chart-bar"
+     <!--       <canvas id="bar" class="chart chart-bar"
             chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="app.series">
-        </canvas>
+        </canvas>-->
+<canvas id="bar" class="chart chart-bar"
+    chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
+  </canvas>
+
+  {{app.circuitoAtual.measures_c_tuple[1]}}
+  {{app.circuitoAtual.goal_tuple[1]}}
+  {{app.circuitoAtual.previsions_c_tuple_money[1]}}
     </div>
 
     <!--div da tabela-->

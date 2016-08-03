@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('smartq', ['ionic','angular-carousel-3d','chart.js'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,BackgroundGeolocationService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,9 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+ BackgroundGeolocationService.init();
+
   });
 })
 

@@ -74,7 +74,7 @@ var _quadrosDetalhes=function () {
   measures_b_tuple_diff=_convertTupla(_quadro_atual.measures_b_tuple_diff);
   measures_b_tuple_diff[0]=measures_b_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
 
-goal_b_tuple=_convertTupla(_quadro_atual.goal_tuple);
+  goal_b_tuple=_convertTupla(_quadro_atual.goal_tuple);
 
   previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
   previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
@@ -132,11 +132,23 @@ var _getServerQuadrosDetails = function (id){
 
 };
 
+//Envia localização para o servidor
+var _putLocation = function (latitude_value,logintude_value) {
+  var dado ==JSON.stringify( {
+    user:{
+      latitude : latitude_value,
+      longitude : longitude_value}
+    });
+
+
+    return $http.put(config.SERVER.url+":"+config.SERVER.port+"/users/1/update_location.json?access_token="+config.SERVER.token,dado);
+  };
+
 
 //Liga/desliga circuito
 var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
-estado = 1;
-    return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
+  estado = 1;
+  return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
 
 
 
@@ -177,7 +189,8 @@ return {
   getServeControle:_getServeControle,
   getControle:_getControle,
   setControle:_setControle,
-  setEstadoCircuito:_setEstadoCircuito
+  setEstadoCircuito:_setEstadoCircuito,
+  putLocation:_putLocation
 };
 
 

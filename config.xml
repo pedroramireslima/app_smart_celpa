@@ -7,7 +7,7 @@
   <author email="phelipewesleydeoliveira@gmail.com" href="http://phelipe.github.com">
       Phelipe Wesley
     </author>
-  <content src="http://192.168.25.4:8100" original-src="index.html"/>
+  <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>

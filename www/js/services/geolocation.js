@@ -1,15 +1,21 @@
-angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http', function ($q, $http) {
-   console.log("Serviço de geolocalização iniciado no angular");
-   var callbackFn = function(location) {
-    console.log("Entrei no callback");
+angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService', function ($q, $http,smartqService) {
+ console.log("Serviço de geolocalização iniciado no angular");
+ var callbackFn = function(location) {
     console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
-     // $http({
-          //request options to send data to server
-     // });
-     backgroundGeoLocation.finish();
- },
 
- failureFn = function(error) {
+    smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
+       console.log("Enviado para o servidor"+json.data);
+       backgroundGeoLocation.finish();
+   },function (json) {
+       console.log("Erro enviando para o servidor")
+       backgroundGeoLocation.finish();
+   });
+
+
+
+},
+
+failureFn = function(error) {
     console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
 },
 
@@ -28,7 +34,9 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
           interval: 15000
       });
 
+
       backgroundGeoLocation.start();
+      console.log("Iniciou a Geolocation");
   };
 
   return {

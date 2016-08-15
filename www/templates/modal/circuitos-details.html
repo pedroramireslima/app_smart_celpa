@@ -1,108 +1,105 @@
 <ion-modal-view>
   <ion-header-bar >
-      <span class="icon-circuitos icone-circuito-title "></span >
-          <h1 class="title">{{app.circuitoAtual.circuit.name}}</h1>
-          <button class="button button-clear button-primary" ng-click="circuitosDetailsModal.hide()">X</button>
-      </ion-header-bar>
+    <span class="icon-circuitos icone-circuito-title "></span >
+      <h1 class="title">{{app.circuitoAtual.circuit.name}}</h1>
+      <button class="button button-clear button-primary" ng-click="circuitosDetailsModal.hide()">X</button>
+    </ion-header-bar>
 
-      <ion-content class="padding  ">
+    <ion-content class="padding  ">
 
-          <div class="col circuitodetailsbox">
-             <div >
-          <div class="left-box" >
-            R$
-          </div>
-          <div class="center-box">
-            {{app.circuitoAtual.reais}}
-          </div>
-          <div class="right-box">
-            ,{{app.circuitoAtual.centavos}}
-          </div>
-
+      <div class="col circuitodetailsbox">
+       <div >
+        <div class="left-box" >
+          R$
         </div>
-            <div class="progressBar">
-                <div class="sup"  style="width: {{app.circuitoAtual.percent_money}}%;"> </div>
-                <div class="text-bar">{{app.circuitoAtual.percent_money}}%</div>
+        <div class="center-box">
+          {{app.circuitoAtual.reais}}
+        </div>
+        <div class="right-box">
+          ,{{app.circuitoAtual.centavos}}
+        </div>
+
+      </div>
+      <div class="progressBar">
+        <div class="sup"  style="width: {{app.circuitoAtual.percent_money}}%;"> </div>
+        <div class="text-bar">{{app.circuitoAtual.percent_money}}%</div>
+      </div>
+      <p class="pot-circuito">de R${{app.circuitoAtual.total}}</p>
+    </div>
+
+    <!--Div com anel de porcentagem-->
+    <div>
+      <div class="row">
+        <div class="col col-25 centraliza"><h3>{{app.circuitoAtual.percent_consumo}}%</h3></div>
+        <div class="col col-50 centraliza">
+
+          <div class="c100 p{{app.circuitoAtual.percent_consumo}} " >
+            <span class="circle-icon">  <span class="icon-smartquadros circle-size" ></span ></span >
+              <div class="slice">
+                <div class="bar-circle"></div>
+                <div class="fill-circle"></div>
+              </div>
             </div>
-            <p class="pot-circuito">de R${{app.circuitoAtual.total}}</p>
+
+          </div>
+
+          <div class="col col-25 centraliza"> <h5>de consumo total</h5></div>
+
         </div>
+      </div>
 
-        <!--Div com anel de porcentagem-->
-        <div>
-            <div class="row">
-                <div class="col col-25 centraliza"><h3>{{app.circuitoAtual.percent_consumo}}%</h3></div>
-                <div class="col col-50 centraliza">
-
-                    <div class="c100 p{{app.circuitoAtual.percent_consumo}} " >
-<span class="circle-icon">  <span class="icon-smartquadros circle-size" ></span ></span >
-                        <div class="slice">
-                          <div class="bar-circle"></div>
-                            <div class="fill-circle"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col col-25 centraliza"> <h5>de consumo total</h5></div>
-
-            </div>
-        </div>
-
-        <!--Div do gráfico-->
-        <div>
+      <!--Div do gráfico-->
+      <div>
      <!--       <canvas id="bar" class="chart chart-bar"
             chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="app.series">
-        </canvas>-->
-<canvas id="bar" class="chart chart-bar"
-    chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
-  </canvas>
+          </canvas>-->
+          <canvas id="bar" class="chart chart-bar"
+          chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
+        </canvas>
 
-  {{app.circuitoAtual.measures_c_tuple[1]}}
-  {{app.circuitoAtual.goal_tuple[1]}}
-  {{app.circuitoAtual.previsions_c_tuple_money[1]}}
-    </div>
+      </div>
 
-    <!--div da tabela-->
-    <div>
-    <h4>Dados</h4>
-    <hr class="horizontal-line" size="1" >
+      <!--div da tabela-->
+      <div>
+        <h4>Dados</h4>
+        <hr class="horizontal-line" size="1" >
 
         <div class="row">
-            <div class="col col-70">Tensão</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
+          <div class="col col-70">Tensão</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Corrente</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
+          <div class="col col-70">Corrente</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Potência Ativa</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>
+          <div class="col col-70">Potência Ativa</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Potência Aparente</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power+" VA"}}</div>
+          <div class="col col-70">Potência Aparente</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power+" VA"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Fator de Potência</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}</div>
+          <div class="col col-70">Fator de Potência</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Energia Ativa</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.import_active_energy+" Kwh"}}</div>
+          <div class="col col-70">Energia Ativa</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.import_active_energy+" Kwh"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Energia Reativa</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.import_reactive_energy+" Kwh"}}</div>
+          <div class="col col-70">Energia Reativa</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.import_reactive_energy+" Kwh"}}</div>
         </div>
         <div class="row">
-            <div class="col col-70">Frequencia de rede</div>
-            <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency+" Hz"}}</div>
+          <div class="col col-70">Frequencia de rede</div>
+          <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency+" Hz"}}</div>
         </div>
 
-    </div>
+      </div>
 
 
-</ion-content>
+    </ion-content>
 
-</ion-modal-view>
+  </ion-modal-view>

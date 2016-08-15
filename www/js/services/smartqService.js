@@ -133,8 +133,8 @@ var _getServerQuadrosDetails = function (id){
 };
 
 //Envia localização para o servidor
-var _putLocation = function (latitude_value,logintude_value) {
-  var dado ==JSON.stringify( {
+var _putLocation = function (latitude_value,longitude_value) {
+  var dado =JSON.stringify( {
     user:{
       latitude : latitude_value,
       longitude : longitude_value}
@@ -160,14 +160,13 @@ var _convertTupla = function (data) {
   var array_1=[];
   var array_2=[];
   data.map(function(atual){
-    array_1.push(atual[0]);
-    array_2.push(atual[1]);
+      array_1.push(atual[0]);
+      array_2.push(atual[1]);
   });
 
   return [array_1, array_2];
 
 };
-
 
 
 //retorno do service

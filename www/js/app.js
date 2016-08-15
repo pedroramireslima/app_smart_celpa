@@ -28,6 +28,7 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
+
 $stateProvider.state('login',{
     url: '/login',
     templateUrl: 'templates/login.html',

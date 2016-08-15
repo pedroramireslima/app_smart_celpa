@@ -7,23 +7,33 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
   $scope.app.circuitoAtual={};
   $scope.app.series = ['POTENCIA'];
 
- $scope.datasetOverride = [
+  $scope.datasetOverride = [
     {
-        label: "Medição (KW)",
+        label: "Medição(KW)",
         borderWidth: 1,
+         backgroundColor: "rgba(51, 204, 51,0.4)",
+        borderColor: "rgba(51, 204, 51,1)",
         type: 'bar'
     },
     {
-        label: "Previsão (KW)",
+        label: "Previsão(KW)",
         borderWidth: 1,
+        backgroundColor: "rgba(51, 51, 255,0.4)",
+        borderColor: "rgba(51, 51, 255,1)",
         type: 'bar'
     },
     {
-        label: "Desejado (KW)",
+        label: "Desejado(KW)",
         borderWidth: 3,
+        spanGaps: "false",
+        pointBackgroundColor: "red",
+         backgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 1,
         type: 'line'
     }
     ];
+
 
 
   function formata_circuito() {

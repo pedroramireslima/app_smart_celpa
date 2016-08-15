@@ -9876,7 +9876,7 @@ a.button {
   margin-top: 4px;
   border: 1px solid #d1d1d1;
   background-color: #d1d1d1;
-  border-radius: 26px; }
+  border-radius: 5px; }
 
 .sup {
   height: 100%;
@@ -9884,7 +9884,7 @@ a.button {
   text-align: float left;
   font-size: 20px;
   line-height: 20px;
-  border-radius: 15px;
+  border-radius: 2px;
   width: 10%;
   background-color: #886aea; }
 

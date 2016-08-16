@@ -80,16 +80,17 @@ var _quadrosDetalhes=function () {
           previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
 
           var dia = new Date;
-          dia=dia.getDate();
-          var a=measures_b_tuple[0].indexOf(dia);
+          dia     = dia.getDate();
+          var a   = measures_b_tuple[0].indexOf(dia);
+          var vec = [0,0,0,0];
 
-
-          measures_b_tuple[0]        = measures_b_tuple[0].slice(a-3,a+4);
-          measures_b_tuple[1]        = measures_b_tuple[1].slice(a-3,a+4);
-          previsions_b_tuple[1]        = previsions_b_tuple[1].slice(a-3,a+4);
-          goal_b_tuple[1]                 = goal_b_tuple[1].slice(a-3,a+4);
+          console.log(previsions_b_tuple[1]);
+          console.log(previsions_b_tuple[0]);
+          measures_b_tuple[0]      = measures_b_tuple[0].slice(a-3,a+4);
+          measures_b_tuple[1]      = measures_b_tuple[1].slice(a-3,a+4);
+          previsions_b_tuple[1]    = vec.concat(previsions_b_tuple[1].slice(0,3));
+          goal_b_tuple[1]          = goal_b_tuple[1].slice(a-3,a+4);
           measures_b_tuple_diff[1] = measures_b_tuple_diff[1].slice(a-3,a+4);
-
 
           circuito= _quadro_atual.circuits;
           circuito=circuito.map(function(atual){

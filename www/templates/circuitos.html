@@ -37,7 +37,7 @@
 
         </div>
         <div class="progressBar">
-          <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+          <div class="sup" ng-style="{width: {{circuito.percent <= 100? circuito.percent : 100}} + '%'}"> </div>
           <div class="text-bar">{{circuito.percent}}%</div>
         </div>
 

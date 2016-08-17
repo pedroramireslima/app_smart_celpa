@@ -4,43 +4,48 @@
 
 
     <div class="rowsqm">
-                <!--modelo do bloco sugestão-->
-                <div class="col controlebox" >
-                  <div class="col circuito-title" >
-                    Circuito 1
-                  </div>
-                  <hr class="horizontal-line" size="1" >
-                    <div>
-                                            <!-- Cabeçalho-->
-                                            <div class="col ">Saída para almoço</div>
-                                            <div class="row">
-                                                          <div class="col col-20">HORA</div>
-                                                          <div class="col col-10"></div>
-                                                          <div class="col col-10">S</div>
-                                                          <div class="col col-10">T</div>
-                                                          <div class="col col-10">Q</div>
-                                                          <div class="col col-10">Q</div>
-                                                          <div class="col col-10">S</div>
-                                                          <div class="col col-10">S</div>
-                                                          <div class="col col-10">D</div>
-                                            </div>
+      <!--modelo do bloco sugestão-->
+      <div class="col controlebox" ng-repeat="id in agendamentos.dados.ids">
+        <div class="col circuito-title  " >
+          <div class="row">
+            <div class="col col-80 reduz"> Circuito {{id}}</div>
+            <div class="col col-20"> <button class="button button-small button-clear button-positive">Adicionar</button></div>
+          </div>
+        <hr class="horizontal-line" size="1" >
+        </div>
 
-                                            <!-- -->
-                                            <div class="row">
-                                                      <div class="col col-20">18:00</div>
-                                                      <div class="col col-10">lig</div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                                      <div class="col col-10"><i class="icon ion-checkmark-round"></i></div>
-                                            </div>
+        <div ng-repeat="valor in agendamentos.dados[id]">
+          <!-- Cabeçalho-->
+          <div class="col ">{{valor.description}}</div>
+          <div class="row">
+            <div class="col col-20">HORA</div>
+            <div class="col col-10">S</div>
+            <div class="col col-10">T</div>
+            <div class="col col-10">Q</div>
+            <div class="col col-10">Q</div>
+            <div class="col col-10">S</div>
+            <div class="col col-10">S</div>
+            <div class="col col-10">D</div>
+            <div class="col col-10"><a class="button button-small button-dark button-outline icon ion-trash-a "></a></div>
 
-                    </div>
+          </div>
 
-                </div>
+          <!-- -->
+          <div class="row" >
+            <div class="col col-20"><b>{{valor.run_at}}</b></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.mon ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.tue ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.wed ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.thu ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.fri ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.sat ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10"><i class="icon " ng-class="valor.sun ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
+            <div class="col col-10">{{valor.relay_state? 'lig':'del'}}</div>
+          </div>
+
+        </div>
+
+      </div>
 
 
 

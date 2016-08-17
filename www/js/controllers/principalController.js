@@ -58,7 +58,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
             smartqService.getServerCircuitos(id).then(function (json) {
 
                 smartqService.setCircuitos(json.data);
-                getServerControle($scope.app._quadroAtual);
+                getServerAgendamentos($scope.app._quadroAtual);
 
             },function (json) {
                 getServerCircuitos(id);
@@ -67,14 +67,27 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     }
 
+    /*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
+    function getServerAgendamentos(id) {
+            smartqService.getServerAgendamentos(id).then(function (json) {
+                smartqService.setAgendamentos(json.data);
+                                 console.log(smartqService.getAgendamentos());
+
+                getServerControle($scope.app._quadroAtual);
+
+            },function (json) {
+                getServerAgendamentos(id);
+                console.log("problema pegando agendamentos");
+            })
+    }
+
 
     /*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
     function getServerControle(id) {
         smartqService.getServeControle(id).then(function (json) {
             smartqService.setControle(json.data);
-                        console.log(json.data);
 
-            console.log(json.data.available_circuits);
+ //           console.log(json.data.available_circuits);
             getServeQuadroDetails($scope.app._quadroAtual);
         },function (argument) {
             getServerControle(id);

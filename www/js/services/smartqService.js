@@ -8,7 +8,34 @@ var _circuitos         = {};
 var _quadro_atual      = {};
 var _circuito_atual    = {};
 var _circuito_controle = {};
+var _agendamentos      = {};
+
+
 //funções para pegar dado local
+var _getAgendamentos = function (){
+  return _agendamentos;
+};
+
+
+var _setAgendamentos = function (value) {
+
+  var groupedData = {ids:[]};
+
+  for (var it = 0; it < value.length; it++) {
+    var item = value[it];
+    if (!groupedData[item.circuit_id]){
+      groupedData[item.circuit_id] = [];
+      groupedData.ids.push(item.circuit_id);
+    }
+    groupedData[item.circuit_id].push(item);
+  }
+
+  _agendamentos=  groupedData;
+
+};
+
+
+
 var _getControle = function (){
   return _circuito_controle;
 };
@@ -185,12 +212,14 @@ var _putLocation = function (latitude_value,longitude_value) {
 
 //Liga/desliga circuito
 var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
-  estado = 1;
+  //estado = 1;
   return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
-
-
-
 };
+
+//Pega vetor de agendamentos do painel
+var _getServerAgendamentos = function (panel_id) {
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/schedulings.json?access_token="+config.SERVER.token,{timeout: 30000});
+}
 
 
 //Converte tupla para formato de gráficos
@@ -227,7 +256,10 @@ return {
   getControle:_getControle,
   setControle:_setControle,
   setEstadoCircuito:_setEstadoCircuito,
-  putLocation:_putLocation
+  putLocation:_putLocation,
+  getAgendamentos:_getAgendamentos,
+  setAgendamentos:_setAgendamentos,
+  getServerAgendamentos:_getServerAgendamentos
 };
 
 

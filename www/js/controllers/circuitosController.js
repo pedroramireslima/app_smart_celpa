@@ -3,6 +3,7 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
 
 
   $scope.app.circuitos               = smartqService.getCircuitos();
+  console.log($scope.app.circuitos);
   $scope.app.quadro                  = smartqService.getQuadroAtual();
   $scope.app.circuitoAtual           = {};
   $scope.app.mostra_grafico_circuito = true;

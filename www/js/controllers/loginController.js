@@ -38,14 +38,31 @@ function getServeQuadros() {
 }
 
 
+    /*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
+    function getServerAgendamentos(id) {
+            smartqService.getServerAgendamentos(id).then(function (json) {
+                smartqService.setAgendamentos(json.data);
+
+
+                getServerControle(_quadroAtual);
+            },function (json) {
+                getServerAgendamentos(id);
+                console.log("problema pegando agendamentos");
+            })
+    }
+
+
+
+
 /*FUNÇÃO QUE PEGA CIRCUITO*/
 function getServerCircuitos(id){
   loading.show();
   smartqService.getServerCircuitos(id).then(function (json) {
-    console.log(json.data);
 
-    smartqService.setCircuitos(json.data);
-    getServerControle(_quadroAtual);
+        smartqService.setCircuitos(json.data);
+        getServerAgendamentos(_quadroAtual);
+
+
  //getServeQuadroDetails(_quadroAtual);
 
   },function (json) {

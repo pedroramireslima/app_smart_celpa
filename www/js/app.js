@@ -30,61 +30,58 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js'])
 
 
 $stateProvider.state('login',{
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'loginController'
+    url         : '/login',
+    templateUrl : 'templates/login.html',
+    controller  : 'loginController'
 
 });
 
   $stateProvider.state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'principalController'
+    url         : '/app',
+    abstract    : true,
+    templateUrl : 'templates/menu.html',
+    controller  : 'principalController'
   });
 
   $stateProvider.state('app.principal', {
-    url: '/principal',
-    views: {
+    url   : '/principal',
+    views : {
       'menuContent': {
-        templateUrl: 'templates/principal.html',
-            controller: 'principalController'
+        templateUrl : 'templates/principal.html',
+        controller  : 'principalController'
       }
     }
   });
 
   $stateProvider.state('app.circuitos', {
-    url: '/circuitos',
-    views: {
+    url   : '/circuitos',
+    views : {
       'menuContent': {
-        templateUrl: 'templates/circuitos.html',
-            controller: 'circuitosController'
+        templateUrl : 'templates/circuitos.html',
+        controller  : 'circuitosController'
       }
     }
   });
 
    $stateProvider.state('app.controle', {
-    url: '/controle',
-    views: {
+    url   : '/controle',
+    views : {
       'menuContent': {
-        templateUrl: 'templates/controle.html',
-            controller: 'controleController'
+        templateUrl : 'templates/controle.html',
+        controller  : 'controleController'
       }
     }
   });
 
    $stateProvider.state('app.agendamento', {
-    url: '/agendamento',
-    views: {
+    url   : '/agendamento',
+    views : {
       'menuContent': {
-        templateUrl: 'templates/agendamento.html',
-            controller: 'principalController'//controller: 'controleAgendamento'
+        templateUrl : 'templates/agendamento.html',
+        controller  : 'agendamentoController'//controller: 'controleAgendamento'
       }
     }
   });
-
-
-
 
 
   // if none of the above states are matched, use this as the fallback

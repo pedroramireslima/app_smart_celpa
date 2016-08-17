@@ -58,6 +58,7 @@ function getServerCircuitos(id){
 /*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
 function getServerControle(id) {
   smartqService.getServeControle(id).then(function (json) {
+    console.log(json.data);
     smartqService.setControle(json.data);
     getServeQuadroDetails(_quadroAtual);
   },function (argument) {

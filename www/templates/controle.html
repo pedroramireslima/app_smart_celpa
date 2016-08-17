@@ -1,54 +1,52 @@
 <ion-view view-title="{{app.quadro.break_panel.name}}" >
   <ion-content  class="backgound-content">
 
-    <div class="rowsqm">
-
-      <!--modelo do bloco-->
-      <div class="col controlebox" ng-repeat="circuito in app.controle">
-        <div class="row ">
-          <div class="col col-75 circuito-title" >
-            {{circuito.name}}
-          </div>
-          <div class="col ">
-           <p>VAL 06/10</p>
-
-         </div>
-       </div>
-       <hr class="horizontal-line" size="1" >
-       <div class="grafico-circuito" >
-        <div >
-          <div class="left-box" >
-            R$
-          </div>
-          <div class="center-box">
-            {{circuito.reais_goal}}
-          </div>
-          <div class="right-box">
-            ,{{circuito.centavos_goal}}
-          </div>
-     <!--
-          <a class="button button-icon icon ion-gear-b buttom-controlebox" ng-click="openEditControle()"></a>
-     -->
-
-        </div>
-
-        <div class="progressBar">
-          <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
-          <div class="text-bar">{{circuito.percent}}%</div>
-          <div class="text-bar-r" >{{circuito.value}}R$</div>
-        </div>
-
-<!--
-        <a class="button button-icon  buttom-controlebox-bottom">X</a>
--->
-
-      </div>
-
+    <div class="roesqm" ng-if="app.has_data==false">
+      <h4>Não existe nenhum controle ainda</h4>
     </div>
 
+    <div class="rowsqm" ng-if="app.has_data==true">
 
-  </div>
+          <!--modelo do bloco-->
+          <div class="col controlebox" ng-repeat="circuito in app.controle">
+                  <div class="row ">
+                          <div class="col col-75 circuito-title" >
+                            {{circuito.name}}
+                          </div>
+                          <div class="col ">
+                           <p>VAL 06/10</p>
+                         </div>
+                 </div>
+                 <hr class="horizontal-line" size="1" >
 
+                 <div class="grafico-circuito" >
+                    <div class="left-box" >
+                      R$
+                    </div>
+                    <div class="center-box">
+                      {{circuito.reais_goal}}
+                    </div>
+                    <div class="right-box">
+                      ,{{circuito.centavos_goal}}
+                    </div>
+               <!--
+                    <a class="button button-icon icon ion-gear-b buttom-controlebox" ng-click="openEditControle()"></a>
+               -->
+                  </div>
+
+                  <div class="progressBar">
+                    <div class="sup" ng-style="{width: {{80}} + '%'}"> </div>
+                    <div class="text-bar">{{circuito.percent}}%</div>
+                    <div class="text-bar-r" >{{circuito.value}}R$</div>
+                  </div>
+
+          <!--
+                  <a class="button button-icon  buttom-controlebox-bottom">X</a>
+          -->
+
+          </div>
+
+        </div>
 
 
 

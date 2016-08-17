@@ -3,11 +3,11 @@
 angular.module('smartq').factory('smartqService', function($http,config){
 
 //variáveis que guardam os valores dos jsons localmente
-var _quadros = {};
-var _circuitos={};
-var _quadro_atual={};
-var _circuito_atual={};
-var _circuito_controle={};
+var _quadros           = {};
+var _circuitos         = {};
+var _quadro_atual      = {};
+var _circuito_atual    = {};
+var _circuito_controle = {};
 //funções para pegar dado local
 var _getControle = function (){
   return _circuito_controle;

@@ -72,6 +72,9 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     function getServerControle(id) {
         smartqService.getServeControle(id).then(function (json) {
             smartqService.setControle(json.data);
+                        console.log(json.data);
+
+            console.log(json.data.available_circuits);
             getServeQuadroDetails($scope.app._quadroAtual);
         },function (argument) {
             getServerControle(id);

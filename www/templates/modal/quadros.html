@@ -6,88 +6,72 @@
 
   <ion-content class="padding  ">
     <div class="col circuitodetailsbox">
-     <div class="value-title">
-      <p>{{app.quadro_detalhes.percentual}}%</p>
-    </div>
-    <div class="progressBar">
-      <div class="sup" style="width: {{app.quadro_detalhes.percentual}}%"> </div>
-    </div>
-    <p class="pot-circuito">de R${{app.quadro_detalhes.alvo}}</p>
+            <div class="value-title">
+              <p>{{app.quadro_detalhes.percentual}}%</p>
+            </div>
+            <div class="progressBar">
+              <div class="sup" style="width: {{app.quadro_detalhes.percentual}}%"> </div>
+            </div>
+            <p class="pot-circuito">de R${{app.quadro_detalhes.alvo}}</p>
   </div>
 
   <!--Div do gráfico-->
-  <div>
- <canvas id="bar" class="chart chart-bar"
-    chart-data="[app.quadro_detalhes.measures_b_tuple[1],app.quadro_detalhes.previsions_b_tuple[1],app.quadro_detalhes.goal_b_tuple[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
-  </canvas>
-
-<canvas id="bar" class="chart chart-bar"
-    chart-data="[app.quadro_detalhes.measures_b_tuple[1],app.quadro_detalhes.previsions_b_tuple[1],app.quadro_detalhes.goal_b_tuple[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
-  </canvas>
-<!--    <canvas id="bar" class="chart chart-bar"
-    chart-data="app.quadro_detalhes.measures_b_tuple[1]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-series="app.quadro_detalhes.series">
-  </canvas>-->
-      <!--
-      <canvas id="bar" class="chart chart-bar"
-        chart-data="app.quadro_detalhes.measures_b_tuple_diff[1]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
-      </canvas>
-      <canvas id="bar" class="chart chart-bar"
-        chart-data="app.quadro_detalhes.previsions_b_tuple[1]" chart-labels="app.quadro_detalhes.previsions_b_tuple[0]" chart-series="app.quadro_detalhes.series">
-      </canvas>
-    -->
-
-
+  <div class="graficobox">
+      <div ng-if="app.mostra_grafico_quadro === true">
+              <h4>Consumo Diário</h4>
+             <canvas id="bar" class="chart chart-bar"
+             chart-data="[app.quadro_detalhes.measures_b_tuple[1],app.quadro_detalhes.previsions_b_tuple[1],app.quadro_detalhes.goal_b_tuple[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
+              </canvas>
+      </div>
+      <div ng-if="app.mostra_grafico_quadro === false">
+           <h4>Diferença de consumo</h4>
+           <canvas id="bar" class="chart chart-bar"
+           chart-data="[app.quadro_detalhes.measures_b_tuple_diff[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
+            </canvas>
+      </div>
+      <div class="button-bar">
+        <a class="button button-outline button-stable"  ng-click="graficoQuadro(true)">Diário</a>
+        <a class="button button-outline button-stable"  ng-click="graficoQuadro(false)">Diferenças</a>
+      </div>
   </div>
 
-  <!--Quadros de Fatura-->
+<!--Quadros de Fatura-->
 
-  <div class="bar-list">
-    <div class="row">
+<div class="bar-list">
+  <div class="row">
 
-      <!--modelo do bloco-->
-      <div class="col circuitobox">
-        <div class="row ">
-          <div class="col col-70 " >
-            Vencimento
-          </div>
-          <div class="col " >
-            {{app.quadro_detalhes.due}}/10
-          </div>
-        </div>
-        <hr class="horizontal-line" size="1" >
-        <p>ciclo tarifário</p>
-        {{app.quadro_detalhes.first_day_of_period}}/09
-      </div>
-
-      <div class="col circuitobox">
-        <div class="row ">
-          <div class="col col-60 " >
-            Bandeira:
-          </div>
-          <div class="col " >
-            {{app.quadro_detalhes.taxa}} R$
-          </div>
-        </div>
-        <hr class="horizontal-line" size="1" >
-        13,40
-      </div>
+    <!--modelo do bloco-->
+    <div class="col circuitobox">
+     <p>Vencimento: {{app.quadro_detalhes.due}}/{{app.quadro_detalhes.mes}}</p>
 
 
-    </div><!-- fim da row-->
-  </div>
+    <p>Ciclo tarifário </p>
+    {{app.quadro_detalhes.first_day_of_period}}/{{app.quadro_detalhes.mes}} - {{app.quadro_detalhes.ultimo_dia}}/{{app.quadro_detalhes.proximo_mes}}
+    </div>
+    <div class="col circuitobox">
 
+      <p>Bandeira: {{app.quadro_detalhes.bandeira}}</p>
+      <p>{{app.quadro_detalhes.taxa}} R$/kWh</p>
 
-
-
-  <!--Parte da lista de barras-->
-  <div class="bar-list">
-    <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  ">
-      <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
-      <div class="text-bar reduz" ng-click="openDetailsCircuits(circuito.panel_id,circuito.id)">{{circuito.name}}</div>
-      <div class="text-bar-r" >R${{circuito.valor }}</div>
     </div>
 
   </div>
+
+
+</div>
+
+
+
+
+<!--Parte da lista de barras-->
+<div class="bar-list">
+  <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  ">
+    <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+    <div class="text-bar reduz" ng-click="openDetailsCircuits(circuito.panel_id,circuito.id)">{{circuito.name}}</div>
+    <div class="text-bar-r" >R${{circuito.valor }}</div>
+  </div>
+
+</div>
 
 
 </ion-content>

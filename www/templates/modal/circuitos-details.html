@@ -49,57 +49,67 @@
       </div>
 
       <!--Div do gráfico-->
-      <div>
-     <!--       <canvas id="bar" class="chart chart-bar"
-            chart-data="app.circuitoAtual.measures_c_tuple[1]" chart-labels="app.circuitoAtual.measures_c_tuple[0]" chart-series="app.series">
-          </canvas>-->
-          <canvas id="bar" class="chart chart-bar"
-          chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
-        </canvas>
+      <div class="graficobox">
+          <div ng-if="app.mostra_grafico_circuito === true">
+              <h4>Consumo diário</h4>
+              <canvas id="bar" class="chart chart-bar"
+              chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
+              </canvas>
+          </div>
+          <div ng-if="app.mostra_grafico_circuito === false">
+              <h4>Diferença de consumo</h4>
+              <canvas id="bar" class="chart chart-bar"
+              chart-data="[app.circuitoAtual.measures_c_tuple_diff[1]]" chart-labels="app.circuitoAtual.measures_c_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
+              </canvas>
 
+          </div>
+          <div class="button-bar">
+            <a class="button button-outline button-stable"  ng-click="graficoCircuito(true)">Diário</a>
+            <a class="button button-outline button-stable"  ng-click="graficoCircuito(false)">Diferenças</a>
+          </div>
       </div>
 
-      <!--div da tabela-->
-      <div>
-        <h4>Dados</h4>
-        <hr class="horizontal-line" size="1" >
+  <!--div da tabela-->
+  <div >
+    <h4>Dados</h4>
+    <hr class="horizontal-line" size="1" >
 
-        <div class="row">
-          <div class="col col-70">Tensão</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Corrente</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Potência Ativa</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Potência Aparente</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power+" VA"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Fator de Potência</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Energia Ativa</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.import_active_energy+" Kwh"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Energia Reativa</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.import_reactive_energy+" Kwh"}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-70">Frequencia de rede</div>
-          <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency+" Hz"}}</div>
-        </div>
+    <div class="row">
+      <div class="col col-70">Tensão</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Corrente</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Potência Ativa</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Potência Aparente</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.apparent_power+" VA"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Fator de Potência</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.power_factor}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Energia Ativa</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.import_active_energy+" Kwh"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Energia Reativa</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.import_reactive_energy+" Kwh"}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-70">Frequencia de rede</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.line_frequency+" Hz"}}</div>
+    </div>
 
-      </div>
+  </div>
 
 
-    </ion-content>
+</ion-content>
 
-  </ion-modal-view>
+</ion-modal-view>

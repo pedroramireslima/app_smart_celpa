@@ -54,7 +54,7 @@ var _setCircuitoAtual = function (value) {
 
 //TODO: colocar para pegar só os sete
 var _quadrosDetalhes=function () {
-          console.log(_quadro_atual);
+
           nome=  _quadro_atual.break_panel.name;
           percentual_quadro= parseFloat(_quadro_atual.break_panel.total_energy / _quadro_atual.break_panel.goal * _quadro_atual.consumer_type.tax * 100).toFixed(2);
           if ( percentual_quadro==Infinity) {
@@ -62,35 +62,43 @@ var _quadrosDetalhes=function () {
           }
 
 
-          alvo=  _quadro_atual.break_panel.goal.toFixed(2);
-          taxa= _quadro_atual.consumer_type.tax;
-          due= _quadro_atual.break_panel.due;
-          primeiro_dia= _quadro_atual.break_panel.first_day_of_period;
-          series = ['POTENCIA'];
-          days_in_m=_quadro_atual.days_in_m;
-          measures_b_tuple=_convertTupla(_quadro_atual.measures_b_tuple);
-          measures_b_tuple[0]=measures_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
+          alvo                     = _quadro_atual.break_panel.goal.toFixed(2);
+          taxa                     = _quadro_atual.consumer_type.tax;
+          bandeira                 = _quadro_atual.consumer_type.consumer_flag;
+          due                      = _quadro_atual.break_panel.due;
+          primeiro_dia             = _quadro_atual.break_panel.first_day_of_period;
+          series                   = ['POTENCIA'];
+          days_in_m                = _quadro_atual.days_in_m;
+          measures_b_tuple         = _convertTupla(_quadro_atual.measures_b_tuple);
+          measures_b_tuple[0]      = measures_b_tuple[0].map(function(obj){ var a   = new Date(obj); return a.getDate();});
+          measures_b_tuple_diff    = _convertTupla(_quadro_atual.measures_b_tuple_diff);
+          measures_b_tuple_diff[0] = measures_b_tuple_diff[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
+          goal_b_tuple             = _convertTupla(_quadro_atual.goal_tuple);
+          previsions_b_tuple       = _convertTupla(_quadro_atual.previsions_b_tuple);
+          previsions_b_tuple[0]    = previsions_b_tuple[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
+          ultimo_dia               = measures_b_tuple[0][measures_b_tuple[0].length - 1];
 
-          measures_b_tuple_diff=_convertTupla(_quadro_atual.measures_b_tuple_diff);
-          measures_b_tuple_diff[0]=measures_b_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-
-          goal_b_tuple=_convertTupla(_quadro_atual.goal_tuple);
-
-           previsions_b_tuple=_convertTupla(_quadro_atual.previsions_b_tuple);
-          previsions_b_tuple[0]=previsions_b_tuple[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-
-          var dia = new Date;
+          var dia = new Date();
           dia     = dia.getDate();
           var a   = measures_b_tuple[0].indexOf(dia);
           var vec = [0,0,0,0];
 
-          console.log(previsions_b_tuple[1]);
-          console.log(previsions_b_tuple[0]);
+
           measures_b_tuple[0]      = measures_b_tuple[0].slice(a-3,a+4);
           measures_b_tuple[1]      = measures_b_tuple[1].slice(a-3,a+4);
           previsions_b_tuple[1]    = vec.concat(previsions_b_tuple[1].slice(0,3));
           goal_b_tuple[1]          = goal_b_tuple[1].slice(a-3,a+4);
           measures_b_tuple_diff[1] = measures_b_tuple_diff[1].slice(a-3,a+4);
+          measures_b_tuple_diff[0] = measures_b_tuple_diff[0].slice(a-3,a+4);
+          mes                      = new Date();
+          mes                      = mes.getMonth() + 1;
+          if (ultimo_dia<31) {
+            if(mes==12){
+              proximo_mes = 1;
+            }else{
+              proximo_mes = mes + 1;}
+            } else { proximo_mes = mes;}
+
 
           circuito= _quadro_atual.circuits;
           circuito=circuito.map(function(atual){
@@ -105,7 +113,25 @@ var _quadrosDetalhes=function () {
               return atual;
           });
 
-          return {"nome": nome, "percentual":percentual_quadro,"alvo":alvo,"taxa":taxa,"days_in_m":days_in_m,"measures_b_tuple":measures_b_tuple, "measures_b_tuple_diff":measures_b_tuple_diff, "previsions_b_tuple": previsions_b_tuple, "circuitos":circuito,"first_day_of_period":primeiro_dia,"due":due,"series":series,"goal_b_tuple":goal_b_tuple};
+          return {
+            "nome"                  : nome,
+            "percentual"            : percentual_quadro,
+            "alvo"                  : alvo,
+            "taxa"                  : taxa,
+            "days_in_m"             : days_in_m,
+            "measures_b_tuple"      : measures_b_tuple,
+            "measures_b_tuple_diff" : measures_b_tuple_diff,
+            "previsions_b_tuple"    : previsions_b_tuple,
+            "circuitos"             : circuito,
+            "first_day_of_period"   : primeiro_dia,
+            "due"                   : due,
+            "series"                : series,
+            "goal_b_tuple"          : goal_b_tuple,
+            "bandeira"              : bandeira,
+            "mes"                   : mes,
+            "ultimo_dia"            : ultimo_dia,
+            "proximo_mes"           : proximo_mes
+               };
 };
 
 

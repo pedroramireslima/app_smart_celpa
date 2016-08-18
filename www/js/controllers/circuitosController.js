@@ -36,27 +36,6 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
     ];
 
 
-/*
-  function formata_circuito() {
-    for (var i = 0; i < $scope.app.circuitos.length; i++) {
-      $scope.app.circuitos[i].value =parseFloat($scope.app.quadro.consumer_type.tax*$scope.app.circuitos[i].total_energy).toFixed(2);
-      $scope.app.circuitos[i].reais=parseInt( $scope.app.circuitos[i].value);
-      $scope.app.circuitos[i].centavos=parseInt(parseFloat( $scope.app.circuitos[i].value -  $scope.app.circuitos[i].reais).toFixed(2)*100);
-      if ($scope.app.circuitos[i].centavos<10) {
-        $scope.app.circuitos[i].centavos="0"+$scope.app.circuitos[i].centavos;
-      }
-      $scope.app.circuitos[i].percent=Math.round($scope.app.circuitos[i].total_energy/$scope.app.quadro.break_panel.total_energy*100);
-
-    }
-
-//ordena do de maior energia para o de menor energia
-$scope.app.circuitos=$filter('orderBy')($scope.app.circuitos, "total_energy",true);
-
-}
-
-formata_circuito();
-*/
-
 
 /* MODAL DOS DETALHES DOS CIRCUiTOS */
 $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {
@@ -83,25 +62,31 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
   confirmPopup.then(function(res) {
    if(res) {
        //envia dado para o servidor
-       console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado);
+       console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado+" enviando para o servidor...");
 
-       smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
-        if (json.data=="ok") {
-          console.log("tudo certo");
+      smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
+        console.log(json.data);
+        if (json.data.Actuation=="OK") {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Circuito',
+            template: 'Operação realizada com sucesso!'
+          });
         }
-        },function (json) {
-        console.log("Erro mudando o estado do circuito ");
-      });
+      },function (json) {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Circuito',
+            template: 'Erro durante o processo!'
+          });
+        });
 
 
 
 
 
-     } else {
+   } else {
       //mantém formato atual
 
       $scope.app.circuitos=smartqService.getCircuitos();
-
       console.log('You are not sure');
     }
   });

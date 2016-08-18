@@ -4,7 +4,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.app                         = {};
     $scope.app.slides                  = smartqService.getQuadros();
     $scope.app.description             = $scope.app.slides[0].description;
-    $scope.app. _quadroAtual           = $scope.app.slides[0].id;
+    $scope.app._quadroAtual            = $scope.app.slides[0].id;
     $scope.app.quadro_detalhes         = smartqService.quadrosDetalhes();
     $scope.app.circuitoAtual           = {};
     $scope.app.mostra_grafico_quadro   = true;
@@ -71,8 +71,6 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     function getServerAgendamentos(id) {
             smartqService.getServerAgendamentos(id).then(function (json) {
                 smartqService.setAgendamentos(json.data);
-                                 console.log(smartqService.getAgendamentos());
-
                 getServerControle($scope.app._quadroAtual);
 
             },function (json) {

@@ -3,7 +3,7 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
 
 
   $scope.app.circuitos               = smartqService.getCircuitos();
-  console.log($scope.app.circuitos);
+  //console.log($scope.app.circuitos);
   $scope.app.quadro                  = smartqService.getQuadroAtual();
   $scope.app.circuitoAtual           = {};
   $scope.app.mostra_grafico_circuito = true;
@@ -36,7 +36,7 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
     ];
 
 
-
+/*
   function formata_circuito() {
     for (var i = 0; i < $scope.app.circuitos.length; i++) {
       $scope.app.circuitos[i].value =parseFloat($scope.app.quadro.consumer_type.tax*$scope.app.circuitos[i].total_energy).toFixed(2);
@@ -55,7 +55,7 @@ $scope.app.circuitos=$filter('orderBy')($scope.app.circuitos, "total_energy",tru
 }
 
 formata_circuito();
-
+*/
 
 
 /* MODAL DOS DETALHES DOS CIRCUiTOS */
@@ -84,11 +84,24 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
    if(res) {
        //envia dado para o servidor
        console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado);
+
+       smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
+        if (json.data=="ok") {
+          console.log("tudo certo");
+        }
+        },function (json) {
+        console.log("Erro mudando o estado do circuito ");
+      });
+
+
+
+
+
      } else {
       //mantém formato atual
 
       $scope.app.circuitos=smartqService.getCircuitos();
-      formata_circuito();
+
       console.log('You are not sure');
     }
   });
@@ -96,14 +109,6 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
 
 
-/*
- smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
-  if (json.data=="ok") {
-    console.log("tudo certo");
-  }
- },function (json) {
-   console.log("Erro ");
- });*/
 
 //TODO: Colocar para pegar os circuitos após setar o estado
 

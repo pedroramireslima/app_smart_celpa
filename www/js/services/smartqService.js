@@ -31,7 +31,7 @@ var _setAgendamentos = function (value) {
   }
 
   _agendamentos=  groupedData;
-
+  console.log("Agendamentos atualizados");
 };
 
 
@@ -43,6 +43,7 @@ var _getControle = function (){
 
 var _setControle = function (value) {
   _circuito_controle=value;
+    console.log("Controle atualizados");
 };
 
 
@@ -53,6 +54,7 @@ var _getQuadros = function (){
 
 var _setQuadros = function (value) {
   _quadros=value;
+    console.log("Quadros atualizados");
 };
 
 var _getCircuitos = function (){
@@ -61,6 +63,7 @@ var _getCircuitos = function (){
 
 var _setCircuitos = function (value) {
   _circuitos=value;
+    console.log("Circuitos atualizados");
 };
 
 var _getQuadroAtual = function (){
@@ -69,6 +72,8 @@ var _getQuadroAtual = function (){
 
 var _setQuadroAtual = function (value) {
   _quadro_atual=value;
+    console.log("Quadro atual atualizados");
+    formata_circuito();
 };
 
 var _getCircuitoAtual = function (){
@@ -77,9 +82,24 @@ var _getCircuitoAtual = function (){
 
 var _setCircuitoAtual = function (value) {
   _circuito_atual=value;
+    console.log("Circuito atual atualizados");
 };
 
-//TODO: colocar para pegar só os sete
+
+function formata_circuito() {
+    for (var i = 0; i < _circuitos.length; i++) {
+      _circuitos[i].value =parseFloat(_quadro_atual.consumer_type.tax*_circuitos[i].total_energy).toFixed(2);
+      _circuitos[i].reais=parseInt( _circuitos[i].value);
+      _circuitos[i].centavos=parseInt(parseFloat( _circuitos[i].value -  _circuitos[i].reais).toFixed(2)*100);
+      if (_circuitos[i].centavos<10) {
+        _circuitos[i].centavos="0"+_circuitos[i].centavos;
+      }
+      _circuitos[i].percent=Math.round(_circuitos[i].total_energy/_quadro_atual.break_panel.total_energy*100);
+    }
+        console.log("Circuitos formatados");
+  }
+
+
 var _quadrosDetalhes=function () {
 
           nome=  _quadro_atual.break_panel.name;
@@ -212,14 +232,13 @@ var _putLocation = function (latitude_value,longitude_value) {
 
 //Liga/desliga circuito
 var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
-  //estado = 1;
   return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
 };
 
 //Pega vetor de agendamentos do painel
 var _getServerAgendamentos = function (panel_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/schedulings.json?access_token="+config.SERVER.token,{timeout: 30000});
-}
+};
 
 
 //Converte tupla para formato de gráficos
@@ -264,7 +283,3 @@ return {
 
 
 });
-
-
-
-

@@ -75,7 +75,7 @@ function getServerCircuitos(id){
 /*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
 function getServerControle(id) {
   smartqService.getServeControle(id).then(function (json) {
-    console.log(json.data);
+    //console.log(json.data);
     smartqService.setControle(json.data);
     getServeQuadroDetails(_quadroAtual);
   },function (argument) {
@@ -91,7 +91,6 @@ function getServeQuadroDetails(id){
        smartqService.setQuadroAtual(json.data);
        $location.path( "app/principal");
      },function (json) {
-           // loading.hide();
            console.log("problema pegando quadros");
            getServeQuadroDetails(id);
          });

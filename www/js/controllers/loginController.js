@@ -1,21 +1,83 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope){
 
 
-  var Oauth={};
-  Oauth.url="http://52.20.21.167:3500/oauth/";
-  Oauth.client_id= "5f7396418354799903da39cfbf7dbe11";
-  Oauth.client_secret= "9a41e2c35f4a143f7aae1d96b8cb8e18";
 
   var _quadroAtual = 0;
 
 ///////////////////////////////////////////////////////////////////////////////
-$scope.doLogin = function (argument) {
-  getServeQuadros();
+
+$scope.doLogin = function () {
+
+ var options = {
+      location: 'no',
+      clearcache: 'no',
+      toolbar: 'no'
+   };
+
+  $cordovaInAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', options)
+  .then(function(event) {
+    // success
+  })
+  .catch(function(event) {
+    // error
+  });
+
+  $rootScope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
+    console.log("evento disparadoem 1: "+event.url);
+    if((event.url).startsWith("http://localhost/callback")) {
+    console.log("COMEÇOU<<<<<<<<<<<<<<<<<<");
+    $cordovaInAppBrowser.close();
+    }
+
+  });
+
+
+  //var ref = cordova.InAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', 'location=no');
+
+
+/*
+
+  ref.addEventListener('loadstart', function(event) {
+
+    if (typeof String.prototype.startsWith != 'function') {
+            String.prototype.startsWith = function (str){
+                return this.indexOf(str) === 0;
+            };
+    }
+
+    if((event.url).startsWith("http://localhost/callback")) {
+      //var requestToken = (event.url).split("code=")[1];
+
+      var alertPopup = $ionicPopup.alert({
+          title: 'Teste',
+          template: 'O código é:'+requestToken
+      });
+
+
+      ref.close();
+    }
+  });
+*/
+
+
+//$cordovaInAppBrowser.open('http://ngcordova.com', '_blank', options)
+
+
+
 };
 
+
+
+
+/*
+
+$scope.doLogin = function () {
+  getServeQuadros();
+};
+*/
 
 function getServeQuadros() {
 
@@ -29,7 +91,7 @@ function getServeQuadros() {
           getServerCircuitos(_quadroAtual);
 
 
-        },function(){
+        },function(json){
           loading.hide();
           console.log("problema");
           getServeQuadros();
@@ -48,7 +110,7 @@ function getServeQuadros() {
             },function (json) {
                 getServerAgendamentos(id);
                 console.log("problema pegando agendamentos");
-            })
+            });
     }
 
 
@@ -103,29 +165,6 @@ function getServeQuadroDetails(id){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-
-$scope.loginSystem = function(){
-
-
-  var url = Oauth.url+'new?client_id='+ Oauth.client_id + '&client_secret='+ Oauth.client_secret +'&redirect_uri=http://localhost' ;
-//url="http://52.20.21.167:3500/oauth/token?client_id=5f7396418354799903da39cfbf7dbe11&client_secret=9a41e2c35f4a143f7aae1d96b8cb8e18&email=operador@smartq.com.br&password=smartquadro";
- // Open in app browser
- window.open(url,'_blank');
-
-/*
-$http({
-  method: 'POST',
-  url: url
-}).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
-  */
-
-};
 
 
 

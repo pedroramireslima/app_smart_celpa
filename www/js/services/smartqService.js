@@ -187,6 +187,7 @@ var _quadrosDetalhes=function () {
 //     SERVIDOR
 //funções para pegar dado no servidor
 var _getServerQuadros = function (){
+  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token="+config.SERVER.token);
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token="+config.SERVER.token,{timeout: 30000});
 
 };

@@ -1,13 +1,24 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alertas){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService){
 
 var _quadroAtual = 0;
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
 $scope.doLogin = function () {
+  if (localStorageService.get('code')===null) {
+    //Se não tem usuário registrado ainda fazer login
+    login();
+  }else{
+    //Se tem usuário registrado entra
+    console.log("já tem gente logada");
+  }
+}
+
+function login() {
 
   var options = {
       location: 'no',
@@ -17,39 +28,68 @@ $scope.doLogin = function () {
 
   $cordovaInAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', options)
   .then(function(event) {
+    var code          = '';
+    var access_token  = '';
+    var refresh_token = '';
+    var expires_in    = '';
+
+
+
     $rootScope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
       if((event.url).startsWith("http://localhost/callback")) {
-        //TODO: Separar código na string
-        var code = event.url;
-        console.log(code);
+        //Separar código na string
+        code = event.url;
         code = code.replace("http://localhost/callback?code=","");
         code = code.replace("&response_type=code","");
+        console.log("code= " +code);
 
-        //TODO: fecho a tela da web
+        //fecha a tela da web
+        $cordovaInAppBrowser.close();
 
+        //Coloca a tela de carregando
+        loading.show();
 
-        //TODO: Colocar a tela de carregando
-        //loading.show();
-
-        //TODO: Pegar tokens a parti do código
-        console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code);
-
+        //Pega tokens a parti do código
          $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{})
         .then(function (json) {
-          alertas.mensagem_alerta('',json);
+          access_token  = json.data.access_token;
+          refresh_token = json.data.refresh_token;
+          expires_in    = json.data.expires_in;
 
+          console.log("access_token= "+access_token);
+          console.log("refresh_token= "+refresh_token);
+          console.log("expires_in= "+expires_in);
+
+          if (access_token === undefined) {
+            loading.hide();
+            alerta.msg('Erro', msg.ERROR.operacao);
+          }else{
+            //TODO: Pega id e dados do user
+            console.log(config.SERVER.url+':'+config.SERVER.port+'/users/get/user.json?access_token='+access_token);
+            $http.get(config.SERVER.url+':'+config.SERVER.port+'/users/get/user.json?access_token='+access_token)
+            .then(function (json) {
+              console.log(json.data);
+              //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<CONFERIR AQUI AINDA
+            });
+
+            //Salva dados localmente
+            localStorageService.set('code',code);
+            localStorageService.set('access_token',access_token);
+            localStorageService.set('refresh_token',refresh_token);
+            localStorageService.set('expires_in',expires_in);
+
+
+            //TODO: Substituir nas urls os valores pelos dados locais
+            //TODO: Modificar tela de loginpor uma de logar com mimnha conta smartq
+            //TODO: Gerar APK
+            //TODO: COlocar na google play
+          }
         },function (argument) {
-          console.log("erro");
+          loading.hide();
+          alerta.msg('Erro', msg.ERROR.operacao );
         });
 
 
-        //TODO: Salvar dados localmente
-        //TODO: Substituir nas urls os valores pelos dados locais
-        //TODO: Modificar tela de loginpor uma de logar com mimnha conta smartq
-        //TODO: Gerar APK
-        //TODO: COlocar na google play
-
-        $cordovaInAppBrowser.close();
 
 
       }

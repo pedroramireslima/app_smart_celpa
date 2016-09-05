@@ -7,7 +7,8 @@
   "dependencies": {
     "angular-carousel-3d": "*",
     "angular-chart.js": "^1.0.0",
-    "ngCordova": "^0.1.27-alpha"
+    "ngCordova": "^0.1.27-alpha",
+    "angular-local-storage": "^0.5.0"
   },
   "resolutions": {
     "angular-chart.js": "^0.8.8",

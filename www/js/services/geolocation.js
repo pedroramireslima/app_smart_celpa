@@ -1,26 +1,27 @@
 angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService', function ($q, $http,smartqService) {
- console.log("Serviço de geolocalização iniciado no angular");
- var callbackFn = function(location) {
+  console.log("Serviço de geolocalização iniciado no angular");
+    var callbackFn = function(location) {
     console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
-
+    //TODO: Colocar para só enviar depois que já tiver os dados de usuário
     smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
        console.log("Enviado para o servidor"+json.data);
        backgroundGeoLocation.finish();
-   },function (json) {
-       console.log("Erro enviando para o servidor")
+    },function (json) {
+       console.log("Erro enviando para o servidor");
        backgroundGeoLocation.finish();
-   });
+    });
 
 
 
 },
+
 
 failureFn = function(error) {
     console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
 },
 
   //Enable background geolocation
-  start = function () {
+start = function () {
       //save settings (background tracking is enabled) in local storage
       window.localStorage.setItem('bgGPS', 1);
 
@@ -45,7 +46,7 @@ failureFn = function(error) {
       // Initialize service and enable background geolocation by default
       init: function () {
           var bgGPS = window.localStorage.getItem('bgGPS');
-          if (bgGPS == 1 || bgGPS == null) {
+          if (bgGPS == 1 || bgGPS === null) {
             start();
         }
     },
@@ -55,5 +56,5 @@ failureFn = function(error) {
           window.localStorage.setItem('bgGPS', 0);
           backgroundGeoLocation.stop();
       }
-  }
+  };
 }]);

@@ -1,6 +1,6 @@
 // SQapp Starter
 
-angular.module('smartq', ['ionic','angular-carousel-3d','chart.js','ngCordova'])
+angular.module('smartq', ['ionic','angular-carousel-3d','chart.js','ngCordova','LocalStorageModule'])
 
 .run(function($ionicPlatform,BackgroundGeolocationService) {
   $ionicPlatform.ready(function() {

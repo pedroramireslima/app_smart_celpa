@@ -1,4 +1,4 @@
-angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter){
+angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location){
     loading.show();
 
     $scope.app                         = {};
@@ -153,7 +153,11 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         $scope.configModal.show();
     };
 
-
+    $scope.logout = function () {
+      localStorageService.clearAll();
+      $location.path( "login");
+      $scope.configModal.hide();
+    }
 
     /* MODAL DOS DETALHES DOS CIRCUiTOS */
     $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {

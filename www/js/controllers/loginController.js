@@ -81,12 +81,13 @@ console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + c
               localStorageService.set('user_id',user_id);
               localStorageService.set('user_name',user_name);
               localStorageService.set('user_mail',user_mail);
+              getServeQuadros();
 
             },function (json) {
               loading.hide();
               alerta.msg('Erro',msg.ERROR.user);
             });
-            getServeQuadros();
+
           }
         },function (argument) {
           loading.hide();

@@ -1,6 +1,6 @@
 //Service para aquisição de dados e envio de dados
 
-angular.module('smartq').factory('smartqService', function($http,config){
+angular.module('smartq').factory('smartqService', function($http,config,localStorageService){
 
 //variáveis que guardam os valores dos jsons localmente
 var _quadros           = {};
@@ -187,14 +187,14 @@ var _quadrosDetalhes=function () {
 //     SERVIDOR
 //funções para pegar dado no servidor
 var _getServerQuadros = function (){
-  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token="+config.SERVER.token);
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels.json?access_token="+config.SERVER.token,{timeout: 30000});
+  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'));
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 
 };
 
 //funções para pegar circuitos do quadro atual no servidor
 var _getServerCircuitos = function (id) {
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+id+"/circuits.json?access_token="+config.SERVER.token,{timeout: 30000});
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+id+"/circuits.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 
 };
 
@@ -202,19 +202,19 @@ var _getServerCircuitos = function (id) {
 //Pega detalhes de um circuito
 
 var _getServeCircuitoDetails = function (panel_id,circuito_id) {
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+".json?access_token="+config.SERVER.token,{timeout: 30000});
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/circuits/"+circuito_id+".json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
 //Pega controle
 var _getServeControle = function (panel_id) {
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/consumption_controls.json?access_token="+config.SERVER.token,{timeout: 30000});
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
 //Pega detalhes de um quadro
 var _getServerQuadrosDetails = function (id){
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+id+".json?access_token="+config.SERVER.token,{timeout: 30000});
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+id+".json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 
 };
 
@@ -227,18 +227,18 @@ var _putLocation = function (latitude_value,longitude_value) {
     });
 
 
-    return $http.put(config.SERVER.url+":"+config.SERVER.port+"/users/1/update_location.json?access_token="+config.SERVER.token,dado);
+    return $http.put(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/update_location.json?access_token="+localStorageService.get('access_token'),dado);
   };
 
 
 //Liga/desliga circuito
 var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
-  return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+config.SERVER.token,{},{timeout: 30000});
+  return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
 };
 
 //Pega vetor de agendamentos do painel
 var _getServerAgendamentos = function (panel_id) {
-  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/1/break_panels/"+panel_id+"/schedulings.json?access_token="+config.SERVER.token,{timeout: 30000});
+  return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/schedulings.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 

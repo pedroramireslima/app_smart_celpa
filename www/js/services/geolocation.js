@@ -1,8 +1,9 @@
-angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService', function ($q, $http,smartqService) {
+angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService', function ($q, $http,smartqService,localStorageService) {
   console.log("Serviço de geolocalização iniciado no angular");
     var callbackFn = function(location) {
     console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
     //TODO: Colocar para só enviar depois que já tiver os dados de usuário
+    if (localStorageService.get('user_id')!==null){
     smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
        console.log("Enviado para o servidor"+json.data);
        backgroundGeoLocation.finish();
@@ -10,7 +11,7 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
        console.log("Erro enviando para o servidor");
        backgroundGeoLocation.finish();
     });
-
+    }
 
 
 },

@@ -1,69 +1,64 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alertas){
 
-
-
-  var _quadroAtual = 0;
+var _quadroAtual = 0;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 $scope.doLogin = function () {
 
- var options = {
+  var options = {
       location: 'no',
       clearcache: 'no',
       toolbar: 'no'
-   };
+  };
 
   $cordovaInAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', options)
   .then(function(event) {
-    // success
-  })
-  .catch(function(event) {
-    // error
-  });
+    $rootScope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
+      if((event.url).startsWith("http://localhost/callback")) {
+        //TODO: Separar código na string
+        var code = event.url;
+        console.log(code);
+        code = code.replace("http://localhost/callback?code=","");
+        code = code.replace("&response_type=code","");
 
-  $rootScope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
-    console.log("evento disparadoem 1: "+event.url);
-    if((event.url).startsWith("http://localhost/callback")) {
-    console.log("COMEÇOU<<<<<<<<<<<<<<<<<<");
+        //TODO: fecho a tela da web
+
+
+        //TODO: Colocar a tela de carregando
+        //loading.show();
+
+        //TODO: Pegar tokens a parti do código
+        console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code);
+
+         $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{})
+        .then(function (json) {
+          alertas.mensagem_alerta('',json);
+
+        },function (argument) {
+          console.log("erro");
+        });
+
+
+        //TODO: Salvar dados localmente
+        //TODO: Substituir nas urls os valores pelos dados locais
+        //TODO: Modificar tela de loginpor uma de logar com mimnha conta smartq
+        //TODO: Gerar APK
+        //TODO: COlocar na google play
+
+        $cordovaInAppBrowser.close();
+
+
+      }
+    });
+  },function(event){
+    console.log("Erro pegando oauth");
     $cordovaInAppBrowser.close();
-    }
-
   });
 
-
-  //var ref = cordova.InAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', 'location=no');
-
-
-/*
-
-  ref.addEventListener('loadstart', function(event) {
-
-    if (typeof String.prototype.startsWith != 'function') {
-            String.prototype.startsWith = function (str){
-                return this.indexOf(str) === 0;
-            };
-    }
-
-    if((event.url).startsWith("http://localhost/callback")) {
-      //var requestToken = (event.url).split("code=")[1];
-
-      var alertPopup = $ionicPopup.alert({
-          title: 'Teste',
-          template: 'O código é:'+requestToken
-      });
-
-
-      ref.close();
-    }
-  });
-*/
-
-
-//$cordovaInAppBrowser.open('http://ngcordova.com', '_blank', options)
 
 
 

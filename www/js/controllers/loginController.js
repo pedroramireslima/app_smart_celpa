@@ -15,6 +15,7 @@ if (localStorageService.get('code')!==null) {
 
 $scope.doLogin = function () {
   if (localStorageService.get('code')===null) {
+    _quadroAtual = 0;
     //Se não tem usuário registrado, fazer login
     login();
   }else{
@@ -28,7 +29,7 @@ function login() {
 
   var options = {
       location   : 'no',
-      clearcache : 'no',
+      clearcache : 'yes',
       toolbar    : 'no'
   };
 
@@ -56,7 +57,8 @@ console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + c
         loading.show();
 
         //Pega tokens a parti do código
-         $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{})
+        console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code);
+         $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{},{timeout: 10000})
         .then(function (json) {
           access_token  = json.data.access_token;
           refresh_token = json.data.refresh_token;
@@ -65,6 +67,7 @@ console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + c
           if (access_token === undefined) {
             loading.hide();
             alerta.msg('Erro', msg.ERROR.operacao);
+            console.log("token");
           }else{
             //Pega id e dados do user
             $http.get(config.SERVER.url+':'+config.SERVER.port+'/users/get/user.json?access_token='+access_token)
@@ -92,6 +95,7 @@ console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + c
         },function (argument) {
           loading.hide();
           alerta.msg('Erro', msg.ERROR.operacao );
+          console.log("erro aqui");
         });
 
 

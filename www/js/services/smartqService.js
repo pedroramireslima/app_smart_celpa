@@ -134,6 +134,7 @@ var _quadrosDetalhes=function () {
           measures_b_tuple[0]      = measures_b_tuple[0].slice(a-3,a+4);
           measures_b_tuple[1]      = measures_b_tuple[1].slice(a-3,a+4);
           previsions_b_tuple[1]    = vec.concat(previsions_b_tuple[1].slice(0,3));
+          previsions_b_tuple[1]    = previsions_b_tuple[1].map( Math.round);
           goal_b_tuple[1]          = goal_b_tuple[1].slice(a-3,a+4);
           measures_b_tuple_diff[1] = measures_b_tuple_diff[1].slice(a-3,a+4);
           measures_b_tuple_diff[0] = measures_b_tuple_diff[0].slice(a-3,a+4);
@@ -187,15 +188,12 @@ var _quadrosDetalhes=function () {
 //     SERVIDOR
 //funções para pegar dado no servidor
 var _getServerQuadros = function (){
-  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'));
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
-
 };
 
 //funções para pegar circuitos do quadro atual no servidor
 var _getServerCircuitos = function (id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+id+"/circuits.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
-
 };
 
 
@@ -208,6 +206,7 @@ var _getServeCircuitoDetails = function (panel_id,circuito_id) {
 
 //Pega controle
 var _getServeControle = function (panel_id) {
+  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'));
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 

@@ -7,10 +7,9 @@
       <!--modelo do bloco sugestão-->
       <div class="col controlebox" ng-repeat="id in agendamentos.dados.ids">
         <div class="col circuito-title  " >
-          <div class="row">
-            <div class="col col-80 reduz"> Circuito {{id}}</div>
-            <div class="col col-20"> <button class="button button-small button-clear button-positive">Adicionar</button></div>
-          </div>
+
+            <div > Circuito {{id}}</div>
+
         <hr class="horizontal-line" size="1" >
         </div>
 
@@ -40,7 +39,7 @@
             <div class="col col-10"><i class="icon " ng-class="valor.fri ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
             <div class="col col-10"><i class="icon " ng-class="valor.sat ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
             <div class="col col-10"><i class="icon " ng-class="valor.sun ? 'ion-checkmark-round' : 'ion-close-round'"></i></div>
-            <div class="col col-10">{{valor.relay_state? 'lig':'del'}}</div>
+            <div class="col col-10">{{valor.relay_state? 'on':'off'}}</div>
           </div>
 
         </div>

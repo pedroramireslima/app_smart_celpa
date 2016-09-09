@@ -1,4 +1,4 @@
-angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService', function ($q, $http,smartqService,localStorageService) {
+angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService','localStorageService','$cordovaLocalNotification', function ($q, $http,smartqService,localStorageService,$cordovaLocalNotification) {
   console.log("Serviço de geolocalização iniciado no angular");
   //var user_id = localStorageService.get('code');
     var callbackFn = function(location) {
@@ -8,9 +8,24 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
     smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
        console.log("Enviado para o servidor"+json.data);
        backgroundGeoLocation.finish();
+
+$cordovaLocalNotification.schedule({
+        id: 1,
+        title: 'Title here',
+        text: 'Text here',
+        icon: "ress://icon.png",
+        data: {
+          customProperty: 'custom value'
+        }
+      }).then(function (result) {
+        // ...
+      });
+
+
     },function (json) {
        console.log("Erro enviando para o servidor");
        backgroundGeoLocation.finish();
+
     });
     //}
 

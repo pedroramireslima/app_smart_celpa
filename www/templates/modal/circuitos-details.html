@@ -43,7 +43,7 @@
 
           </div>
 
-          <div class="col col-25 centraliza"> <h5>de consumo total</h5></div>
+          <div class="col col-25 centraliza"> <h5>do consumo total</h5></div>
 
         </div>
       </div>
@@ -51,21 +51,21 @@
       <!--Div do gráfico-->
       <div class="graficobox">
           <div ng-if="app.mostra_grafico_circuito === true">
-              <h4>Consumo diário</h4>
+              <h4>Consumo Acumulado</h4>
               <canvas id="bar" class="chart chart-bar"
               chart-data="[app.circuitoAtual.measures_c_tuple[1],app.circuitoAtual.previsions_c_tuple_money[1],app.circuitoAtual.goal_tuple[1]]" chart-labels="app.circuitoAtual.goal_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
               </canvas>
           </div>
           <div ng-if="app.mostra_grafico_circuito === false">
-              <h4>Diferença de consumo</h4>
+              <h4>Consumo Diário</h4>
               <canvas id="bar" class="chart chart-bar"
               chart-data="[app.circuitoAtual.measures_c_tuple_diff[1]]" chart-labels="app.circuitoAtual.measures_c_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
               </canvas>
 
           </div>
           <div class="button-bar">
-            <a class="button button-outline button-stable"  ng-click="graficoCircuito(true)">Diário</a>
-            <a class="button button-outline button-stable"  ng-click="graficoCircuito(false)">Diferenças</a>
+            <a class="button button-outline button-stable"  ng-click="graficoCircuito(true)">Acumulado</a>
+            <a class="button button-outline button-stable"  ng-click="graficoCircuito(false)">Diário</a>
           </div>
       </div>
 

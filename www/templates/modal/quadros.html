@@ -18,20 +18,20 @@
   <!--Div do gráfico-->
   <div class="graficobox">
       <div ng-if="app.mostra_grafico_quadro === true">
-              <h4>Consumo Diário</h4>
+              <h4>Consumo Acumulado</h4>
              <canvas id="bar" class="chart chart-bar"
              chart-data="[app.quadro_detalhes.measures_b_tuple[1],app.quadro_detalhes.previsions_b_tuple[1],app.quadro_detalhes.goal_b_tuple[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple[0]" chart-dataset-override="datasetOverride" chart-series="app.quadro_detalhes.series">
               </canvas>
       </div>
       <div ng-if="app.mostra_grafico_quadro === false">
-           <h4>Diferença de consumo</h4>
+           <h4>Consumo Diário</h4>
            <canvas id="bar" class="chart chart-bar"
            chart-data="[app.quadro_detalhes.measures_b_tuple_diff[1]]" chart-labels="app.quadro_detalhes.measures_b_tuple_diff[0]" chart-series="app.quadro_detalhes.series">
             </canvas>
       </div>
       <div class="button-bar">
-        <a class="button button-outline button-stable"  ng-click="graficoQuadro(true)">Diário</a>
-        <a class="button button-outline button-stable"  ng-click="graficoQuadro(false)">Diferenças</a>
+        <a class="button button-outline button-stable"  ng-click="graficoQuadro(true)">Acumulado</a>
+        <a class="button button-outline button-stable"  ng-click="graficoQuadro(false)">Diário</a>
       </div>
   </div>
 

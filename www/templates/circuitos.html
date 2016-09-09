@@ -7,7 +7,7 @@
       <!--modelo do bloco-->
       <div class="col circuitobox" ng-repeat="circuito in app.circuitos ">
         <div class="row ">
-          <div class="col col-80 circuito-title reduz" >
+          <div class="col col-80 circuito-title reduz" ng-click="openDetailsCircuits(circuito.break_panel_id,circuito.id)">
             {{circuito.name}}
           </div>
           <div class="col ">

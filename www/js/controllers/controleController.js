@@ -3,7 +3,7 @@ angular.module('smartq').controller('controleController',  function($scope, $ion
   $scope.app.controle=smartqService.getControle();
   $scope.app.quadro=smartqService.getQuadroAtual();
   $scope.app.has_data=true;
-  if ( $scope.app.controle.saved_circuits === null) {
+  if ( $scope.app.controle.saved_circuits === null || $scope.app.controle.saved_circuits.length ==0) {
     $scope.app.has_data=false;
   } else {
     $scope.app.controle=$scope.app.controle.saved_circuits;

@@ -9,10 +9,11 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
        console.log("Enviado para o servidor"+json.data);
        backgroundGeoLocation.finish();
 
+       //TODO: passar para o principal, criar lá e editar a notificação aqui
       $cordovaLocalNotification.schedule({
         id: 1,
-        title: 'Title here',
-        text: 'Text here',
+        title: 'Notificação Smartq',
+        text: 'Enviei posição ao servidor',
         icon: "ress://icon.png",
         data: {
           customProperty: 'custom value'
@@ -43,13 +44,13 @@ start = function () {
       window.localStorage.setItem('bgGPS', 1);
 
       backgroundGeoLocation.configure(callbackFn, failureFn, {
-          desiredAccuracy: 1,
-          stationaryRadius: 5,
-          distanceFilter: 1,
+          desiredAccuracy: 10,
+          stationaryRadius: 250,
+          distanceFilter: 200,
           debug: false,
           stopOnTerminate: false,
           locationService: 'ANDROID_DISTANCE_FILTER',
-          interval: 15000
+          interval: 60000
       });
 
 

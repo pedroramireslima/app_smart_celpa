@@ -118,10 +118,10 @@ loading.show();
   smartqService.getServerQuadros()
   .then(function(json){
    smartqService.setQuadros(json.data);
-          // console.log(json.data);
-
+          //TODO: colocar tratamento para se não tiver internet não deixar logar
+          //TODO: colocar tratamento para o caso de não ter quadros
+          //TODO: coocar tratamento para quando não tiver agendamensto
           _quadroAtual=json.data[0].id;
-
           getServerCircuitos(_quadroAtual);
 
 

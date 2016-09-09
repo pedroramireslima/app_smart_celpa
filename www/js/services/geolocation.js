@@ -1,6 +1,6 @@
 angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService','localStorageService','$cordovaLocalNotification', function ($q, $http,smartqService,localStorageService,$cordovaLocalNotification) {
   console.log("Serviço de geolocalização iniciado no angular");
-  //var user_id = localStorageService.get('code');
+    //var user_id = localStorageService.get('code');
     var callbackFn = function(location) {
     console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
     //TODO: Colocar para só enviar depois que já tiver os dados de usuário
@@ -29,8 +29,6 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
 
     });
     //}
-
-
 },
 
 

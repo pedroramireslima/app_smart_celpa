@@ -9,7 +9,7 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
        console.log("Enviado para o servidor"+json.data);
        backgroundGeoLocation.finish();
 
-$cordovaLocalNotification.schedule({
+      $cordovaLocalNotification.schedule({
         id: 1,
         title: 'Title here',
         text: 'Text here',

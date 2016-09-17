@@ -2,18 +2,18 @@
 <ion-view view-title="Agendamento" >
   <ion-content  class="backgound-content"  >
 
+    <div class="rowsqm" ng-if="app.has_data==false">
+      <h4>Não existe nenhum agendamento ainda</h4>
+    </div>
 
-    <div class="rowsqm">
+    <div class="rowsqm" ng-if="app.has_data==true">
       <!--modelo do bloco sugestão-->
       <div class="col controlebox" ng-repeat="id in agendamentos.dados.ids">
         <div class="col circuito-title  " >
-
-            <div > Circuito {{id}}</div>
-
-        <hr class="horizontal-line" size="1" >
+            <div > {{id.name}}</div>
         </div>
-
-        <div ng-repeat="valor in agendamentos.dados[id]">
+<hr class="horizontal-line" size="1" >
+        <div ng-repeat="valor in agendamentos.dados[id.id]">
           <!-- Cabeçalho-->
           <div class="col ">{{valor.description}}</div>
           <div class="row">
@@ -25,7 +25,6 @@
             <div class="col col-10">S</div>
             <div class="col col-10">S</div>
             <div class="col col-10">D</div>
-            <div class="col col-10"><a class="button button-small button-dark button-outline icon ion-trash-a "></a></div>
 
           </div>
 

@@ -42,8 +42,8 @@ start = function () {
       window.localStorage.setItem('bgGPS', 1);
 
       backgroundGeoLocation.configure(callbackFn, failureFn, {
-          desiredAccuracy: 10,
-          stationaryRadius: 250,
+          desiredAccuracy: 100,
+          stationaryRadius: 500,
           distanceFilter: 200,
           debug: false,
           stopOnTerminate: false,

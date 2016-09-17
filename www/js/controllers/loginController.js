@@ -1,19 +1,41 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet){
 
 var _quadroAtual = 0;
 
+//Parte para teste no navegador
+
+localStorageService.set('code',"01cecb7674379a5299922865614079f3");
+localStorageService.set('access_token',"c27dc786f4660fca66029d2d3774d20f");
+localStorageService.set('refresh_token',"c0dc9532e93b2c89e5ac1b9dfb5b4352");
+localStorageService.set('user_id',"1");
+
+
+/*
+console.log("code: "+localStorageService.get('code'));
+console.log("access_token: "+localStorageService.get('access_token'));
+console.log("refresh_token: "+localStorageService.get('refresh_token'));
+console.log("user_id: "+localStorageService.get('user_id'));
+*/
 
 if (localStorageService.get('code')!==null) {
+  if(internet.isOnline){
   //Se tem usuário logado entra
   loading.show();
   getServeQuadros();
+
+  }else{
+    alerta.msg(msg.ERROR.not_internet,'');
+  }
+
 }
 
 
 $scope.doLogin = function () {
+if(internet.isOnline){
+
   if (localStorageService.get('code')===null) {
     _quadroAtual = 0;
     //Se não tem usuário registrado, fazer login
@@ -23,7 +45,12 @@ $scope.doLogin = function () {
     loading.show();
     getServeQuadros();
   }
+}else{
+  alerta.msg(msg.ERROR.not_internet,'');
+}
+
 };
+
 
 function login() {
 

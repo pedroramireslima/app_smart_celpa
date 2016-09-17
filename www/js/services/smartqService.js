@@ -18,20 +18,24 @@ var _getAgendamentos = function (){
 
 
 var _setAgendamentos = function (value) {
-
+console.log(_circuitos);
   var groupedData = {ids:[]};
 
   for (var it = 0; it < value.length; it++) {
     var item = value[it];
     if (!groupedData[item.circuit_id]){
       groupedData[item.circuit_id] = [];
-      groupedData.ids.push(item.circuit_id);
+      for(var i=0; i<_circuitos.length; i++) {
+        if(_circuitos[i].id === item.circuit_id) {
+          groupedData.ids.push({id:item.circuit_id,name:_circuitos[i].name});
+        }
+      }
+      //groupedData.ids.push(item.circuit_id);
     }
     groupedData[item.circuit_id].push(item);
   }
 
   _agendamentos=  groupedData;
-  console.log("Agendamentos atualizados");
 };
 
 
@@ -43,7 +47,6 @@ var _getControle = function (){
 
 var _setControle = function (value) {
   _circuito_controle=value;
-    console.log("Controle atualizados");
 };
 
 
@@ -54,7 +57,6 @@ var _getQuadros = function (){
 
 var _setQuadros = function (value) {
   _quadros=value;
-    console.log("Quadros atualizados");
 };
 
 var _getCircuitos = function (){
@@ -63,7 +65,6 @@ var _getCircuitos = function (){
 
 var _setCircuitos = function (value) {
   _circuitos=value;
-    console.log("Circuitos atualizados");
 };
 
 var _getQuadroAtual = function (){
@@ -72,8 +73,7 @@ var _getQuadroAtual = function (){
 
 var _setQuadroAtual = function (value) {
   _quadro_atual=value;
-    console.log("Quadro atual atualizados");
-    formata_circuito();
+  formata_circuito();
 };
 
 var _getCircuitoAtual = function (){
@@ -82,7 +82,7 @@ var _getCircuitoAtual = function (){
 
 var _setCircuitoAtual = function (value) {
   _circuito_atual=value;
-    console.log("Circuito atual atualizados");
+
 };
 
 
@@ -96,90 +96,89 @@ function formata_circuito() {
       }
       _circuitos[i].percent=Math.round(_circuitos[i].total_energy/_quadro_atual.break_panel.total_energy*100);
     }
-        console.log("Circuitos formatados");
-  }
+
+}
 
 
 var _quadrosDetalhes=function () {
 
-          nome=  _quadro_atual.break_panel.name;
-          percentual_quadro= parseFloat(_quadro_atual.break_panel.total_energy / _quadro_atual.break_panel.goal * _quadro_atual.consumer_type.tax * 100).toFixed(2);
-          if ( percentual_quadro==Infinity) {
-            percentual_quadro="-";
-          }
+  nome=  _quadro_atual.break_panel.name;
+  percentual_quadro= parseFloat(_quadro_atual.break_panel.total_energy / _quadro_atual.break_panel.goal * _quadro_atual.consumer_type.tax * 100).toFixed(2);
+  if ( percentual_quadro==Infinity) {
+    percentual_quadro="-";
+  }
 
 
-          alvo                     = _quadro_atual.break_panel.goal.toFixed(2);
-          taxa                     = _quadro_atual.consumer_type.tax;
-          bandeira                 = _quadro_atual.consumer_type.consumer_flag;
-          due                      = _quadro_atual.break_panel.due;
-          primeiro_dia             = _quadro_atual.break_panel.first_day_of_period;
-          series                   = ['POTENCIA'];
-          days_in_m                = _quadro_atual.days_in_m;
-          measures_b_tuple         = _convertTupla(_quadro_atual.measures_b_tuple);
-          measures_b_tuple[0]      = measures_b_tuple[0].map(function(obj){ var a   = new Date(obj); return a.getDate();});
-          measures_b_tuple_diff    = _convertTupla(_quadro_atual.measures_b_tuple_diff);
-          measures_b_tuple_diff[0] = measures_b_tuple_diff[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
-          goal_b_tuple             = _convertTupla(_quadro_atual.goal_tuple);
-          previsions_b_tuple       = _convertTupla(_quadro_atual.previsions_b_tuple);
-          previsions_b_tuple[0]    = previsions_b_tuple[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
-          ultimo_dia               = measures_b_tuple[0][measures_b_tuple[0].length - 1];
-
-          var dia = new Date();
-          dia     = dia.getDate();
-          var a   = measures_b_tuple[0].indexOf(dia);
-          var vec = [0,0,0,0];
-
-
-          measures_b_tuple[0]      = measures_b_tuple[0].slice(a-3,a+4);
-          measures_b_tuple[1]      = measures_b_tuple[1].slice(a-3,a+4);
-          previsions_b_tuple[1]    = vec.concat(previsions_b_tuple[1].slice(0,3));
-          previsions_b_tuple[1]    = previsions_b_tuple[1].map( Math.round);
-          goal_b_tuple[1]          = goal_b_tuple[1].slice(a-3,a+4);
-          measures_b_tuple_diff[1] = measures_b_tuple_diff[1].slice(a-3,a+4);
-          measures_b_tuple_diff[0] = measures_b_tuple_diff[0].slice(a-3,a+4);
-          mes                      = new Date();
-          mes                      = mes.getMonth() + 1;
-          if (ultimo_dia<31) {
-            if(mes==12){
-              proximo_mes = 1;
-            }else{
-              proximo_mes = mes + 1;}
-            } else { proximo_mes = mes;}
+  alvo                     = _quadro_atual.break_panel.goal.toFixed(2);
+  taxa                     = _quadro_atual.consumer_type.tax;
+  bandeira                 = _quadro_atual.consumer_type.consumer_flag;
+  due                      = _quadro_atual.break_panel.due;
+  primeiro_dia             = _quadro_atual.break_panel.first_day_of_period;
+  series                   = ['POTENCIA'];
+  days_in_m                = _quadro_atual.days_in_m;
+  measures_b_tuple         = _convertTupla(_quadro_atual.measures_b_tuple);
+  measures_b_tuple[0]      = measures_b_tuple[0].map(function(obj){ var a   = new Date(obj); return a.getDate();});
+  measures_b_tuple_diff    = _convertTupla(_quadro_atual.measures_b_tuple_diff);
+  measures_b_tuple_diff[0] = measures_b_tuple_diff[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
+  goal_b_tuple             = _convertTupla(_quadro_atual.goal_tuple);
+  previsions_b_tuple       = _convertTupla(_quadro_atual.previsions_b_tuple);
+  previsions_b_tuple[0]    = previsions_b_tuple[0].map(function(obj){ var a  = new Date(obj); return a.getDate();});
+  ultimo_dia               = measures_b_tuple[0][measures_b_tuple[0].length - 1];
+  var dia = new Date();
+  dia     = dia.getDate();
+  var a   = measures_b_tuple[0].indexOf(dia);
+  var vec = [0,0,0,0];
 
 
-          circuito= _quadro_atual.circuits;
-          circuito=circuito.map(function(atual){
-              atual.total_energy=parseFloat(atual.total_energy).toFixed(2);
-              atual.percent=Math.round((atual.total_energy/_quadro_atual.break_panel.total_energy)*100);
-              if ( atual.percent==Infinity) {
-                    atual.percent="-";
-              }
-              atual.valor=parseFloat((atual.total_energy)*taxa).toFixed(2);
-              atual.panel_id=_quadro_atual.break_panel.id;
+  measures_b_tuple[0]      = measures_b_tuple[0].slice(a-3,a+4);
+  measures_b_tuple[1]      = measures_b_tuple[1].slice(a-3,a+4);
+  previsions_b_tuple[1]    = vec.concat(previsions_b_tuple[1].slice(0,3));
+  previsions_b_tuple[1]    = previsions_b_tuple[1].map( Math.round);
+  goal_b_tuple[1]          = goal_b_tuple[1].slice(a-3,a+4);
+  measures_b_tuple_diff[1] = measures_b_tuple_diff[1].slice(a-3,a+4);
+  measures_b_tuple_diff[0] = measures_b_tuple_diff[0].slice(a-3,a+4);
+  mes                      = new Date();
+  mes                      = mes.getMonth() + 1;
+  if (ultimo_dia<31) {
+    if(mes==12){
+      proximo_mes = 1;
+    }else{
+      proximo_mes = mes + 1;}
+    } else { proximo_mes = mes;}
 
-              return atual;
-          });
 
-          return {
-            "nome"                  : nome,
-            "percentual"            : percentual_quadro,
-            "alvo"                  : alvo,
-            "taxa"                  : taxa,
-            "days_in_m"             : days_in_m,
-            "measures_b_tuple"      : measures_b_tuple,
-            "measures_b_tuple_diff" : measures_b_tuple_diff,
-            "previsions_b_tuple"    : previsions_b_tuple,
-            "circuitos"             : circuito,
-            "first_day_of_period"   : primeiro_dia,
-            "due"                   : due,
-            "series"                : series,
-            "goal_b_tuple"          : goal_b_tuple,
-            "bandeira"              : bandeira,
-            "mes"                   : mes,
-            "ultimo_dia"            : ultimo_dia,
-            "proximo_mes"           : proximo_mes
-               };
+  circuito= _quadro_atual.circuits;
+  circuito=circuito.map(function(atual){
+  atual.total_energy=parseFloat(atual.total_energy).toFixed(2);
+  atual.percent=Math.round((atual.total_energy/_quadro_atual.break_panel.total_energy)*100);
+  if ( atual.percent==Infinity) {
+    atual.percent="-";
+  }
+  atual.valor=parseFloat((atual.total_energy)*taxa).toFixed(2);
+  atual.panel_id=_quadro_atual.break_panel.id;
+
+  return atual;
+  });
+
+  return {
+    "nome"                  : nome,
+    "percentual"            : percentual_quadro,
+    "alvo"                  : alvo,
+    "taxa"                  : taxa,
+    "days_in_m"             : days_in_m,
+    "measures_b_tuple"      : measures_b_tuple,
+    "measures_b_tuple_diff" : measures_b_tuple_diff,
+    "previsions_b_tuple"    : previsions_b_tuple,
+    "circuitos"             : circuito,
+    "first_day_of_period"   : primeiro_dia,
+    "due"                   : due,
+    "series"                : series,
+    "goal_b_tuple"          : goal_b_tuple,
+    "bandeira"              : bandeira,
+    "mes"                   : mes,
+    "ultimo_dia"            : ultimo_dia,
+    "proximo_mes"           : proximo_mes
+  };
 };
 
 
@@ -206,7 +205,6 @@ var _getServeCircuitoDetails = function (panel_id,circuito_id) {
 
 //Pega controle
 var _getServeControle = function (panel_id) {
-  console.log(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'));
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 

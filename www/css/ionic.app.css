@@ -9872,6 +9872,7 @@ a.button {
 
 .sup {
   height: 100%;
+  max-width: 100%;
   color: #fff;
   text-align: float left;
   font-size: 20px;

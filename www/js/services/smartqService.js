@@ -18,7 +18,6 @@ var _getAgendamentos = function (){
 
 
 var _setAgendamentos = function (value) {
-console.log(_circuitos);
   var groupedData = {ids:[]};
 
   for (var it = 0; it < value.length; it++) {
@@ -30,7 +29,6 @@ console.log(_circuitos);
           groupedData.ids.push({id:item.circuit_id,name:_circuitos[i].name});
         }
       }
-      //groupedData.ids.push(item.circuit_id);
     }
     groupedData[item.circuit_id].push(item);
   }

@@ -8,13 +8,13 @@
     <div class="rowsqm" ng-if="app.has_data==true">
 
           <!--modelo do bloco-->
-          <div class="col controlebox" ng-repeat="circuito in app.controle">
+          <div class="col controlebox" ng-repeat="circuito in app.dado">
                   <div class="row ">
-                          <div class="col col-75 circuito-title" >
+                          <div class="col col-67 circuito-title" >
                             {{circuito.name}}
                           </div>
                           <div class="col ">
-                           <p>VAL 06/10</p>
+                           <p>{{circuito.date}}</p>
                          </div>
                  </div>
                  <hr class="horizontal-line" size="1" >

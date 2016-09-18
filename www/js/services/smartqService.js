@@ -181,8 +181,13 @@ var _quadrosDetalhes=function () {
 
 
 
-
 //     SERVIDOR
+var _getServerNotifications = function(){
+console.log(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/alerts.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
+ // return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"alerts.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
+};
+
+
 //funções para pegar dado no servidor
 var _getServerQuadros = function (){
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
@@ -274,7 +279,8 @@ return {
   putLocation:_putLocation,
   getAgendamentos:_getAgendamentos,
   setAgendamentos:_setAgendamentos,
-  getServerAgendamentos:_getServerAgendamentos
+  getServerAgendamentos:_getServerAgendamentos,
+  getServerNotifications:_getServerNotifications
 };
 
 

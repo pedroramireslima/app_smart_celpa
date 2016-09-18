@@ -1,4 +1,4 @@
-angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location){
+angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location,$ionicPopup){
     loading.show();
 
     $scope.app                         = {};
@@ -136,10 +136,36 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     };
 
     $scope.logout = function () {
-      localStorageService.clearAll();
-      $location.path( "login");
-      $scope.configModal.hide();
+
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Sair',
+        template: 'Você desja realmente executar esta ação?'
+      });
+      confirmPopup.then(function(res) {
+      if (res) {
+        localStorageService.clearAll();
+        $location.path( "login");
+        $scope.configModal.hide();
+      }
+      });
+
     };
+
+    /* MODAL Notification*/
+    $ionicModal.fromTemplateUrl('templates/modal/notifications.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.notificationModal = modal;
+    });
+
+
+    $scope.openNotification= function(){
+        smartqService.getServerNotifications();
+        $scope.notificationModal.show();
+    };
+
+
 
     /* MODAL DOS DETALHES DOS CIRCUiTOS */
     $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {

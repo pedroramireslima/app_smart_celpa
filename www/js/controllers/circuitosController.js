@@ -5,6 +5,9 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
   $scope.app.circuitos               = smartqService.getCircuitos();
   $scope.app.circuitos=$filter('orderBy')($scope.app.circuitos, "percent",true);
   $scope.app.quadro                  = smartqService.getQuadroAtual();
+
+
+
   $scope.app.circuitoAtual           = {};
   $scope.app.mostra_grafico_circuito = true;
   $scope.app.series                  = ['POTENCIA'];
@@ -85,9 +88,7 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
    } else {
       //mantém formato atual
-
       $scope.app.circuitos=smartqService.getCircuitos();
-      console.log('You are not sure');
     }
   });
 
@@ -159,7 +160,7 @@ $scope.openDetailsCircuits= function(quadro,id){
             json.data.measures_c_tuple_diff[1]    = json.data.measures_c_tuple_diff[1].slice(a-3,a+4);
             json.data.measures_c_tuple_diff[0]    = json.data.measures_c_tuple_diff[0].slice(a-3,a+4);
 
-            console.log(json.data);
+            //console.log(json.data);
             smartqService.setCircuitoAtual(json.data);
             $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
 

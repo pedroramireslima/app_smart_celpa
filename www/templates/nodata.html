@@ -1,6 +1,8 @@
 <ion-view >
   <ion-content  class="backgound-content"  >
-    <h3>Você ainda não possui nenhum quadro cadastrado!</h3>
-    <button class="button button-balanced" ng-click="logout()">Sair</button>
+    <div class="box-alert">
+      <h3>{{mensagem}}</h3>
+      <button class="button button-balanced button-full" ng-click="logout()">Sair</button>
+    </div>
   </ion-content>
 </ion-view>

@@ -1,8 +1,8 @@
 <ion-view view-title="{{app.quadro.break_panel.name}}" >
   <ion-content  class="backgound-content">
 
-    <div class="rowsqm" ng-if="app.has_data==false">
-      <h4>Não existe nenhum controle ainda</h4>
+    <div class="box-alert" ng-if="app.has_data==false">
+      <h4>{{app.msg}}</h4>
     </div>
 
     <div class="rowsqm" ng-if="app.has_data==true">

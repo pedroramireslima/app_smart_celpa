@@ -1,12 +1,16 @@
 
-angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService,$filter, $ionicPopup){
+angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService,$filter, $ionicPopup,msg){
 
 
-  $scope.app.circuitos               = smartqService.getCircuitos();
-  $scope.app.circuitos=$filter('orderBy')($scope.app.circuitos, "percent",true);
-  $scope.app.quadro                  = smartqService.getQuadroAtual();
+  $scope.app.circuitos = smartqService.getCircuitos();
+  $scope.app.circuitos = $filter('orderBy')($scope.app.circuitos, "percent",true);
+  $scope.app.quadro    = smartqService.getQuadroAtual();
+  $scope.app.has_data  = true;
+  $scope.app.msg       = msg.ERROR.no_circuitos;
 
-
+  if ( $scope.app.circuitos === null || $scope.app.circuitos.length ===0) {
+    $scope.app.has_data=false;
+  }
 
   $scope.app.circuitoAtual           = {};
   $scope.app.mostra_grafico_circuito = true;

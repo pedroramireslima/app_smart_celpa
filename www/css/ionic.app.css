@@ -10021,6 +10021,11 @@ select {
   color: #d1d1d1;
   float: right; }
 
+.box-alert {
+  padding: 10px;
+  margin-top: 45%;
+  text-align: center; }
+
 /*CSS área de quadros*/
 .value-title {
   font-size: 50px;

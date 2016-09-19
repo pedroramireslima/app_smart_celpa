@@ -384,13 +384,17 @@ max-width     : 99%;
 color         : #d1d1d1 ;
 }
 
-//NOTE        : verificar aqui se ficou tudo bem
 
 .buttom-controlebox-bottom{
 color         : #d1d1d1 ;
 float         : right;
 }
 
+.box-alert{
+padding: 10px;
+margin-top: 45%;
+text-align: center;
+}
 
 /*CSS área de quadros*/
 .value-title{
@@ -401,13 +405,11 @@ margin-bottom : 17px;
 }
 
 .bar-list{
-
 margin-top    : 7px !important;
 }
 
 .item-list-percent{
 margin-top    : 4px;
-
 }
 
 

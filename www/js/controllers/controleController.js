@@ -1,7 +1,8 @@
-angular.module('smartq').controller('controleController',  function($scope, $ionicModal,smartqService){
+angular.module('smartq').controller('controleController',  function($scope, $ionicModal,smartqService,msg){
 
   $scope.app.controle=smartqService.getControle();
   $scope.app.quadro=smartqService.getQuadroAtual();
+  $scope.app.msg=msg.ERROR.no_controle;
   $scope.app.has_data=true;
 
   $scope.app.dado=[];

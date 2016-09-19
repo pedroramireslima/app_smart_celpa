@@ -2,7 +2,11 @@
 <ion-view view-title="{{app.quadro.break_panel.name}}" >
   <ion-content  class="backgound-content"  >
 
-    <div class="rowsqm">
+    <div class="box-alert" ng-if="app.has_data==false">
+      <h4>{{app.msg}}</h4>
+    </div>
+
+    <div class="rowsqm" ng-if="app.has_data==true">
 
       <!--modelo do bloco-->
       <div class="col circuitobox" ng-repeat="circuito in app.circuitos ">

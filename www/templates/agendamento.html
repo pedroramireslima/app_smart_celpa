@@ -2,8 +2,8 @@
 <ion-view view-title="Agendamento" >
   <ion-content  class="backgound-content"  >
 
-    <div class="rowsqm" ng-if="app.has_data==false">
-      <h4>Não existe nenhum agendamento ainda</h4>
+    <div class="box-alert" ng-if="app.has_data==false">
+      <h4>{{agendamentos.msg}}</h4>
     </div>
 
     <div class="rowsqm" ng-if="app.has_data==true">

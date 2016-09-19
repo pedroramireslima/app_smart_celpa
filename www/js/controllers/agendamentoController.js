@@ -1,7 +1,8 @@
-angular.module('smartq').controller('agendamentoController',  function($scope, $ionicModal,smartqService){
+angular.module('smartq').controller('agendamentoController',  function($scope, $ionicModal,smartqService,msg){
 
 $scope.agendamentos={};
 $scope.agendamentos.dados=smartqService.getAgendamentos();
+$scope.agendamentos.msg=msg.ERROR.no_agendamentos;
 
 $scope.$watch(function () { return smartqService.getAgendamentos(); }, function (newValue, oldValue) {
         if (newValue !== oldValue) $scope.agendamentos.dados = newValue;

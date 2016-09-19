@@ -11,7 +11,8 @@ ERROR:{
     no_quadro       : "Você ainda não possui nenhum quadro cadastrado!",
     no_controle     : "Você não possui nenhum controle cadastrado!",
     no_circuitos    : "Você não possui nehum ircuito cadastrado",
-    no_agendamentos : "Você não possui nenhum agendamento cadastrado"
+    no_agendamentos : "Você não possui nenhum agendamento cadastrado",
+    other_user      : "Você logou em outro dispositivo com esta mesma conta ou nossos servidores estão temporariamente indisponíveis."
 }
 
 });

@@ -1,7 +1,7 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet,$ionicPopup,localStorageService){
 
 var _quadroAtual = 0;
 
@@ -13,6 +13,14 @@ localStorageService.set('access_token',"c27dc786f4660fca66029d2d3774d20f");
 localStorageService.set('refresh_token',"c0dc9532e93b2c89e5ac1b9dfb5b4352");
 localStorageService.set('user_id',"1");
 */
+
+
+localStorageService.set('code',"a7c14eb101ea193fe54aa682e0c8d534");
+localStorageService.set('access_token',"fef01ae326e1f27a874b6c51d13c20d5");
+localStorageService.set('refresh_token',"f2b622cbf3f64fea93b73ef7a5e28e5b");
+localStorageService.set('user_id',"1");
+
+
 
 /*
 console.log("code: "+localStorageService.get('code'));
@@ -156,10 +164,11 @@ loading.show();
           }
         },function(json){
           loading.hide();
-          console.log("problema");
-          getServeQuadros();
-        });
+          alerta.msg(msg.ERROR.other_user,'');
+          localStorageService.clearAll();
 
+//          getServeQuadros();
+        });
 }
 
 

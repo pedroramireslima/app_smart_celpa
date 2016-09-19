@@ -4,10 +4,7 @@ angular.module('smartq').factory('loading', [
     function($ionicLoading, $timeout) {
         return {
             show: function() {
-                $ionicLoading.show({
-                    templateUrl: 'templates/loading.html'
-
-                });
+                $ionicLoading.show({templateUrl: 'templates/loading.html'});
             },
             hide: function() {
                 if (!ionic.Platform.isWebView()) {

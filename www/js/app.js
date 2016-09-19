@@ -32,6 +32,13 @@ $stateProvider.state('login',{
 
 });
 
+  $stateProvider.state('nodata',{
+      url         : '/nodata',
+      templateUrl : 'templates/nodata.html',
+      controller  : 'nodataController'
+  });
+
+
   $stateProvider.state('app', {
     url         : '/app',
     abstract    : true,

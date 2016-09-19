@@ -7,11 +7,12 @@ var _quadroAtual = 0;
 
 //Parte para teste no navegador
 
+/*
 localStorageService.set('code',"01cecb7674379a5299922865614079f3");
 localStorageService.set('access_token',"c27dc786f4660fca66029d2d3774d20f");
 localStorageService.set('refresh_token',"c0dc9532e93b2c89e5ac1b9dfb5b4352");
 localStorageService.set('user_id',"1");
-
+*/
 
 /*
 console.log("code: "+localStorageService.get('code'));
@@ -145,13 +146,14 @@ loading.show();
   smartqService.getServerQuadros()
   .then(function(json){
    smartqService.setQuadros(json.data);
-          //TODO: colocar tratamento para se não tiver internet não deixar logar
-          //TODO: colocar tratamento para o caso de não ter quadros
-          //TODO: coocar tratamento para quando não tiver agendamensto
-          _quadroAtual=json.data[0].id;
-          getServerCircuitos(_quadroAtual);
+          if (json.data.length===0) {
+            loading.hide();
+            $location.path( "nodata");
+          } else {
+            _quadroAtual=json.data[0].id;
+            getServerCircuitos(_quadroAtual);
 
-
+          }
         },function(json){
           loading.hide();
           console.log("problema");

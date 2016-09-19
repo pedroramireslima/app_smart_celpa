@@ -16,3 +16,4 @@ This README would normally document whatever steps are necessary to get your app
 #Senha da chave android#
 usuário: hexa
 senha: smartquadro
+

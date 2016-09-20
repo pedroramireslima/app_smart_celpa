@@ -4,20 +4,15 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js','ngCordova','
 
 .run(function($ionicPlatform,BackgroundGeolocationService) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-//NOTE: Modifiquei aqui para teste
- BackgroundGeolocationService.init();
-
+     BackgroundGeolocationService.init();
   });
 })
 

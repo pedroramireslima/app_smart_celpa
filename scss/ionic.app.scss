@@ -3,8 +3,31 @@
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path     : "../lib/ionic/fonts" !default;
 
+//Colors
+$lilas        : #8b51ce;
+$azul_claro   : #40b5d2;
+$verde_claro  : #42d19d;
+$verde_escuro : #87d438;
+$azul_escuro  : #4250d1;
+$rosa         : #ce4ea7;
+$laranja      : #db9249;
+$vermelho     : #e04444;
+
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+
+/*Cores de fundo*/
+.lilas        {background-color: $lilas        !important; color: white !important;}
+.azul_claro   {background-color: $azul_claro   !important; color: white !important;}
+.verde_claro  {background-color: $verde_claro  !important; color: white !important;}
+.verde_escuro {background-color: $verde_escuro !important; color: white !important;}
+.azul_escuro  {background-color: $azul_escuro  !important; color: white !important;}
+.rosa         {background-color: $rosa         !important; color: white !important;}
+.laranja      {background-color: $laranja      !important; color: white !important;}
+.vermelho     {background-color: $vermelho     !important; color: white !important;}
+
 
 /* CSS i*/
 .ritmos-form {
@@ -99,7 +122,7 @@ margin-right  : 30px;
 width                   : 100%;
 height                  : 100%;
 background              : url("../img/quadro.png");
-background-color        : #886aea;
+//background-color        : $rosa;
 background-repeat       : no-repeat;
 -moz-background-size    : 100% 100%;
 -webkit-background-size : 100% 100%;

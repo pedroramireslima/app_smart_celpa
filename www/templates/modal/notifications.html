@@ -10,7 +10,8 @@
         <div class="list item-text-wrap" ng-if="app.notificacao.length!==0">
             <div class="item item-icon-left" ng-repeat="data in app.notificacao" >
                 <i class="icon ion-email"></i>
-                <p>O circuito \u003cstrong\u003eAr P\u0026D1\u003c/strong\u003e do Smart Quadro \u003cstrong\u003eSmart do Hall\u003c/strong\u003e sera acionado as \u003cstrong\u003e21:30\u003c/strong\u003e</p>
+                {{alert_type_id}}
+                <p>{{data.message}}</p>
             </div>
         </div>
     </ion-content>

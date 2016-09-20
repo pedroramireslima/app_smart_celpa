@@ -9715,6 +9715,39 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+/*Cores de fundo*/
+.lilas {
+  background-color: #8b51ce !important;
+  color: white !important; }
+
+.azul_claro {
+  background-color: #40b5d2 !important;
+  color: white !important; }
+
+.verde_claro {
+  background-color: #42d19d !important;
+  color: white !important; }
+
+.verde_escuro {
+  background-color: #87d438 !important;
+  color: white !important; }
+
+.azul_escuro {
+  background-color: #4250d1 !important;
+  color: white !important; }
+
+.rosa {
+  background-color: #ce4ea7 !important;
+  color: white !important; }
+
+.laranja {
+  background-color: #db9249 !important;
+  color: white !important; }
+
+.vermelho {
+  background-color: #e04444 !important;
+  color: white !important; }
+
 /* CSS i*/
 .ritmos-form {
   display: block;
@@ -9788,7 +9821,6 @@ a.button {
   width: 100%;
   height: 100%;
   background: url("../img/quadro.png");
-  background-color: #886aea;
   background-repeat: no-repeat;
   -moz-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;

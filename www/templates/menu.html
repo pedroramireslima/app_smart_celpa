@@ -27,8 +27,10 @@
 
 <!-- Barra do rodapé-->
 <ion-footer-bar>
-<div class="tabs  tabs-royal tabs-icon-top ">
+<div class="tabs tabs-icon-top " ng-class="app.color">
+
   <a   ui-sref="app.controle" class="tab-item">
+    {{app.color}}
     <i class="icon ion-cube"></i>
     Controle
   </a>

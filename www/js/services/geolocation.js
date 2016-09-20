@@ -1,59 +1,60 @@
 angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService','localStorageService','$cordovaLocalNotification', function ($q, $http,smartqService,localStorageService,$cordovaLocalNotification) {
   console.log("Serviço de geolocalização iniciado no angular");
-    //var user_id = localStorageService.get('code');
     var callbackFn = function(location) {
-    console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
-    //TODO: Colocar para só enviar depois que já tiver os dados de usuário
-    //if (user_id!==null && user_id !==undefined){
-    smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
-       console.log("Enviado para o servidor"+json.data);
-       backgroundGeoLocation.finish();
+      console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
 
-       //TODO: passar para o principal, criar lá e editar a notificação aqui
-      $cordovaLocalNotification.schedule({
-        id: 1,
-        title: 'Notificação Smartq',
-        text: 'Enviei posição ao servidor',
-        icon: "ress://icon.png",
-        data: {
-          customProperty: 'custom value'
-        }
-      }).then(function (result) {
-        // ...
+      if (localStorageService.get('user')!==null){
+        smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
+          console.log("Enviado para o servidor"+json.data);
+        backgroundGeoLocation.finish();
+
+        smartqService.getServerNotifications().then(function (json) {
+          if (json.data.length!==0) {
+            $cordovaLocalNotification.schedule({
+              id: 1,
+              title: 'Notificação Smartq',
+              text: 'Você possui '+json.data.length +' notificações não lidas',
+              icon: "ress://icon.png",
+              data: {
+                customProperty: 'custom value'
+              }
+            }).then(function (result) {
+              // ...
+            });
+          }
+        });
+
+      },function (json) {
+         console.log("Erro enviando para o servidor");
+         backgroundGeoLocation.finish();
+
       });
+    }
+  },
 
 
-    },function (json) {
-       console.log("Erro enviando para o servidor");
-       backgroundGeoLocation.finish();
+  failureFn = function(error) {
+      console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
+  },
 
-    });
-    //}
-},
+    //Enable background geolocation
+  start = function () {
+        //save settings (background tracking is enabled) in local storage
+        window.localStorage.setItem('bgGPS', 1);
 
-
-failureFn = function(error) {
-    console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
-},
-
-  //Enable background geolocation
-start = function () {
-      //save settings (background tracking is enabled) in local storage
-      window.localStorage.setItem('bgGPS', 1);
-
-      backgroundGeoLocation.configure(callbackFn, failureFn, {
-          desiredAccuracy: 100,
-          stationaryRadius: 500,
-          distanceFilter: 200,
-          debug: false,
-          stopOnTerminate: false,
-          locationService: 'ANDROID_DISTANCE_FILTER',
-          interval: 60000
-      });
+        backgroundGeoLocation.configure(callbackFn, failureFn, {
+            desiredAccuracy: 1,//100,
+            stationaryRadius: 5,//500,
+            distanceFilter: 10,//200,
+            debug: false,
+            stopOnTerminate: false,
+            locationService: 'ANDROID_DISTANCE_FILTER',
+            interval: 60000
+        });
 
 
-      backgroundGeoLocation.start();
-      console.log("Iniciou a Geolocation");
+        backgroundGeoLocation.start();
+        console.log("Iniciou a Geolocation");
   };
 
   return {
@@ -73,4 +74,5 @@ start = function () {
           backgroundGeoLocation.stop();
       }
   };
+
 }]);

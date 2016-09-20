@@ -5,7 +5,7 @@
             <carousel3d
             ng-model="app.slides"
             options="app.options" on-slide-change="changeSlide(index)" on-selected-click="changeQuadro(index)">
-            <carousel3d-slide class="carrosel-slide" ng-repeat="slide in app.slides track by slide.id" >
+            <carousel3d-slide class="carrosel-slide "  ng-repeat="slide in app.slides track by slide.id" style="background-color: #{{slide.color}} !important;">
                 <div class="text-inside-card">
 
                     <h2>{{slide.name}}</h2>

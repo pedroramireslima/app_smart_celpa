@@ -227,7 +227,6 @@ function getServeQuadroDetails(id){
   });
 }
 
-//TODO: tratamento dos erros (exibir mensagens para usuário)
 
 
 });

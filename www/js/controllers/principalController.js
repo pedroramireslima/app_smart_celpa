@@ -5,6 +5,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.app.slides                  = smartqService.getQuadros();
     $scope.app.description             = $scope.app.slides[0].description;
     $scope.app._quadroAtual            = $scope.app.slides[0].id;
+    $scope.app.color                   = get_color($scope.app.slides[0].color);
     $scope.app.quadro_detalhes         = smartqService.quadrosDetalhes();
     $scope.app.circuitoAtual           = {};
     $scope.app.mostra_grafico_quadro   = true;
@@ -21,8 +22,25 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         'space'       : 120
     };
 
-
-
+    function get_color(color) {
+      if (color=='8b51ce') {
+        return 'lilas';
+      } else if(color=='40b5d2'){
+        return 'azul_claro';
+      } else if(color=='42d19d'){
+        return 'verde_claro';
+      } else if(color=='87d438'){
+        return 'verde_escuro';
+      } else if(color=='4250d1'){
+        return 'azul_escuro';
+      } else if(color=='ce4ea7'){
+        return 'rosa';
+      } else if(color=='db9249'){
+        return 'laranja';
+      } else if(color=='e04444'){
+        return 'vermelho';
+      }
+    }
 
     $scope.datasetOverride = [
     {
@@ -111,6 +129,8 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     /*FUNÇÃO QUE MODIFICA O QUADRO ATUAL*/
     $scope.changeQuadro=function(index){
         $scope.app._quadroAtual=$scope.app.slides[index].id;
+        $scope.app.color = get_color($scope.app.slides[index].color);
+        console.log($scope.app.color);
         getServerCircuitos($scope.app._quadroAtual);
     };
 
@@ -137,8 +157,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
           $scope.app.notificacao=json.data;
           $scope.configModal.show();
         },function (argument) {
-          console.log("erro");
-          // bod
+          $scope.app.notificacao=[];
           $scope.configModal.show();
         });
 

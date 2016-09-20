@@ -15,7 +15,7 @@ angular.module('smartq', ['ionic','angular-carousel-3d','chart.js','ngCordova','
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
+//NOTE: Modifiquei aqui para teste
  BackgroundGeolocationService.init();
 
   });

@@ -9,6 +9,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.app.circuitoAtual           = {};
     $scope.app.mostra_grafico_quadro   = true;
     $scope.app.mostra_grafico_circuito = true;
+    $scope.app.notifications           =[];
     $scope.app.options                 = {
         'visible'     : 5,
         'perspective' : 35,
@@ -133,7 +134,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     $scope.openConfig= function(){
       smartqService.getServerNotifications().then(function (json) {
-          console.log(json.data);
+          $scope.app.notificacao=json.data;
           $scope.configModal.show();
         },function (argument) {
           console.log("erro");

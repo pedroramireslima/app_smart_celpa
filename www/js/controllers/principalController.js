@@ -132,7 +132,16 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 
     $scope.openConfig= function(){
-        $scope.configModal.show();
+      smartqService.getServerNotifications().then(function (json) {
+          console.log(json.data);
+          $scope.configModal.show();
+        },function (argument) {
+          console.log("erro");
+          // bod
+          $scope.configModal.show();
+        });
+
+
     };
 
     $scope.logout = function () {
@@ -161,7 +170,6 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 
     $scope.openNotification= function(){
-        smartqService.getServerNotifications();
         $scope.notificationModal.show();
     };
 

@@ -4,6 +4,7 @@
 angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet,$ionicPopup,localStorageService){
 
 var _quadroAtual = 0;
+smartqService.set_slide_position(_quadroAtual);
 
 //Parte para teste no navegador
 

@@ -1,5 +1,5 @@
 angular.module('smartq').controller('agendamentoController',  function($scope, $ionicModal,smartqService,msg){
-
+/*
 $scope.agendamentos={};
 $scope.agendamentos.dados=smartqService.getAgendamentos();
 $scope.agendamentos.msg=msg.ERROR.no_agendamentos;
@@ -14,4 +14,6 @@ if ( $scope.agendamentos.dados.ids === null || $scope.agendamentos.dados.ids.len
     $scope.app.has_data=false;
   }
 
+
+*/
 });

@@ -9,9 +9,20 @@ var _quadro_atual      = {};
 var _circuito_atual    = {};
 var _circuito_controle = {};
 var _agendamentos      = {};
-
+var _slide_position              = 0;
 
 //funções para pegar dado local
+
+var _set_slide_position= function(value){
+  _slide_position = value;
+};
+
+var _get_slide_position= function(){
+  return _slide_position;
+}
+
+
+
 var _getAgendamentos = function (){
   return _agendamentos;
 };
@@ -79,9 +90,61 @@ var _getCircuitoAtual = function (){
 };
 
 var _setCircuitoAtual = function (value) {
-  _circuito_atual=value;
+  _circuito_atual=trata_circuito_atual(value);
 
 };
+
+function prevent(argument) {
+  if (isNaN(argument)) {
+    return "-";
+  }else{
+    return argument;
+  }
+}
+
+
+function trata_circuito_atual(json) {
+            json.data.measures_c_tuple=_convertTupla( json.data.measures_c_tuple);
+            json.data.measures_c_tuple_diff=_convertTupla( json.data.measures_c_tuple_diff);
+            json.data.value=parseFloat((json.data.circuit.total_energy) *(json.data.consumer_type.tax)).toFixed(2);
+            json.data.reais=parseInt(json.data.value);
+            json.data.centavos=parseInt(parseFloat(json.data.value - json.data.reais).toFixed(2)*100);
+            if (json.data.centavos<10) {
+              json.data.centavos="0"+json.data.centavos;
+            }
+
+            json.data.total=parseFloat((json.data.circuit.goal) *(json.data.consumer_type.tax)).toFixed(2);
+            json.data.percent_money=Math.round(json.data.value/json.data.total*100);
+            json.data.percent_consumo=Math.round(json.data.circuit.total_energy/json.data.break_panel.total_energy*100);
+            json.data.percent_local=Math.round(json.data.circuit.total_energy/json.data.circuit.goal*100);
+            if (json.data.percent_local==Infinity) {
+              json.data.percent_local=0;
+            }
+            json.data.last_measure.voltage                = prevent(parseFloat(json.data.last_measure.voltage).toFixed(2));
+            json.data.last_measure.power_factor           = prevent(parseFloat(json.data.last_measure.power_factor).toFixed(2));
+            json.data.last_measure.current                = prevent(parseFloat(json.data.last_measure.current).toFixed(2));
+            json.data.last_measure.import_active_energy   = prevent(parseFloat(json.data.last_measure.import_active_energy).toFixed(2));
+            json.data.last_measure.import_reactive_energy = prevent(parseFloat(json.data.last_measure.import_reactive_energy).toFixed(2));
+            json.data.last_measure.line_frequency         = prevent(parseFloat(json.data.last_measure.line_frequency).toFixed(2));
+            json.data.goal_tuple                          = _convertTupla( json.data.goal_tuple);
+            json.data.previsions_c_tuple_money            = _convertTupla( json.data.previsions_c_tuple_money);
+            json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a   = new Date(obj); return a.getDate();});
+            json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
+            json.data.measures_c_tuple_diff[1]            = json.data.measures_c_tuple_diff[1];
+            json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a  = new Date(obj); return a.getDate();});
+            var dia                               = new Date();
+            dia                                   = dia.getDate();
+            var vec                               = [0,0,0,0];
+            var a                                 = json.data.goal_tuple[0].indexOf(dia);
+            json.data.goal_tuple[0]               = json.data.goal_tuple[0].slice(a-3,a+4);
+            json.data.measures_c_tuple[1]         = json.data.measures_c_tuple[1].slice(a-3,a+4);
+            json.data.previsions_c_tuple_money[1] = vec.concat(json.data.previsions_c_tuple_money[1].slice(0,3));
+            json.data.previsions_c_tuple_money[1] = json.data.previsions_c_tuple_money[1].map(Math.round);
+            json.data.goal_tuple[1]               = json.data.goal_tuple[1].slice(a-3,a+4);
+            json.data.measures_c_tuple_diff[1]    = json.data.measures_c_tuple_diff[1].slice(a-3,a+4);
+            json.data.measures_c_tuple_diff[0]    = json.data.measures_c_tuple_diff[0].slice(a-3,a+4);
+            return json.data;
+}
 
 
 function formata_circuito() {
@@ -279,7 +342,9 @@ return {
   getAgendamentos:_getAgendamentos,
   setAgendamentos:_setAgendamentos,
   getServerAgendamentos:_getServerAgendamentos,
-  getServerNotifications:_getServerNotifications
+  getServerNotifications:_getServerNotifications,
+  set_slide_position:_set_slide_position,
+  get_slide_position:_get_slide_position
 };
 
 

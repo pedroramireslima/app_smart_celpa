@@ -12,7 +12,7 @@
 
 
 <ion-nav-buttons side="right">
-  <button class="button button-icon button-clear button-royal ion-stats-bars "  ng-click="openQuadros()" >
+  <button class="button button-icon button-clear  ion-stats-bars " ng-class="app.color" ng-click="openQuadros()" >
   </button>
 </ion-nav-buttons>
 </ion-nav-bar>
@@ -30,7 +30,6 @@
 <div class="tabs tabs-icon-top " ng-class="app.color">
 
   <a   ui-sref="app.controle" class="tab-item">
-    {{app.color}}
     <i class="icon ion-cube"></i>
     Controle
   </a>
@@ -38,7 +37,7 @@
     <i class="icon ion-usb"></i>
     Circuitos
   </a>
-  <img class="image-footer"  ui-sref="app.principal" src="img/logo-menu.png" alt="logo">
+  <img class="image-footer" ng-class="app.color" ui-sref="app.principal" src="img/logo-menu.png" alt="logo">
   <a ui-sref="app.agendamento" class="tab-item">
     <i class="icon ion-calendar"></i>
     Agenda

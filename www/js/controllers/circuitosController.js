@@ -2,8 +2,7 @@
 angular.module('smartq').controller('circuitosController', function($scope, $ionicModal,smartqService,$filter, $ionicPopup,msg){
 
 
-  $scope.app.circuitos = smartqService.getCircuitos();
-  $scope.app.circuitos = $filter('orderBy')($scope.app.circuitos, "percent",true);
+  $scope.app.circuitos = $filter('orderBy')(smartqService.getCircuitos(), "percent",true);
   $scope.app.quadro    = smartqService.getQuadroAtual();
   $scope.app.has_data  = true;
   $scope.app.msg       = msg.ERROR.no_circuitos;
@@ -44,7 +43,7 @@ angular.module('smartq').controller('circuitosController', function($scope, $ion
 
 
 
-/* MODAL DOS DETALHES DOS CIRCUiTOS */
+// MODAL DOS DETALHES DOS CIRCUiTOS
 $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {
   scope: $scope,
   animation: 'slide-in-up'
@@ -96,10 +95,6 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
     }
   });
 
-
-
-
-
 //TODO: Colocar para pegar os circuitos após setar o estado
 
 
@@ -111,67 +106,12 @@ $scope.graficoCircuito=function (value) {
         $scope.app.mostra_grafico_circuito  = value;
     };
 
-function prevent(argument) {
-  if (isNaN(argument)) {
-    return "-";
-  }else{
-    return argument;
-  }
-}
-
 $scope.openDetailsCircuits= function(quadro,id){
   smartqService.getServeCircuitoDetails(quadro,id).then(function (json) {
-
-            json.data.measures_c_tuple=smartqService.convertTupla( json.data.measures_c_tuple);
-            json.data.measures_c_tuple_diff=smartqService.convertTupla( json.data.measures_c_tuple_diff);
-            json.data.value=parseFloat((json.data.circuit.total_energy) *(json.data.consumer_type.tax)).toFixed(2);
-            json.data.reais=parseInt(json.data.value);
-            json.data.centavos=parseInt(parseFloat(json.data.value - json.data.reais).toFixed(2)*100);
-            if (json.data.centavos<10) {
-              json.data.centavos="0"+json.data.centavos;
-            }
-
-            json.data.total=parseFloat((json.data.circuit.goal) *(json.data.consumer_type.tax)).toFixed(2);
-            json.data.percent_money=Math.round(json.data.value/json.data.total*100);
-            json.data.percent_consumo=Math.round(json.data.circuit.total_energy/json.data.break_panel.total_energy*100);
-            json.data.percent_local=Math.round(json.data.circuit.total_energy/json.data.circuit.goal*100);
-            if (json.data.percent_local==Infinity) {
-              json.data.percent_local=0;
-            }
-
-
-            json.data.last_measure.voltage                = prevent(parseFloat(json.data.last_measure.voltage).toFixed(2));
-            json.data.last_measure.power_factor           = prevent(parseFloat(json.data.last_measure.power_factor).toFixed(2));
-            json.data.last_measure.current                = prevent(parseFloat(json.data.last_measure.current).toFixed(2));
-            json.data.last_measure.import_active_energy   = prevent(parseFloat(json.data.last_measure.import_active_energy).toFixed(2));
-            json.data.last_measure.import_reactive_energy = prevent(parseFloat(json.data.last_measure.import_reactive_energy).toFixed(2));
-            json.data.last_measure.line_frequency         = prevent(parseFloat(json.data.last_measure.line_frequency).toFixed(2));
-            json.data.goal_tuple                          = smartqService.convertTupla( json.data.goal_tuple);
-            json.data.previsions_c_tuple_money            = smartqService.convertTupla( json.data.previsions_c_tuple_money);
-            json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a   = new Date(obj); return a.getDate();});
-            json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
-            json.data.measures_c_tuple_diff[1]            = json.data.measures_c_tuple_diff[1];
-            json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a  = new Date(obj); return a.getDate();});
-            var dia                               = new Date();
-            dia                                   = dia.getDate();
-            var vec                               = [0,0,0,0];
-            var a                                 = json.data.goal_tuple[0].indexOf(dia);
-            json.data.goal_tuple[0]               = json.data.goal_tuple[0].slice(a-3,a+4);
-            json.data.measures_c_tuple[1]         = json.data.measures_c_tuple[1].slice(a-3,a+4);
-            json.data.previsions_c_tuple_money[1] = vec.concat(json.data.previsions_c_tuple_money[1].slice(0,3));
-            json.data.previsions_c_tuple_money[1] = json.data.previsions_c_tuple_money[1].map(Math.round);
-            json.data.goal_tuple[1]               = json.data.goal_tuple[1].slice(a-3,a+4);
-            json.data.measures_c_tuple_diff[1]    = json.data.measures_c_tuple_diff[1].slice(a-3,a+4);
-            json.data.measures_c_tuple_diff[0]    = json.data.measures_c_tuple_diff[0].slice(a-3,a+4);
-
-            //console.log(json.data);
-            smartqService.setCircuitoAtual(json.data);
+            smartqService.setCircuitoAtual(json);
             $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
-
             $scope.circuitosDetailsModal.show();
-
   });
-
 };
 
 

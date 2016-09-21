@@ -2,8 +2,8 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
   console.log("Serviço de geolocalização iniciado no angular");
     var callbackFn = function(location) {
       console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
-
-      if (localStorageService.get('user')!==null){
+      console.log(localStorageService.get('user_id')+"<<<");
+      if (localStorageService.get('user_id')!==null){
         smartqService.putLocation(location.latitude,location.longitude).then(function (json) {
           console.log("Enviado para o servidor"+json.data);
         backgroundGeoLocation.finish();
@@ -14,10 +14,7 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
               id: 1,
               title: 'Notificação Smartq',
               text: 'Você possui '+json.data.length +' notificações não lidas',
-              icon: "ress://icon.png",
-              data: {
-                customProperty: 'custom value'
-              }
+              icon: "ress://icon.png"
             }).then(function (result) {
               // ...
             });
@@ -43,13 +40,13 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
         window.localStorage.setItem('bgGPS', 1);
 
         backgroundGeoLocation.configure(callbackFn, failureFn, {
-            desiredAccuracy: 1,//100,
+            desiredAccuracy: 5,//100,
             stationaryRadius: 5,//500,
             distanceFilter: 10,//200,
             debug: false,
             stopOnTerminate: false,
             locationService: 'ANDROID_DISTANCE_FILTER',
-            interval: 60000
+            interval: 5000
         });
 
 

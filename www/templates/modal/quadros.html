@@ -10,7 +10,7 @@
               <p>{{app.quadro_detalhes.percentual}}%</p>
             </div>
             <div class="progressBar">
-              <div class="sup" style="width: {{app.quadro_detalhes.percentual}}%"> </div>
+              <div class="sup" ng-class="app.color" style="width: {{app.quadro_detalhes.percentual}}%"> </div>
             </div>
             <p class="pot-circuito">de R${{app.quadro_detalhes.alvo}}</p>
   </div>
@@ -66,7 +66,7 @@
 <!--Parte da lista de barras-->
 <div class="bar-list">
   <div class="progressBar "  ng-repeat="circuito in app.quadro_detalhes.circuitos  ">
-    <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+    <div class="sup " ng-class="app.color" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
     <div class="text-bar reduz" ng-click="openDetailsCircuits(circuito.panel_id,circuito.id)">{{circuito.name}}</div>
     <div class="text-bar-r" >R${{circuito.valor.replace(".", ","); }}</div>
   </div>

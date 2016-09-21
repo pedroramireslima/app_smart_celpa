@@ -62,7 +62,8 @@ function login() {
   var options = {
       location   : 'no',
       clearcache : 'yes',
-      toolbar    : 'no'
+      toolbar    : 'no',
+      zoom:'no'
   };
 
   $cordovaInAppBrowser.open(config.SERVER.url+':'+config.SERVER.port+'/oauth/new?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&redirect_uri=http://localhost/callback', '_blank', options)

@@ -33,7 +33,15 @@ $stateProvider.state('login',{
       controller  : 'nodataController'
   });
 
+////////////////////////////////////////////
+  $stateProvider.state('quadros', {
+    url         : '/quadros',
+    templateUrl : 'templates/quadros.html',
+    controller  : 'principalController'
+  });
 
+////////////////////////////////////////////
+/*
   $stateProvider.state('app', {
     url         : '/app',
     abstract    : true,
@@ -56,7 +64,7 @@ $stateProvider.state('login',{
     views : {
       'menuContent': {
         templateUrl : 'templates/circuitos.html',
-        controller  : 'circuitosController'
+        controller  : 'principalController'
       }
     }
   });
@@ -66,7 +74,7 @@ $stateProvider.state('login',{
     views : {
       'menuContent': {
         templateUrl : 'templates/controle.html',
-        controller  : 'controleController'
+        controller  : 'principalController'
       }
     }
   });
@@ -76,11 +84,11 @@ $stateProvider.state('login',{
     views : {
       'menuContent': {
         templateUrl : 'templates/agendamento.html',
-        controller  : 'agendamentoController'//controller: 'controleAgendamento'
+        controller  : 'principalController'
       }
     }
   });
-
+*/
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

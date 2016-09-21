@@ -1,4 +1,4 @@
-angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location,$ionicPopup){
+angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location,$ionicPopup,msg){
     loading.show();
 
     $scope.app                         = {};
@@ -7,15 +7,65 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.app._quadroAtual            = $scope.app.slides[smartqService.get_slide_position()].id;
     $scope.app.color                   = get_color($scope.app.slides[smartqService.get_slide_position()].color);
     $scope.app.quadro_detalhes         = smartqService.quadrosDetalhes();
+
+
     $scope.app.circuitoAtual           = {};
     $scope.app.mostra_grafico_quadro   = true;
     $scope.app.mostra_grafico_circuito = true;
     $scope.app.notifications           =[];
 
+    $scope.app.msg_circuito       = msg.ERROR.no_circuitos;
+    $scope.app.msg_controle=msg.ERROR.no_controle;
+    $scope.app.msg_agendamentos=msg.ERROR.no_agendamentos;
+
+
+// MODIFICA O ESTADO DO CIRCUITO
+$scope.setState=function (quadro_id,circuito_id,estado) {
+
+  if (estado===true) {
+    estado=1;
+  }
+  else{
+    estado=2;
+  }
+  var confirmPopup = $ionicPopup.confirm({
+   title: 'Modificar estado',
+   template: msg.ERROR.confirm
+ });
+  confirmPopup.then(function(res) {
+   if(res) {
+       //envia dado para o servidor
+       console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado+" enviando para o servidor...");
+
+      smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
+        console.log(json.data);
+        if (json.data.Actuation=="OK") {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Circuito',
+            template: msg.ERROR.sucess
+          });
+        }
+      },function (json) {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Circuito',
+            template: msg.ERROR.failure
+          });
+        });
+   } else {
+      //mantém formato atual
+      $scope.app.circuitos=smartqService.getCircuitos();
+    }
+  });
+
+//TODO: Colocar para pegar os circuitos após setar o estado
+
+
+};
 
 
 
-    $scope.app.options                 = {
+
+    $scope.app.options  = {
         'visible'     : 5,
         'perspective' : 35,
         'startSlide'  : 0,
@@ -118,6 +168,11 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       smartqService.getServerQuadrosDetails(id).then(function (json) {
           smartqService.setQuadroAtual(json.data);
           $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
+
+
+
+
+
           loading.hide();
       },function (json) {
          console.log("problema pegando quadros");
@@ -135,6 +190,8 @@ angular.module('smartq').controller('principalController', function($scope, $ion
         smartqService.set_slide_position(index);
         $scope.app._quadroAtual=$scope.app.slides[index].id;
         $scope.app.color = get_color($scope.app.slides[index].color);
+
+
         getServerCircuitos($scope.app._quadroAtual);
     };
 
@@ -195,6 +252,7 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
     $scope.openNotification= function(){
         $scope.notificationModal.show();
+        console.log($scope.app.notificacao);
     };
 
 
@@ -219,7 +277,7 @@ $scope.openDetailsCircuits= function(quadro,id){
 
 
   /* MODAL  QUADROS */
-  $ionicModal.fromTemplateUrl('templates/modal/quadros.html', {
+  $ionicModal.fromTemplateUrl('templates/modal/quadros_details.html', {
     scope: $scope,
     animation: 'slide-in-up'
 }).then(function(modal) {
@@ -236,10 +294,83 @@ $scope.openQuadros= function(){
 
 
 
-loading.hide();
+/* MODAL DOS  CIRCUiTOS */
+    $ionicModal.fromTemplateUrl('templates/modal/circuitos.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.circuitosModal = modal;
+  });
+
+/* MODAL DO  CONTROLE */
+    $ionicModal.fromTemplateUrl('templates/modal/controle.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.controleModal = modal;
+  });
+
+/* MODAL DO  AGENDAMENTO */
+    $ionicModal.fromTemplateUrl('templates/modal/agendamento.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.agendamentoModal = modal;
+  });
 
 
 
 
+$scope.closeAll=function () {
+    $scope.circuitosModal.hide();
+    $scope.controleModal.hide();
+    $scope.agendamentoModal.hide();
+};
+
+$scope.abreCircuitos=function () {
+  $scope.app.circuitos = $filter('orderBy')(smartqService.getCircuitos(), "percent",true);
+  $scope.app.quadro    = smartqService.getQuadroAtual();
+  $scope.app.has_data_circuito  = true;
+  if ( $scope.app.circuitos === null || $scope.app.circuitos.length ===0) {
+    $scope.app.has_data_circuito=false;
+  }
+
+
+    $scope.circuitosModal.show();
+    $scope.controleModal.hide();
+    $scope.agendamentoModal.hide();
+};
+
+$scope.abreControle=function () {
+  $scope.app.quadro    = smartqService.getQuadroAtual();
+  $scope.app.has_data_controle=true;
+  $scope.app.controle=smartqService.getControle();
+  if ( $scope.app.controle.saved_circuits === null || $scope.app.controle.saved_circuits.length ===0) {
+        $scope.app.has_data_controle=false;
+  }
+  $scope.app.dado=smartqService.trata_controle($scope.app.controle);
+
+
+console.log($scope.app.controle);
+    $scope.circuitosModal.hide();
+    $scope.controleModal.show();
+    $scope.agendamentoModal.hide();
+};
+
+$scope.abreAgendamento=function () {
+  $scope.app.agendamentos=smartqService.getAgendamentos();
+
+$scope.app.has_data_agendamentos=true;
+if ( $scope.app.agendamentos.ids === null || $scope.app.agendamentos.ids.length ===0) {
+    $scope.app.has_data_agendamentos=false;
 }
-);
+
+    $scope.circuitosModal.hide();
+    $scope.controleModal.hide();
+    $scope.agendamentoModal.show();
+};
+
+
+          loading.hide();
+
+});

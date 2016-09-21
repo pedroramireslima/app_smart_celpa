@@ -1,19 +1,26 @@
+<ion-modal-view >
 
-<ion-view view-title="Agendamento" >
+<ion-header-bar >
+    <h1 class="title">Agendamento</h1>
+          <button class="button button-icon button-clear  ion-stats-bars " ng-class="app.color" ng-click="openQuadros()" >
+      </button>
+  </ion-header-bar>
+
+
   <ion-content  class="backgound-content"  >
 
-    <div class="box-alert" ng-if="app.has_data==false">
-      <h4>{{agendamentos.msg}}</h4>
+    <div class="box-alert" ng-if="app.has_data_agendamentos==false">
+      <h4>{{app.msg_agendamentos}}</h4>
     </div>
 
-    <div class="rowsqm" ng-if="app.has_data==true">
+    <div class="rowsqm" ng-if="app.has_data_agendamentos==true">
       <!--modelo do bloco sugestão-->
-      <div class="col controlebox" ng-repeat="id in agendamentos.dados.ids">
+      <div class="col controlebox" ng-repeat="id in app.agendamentos.ids">
         <div class="col circuito-title  " >
             <div > {{id.name}}</div>
         </div>
 <hr class="horizontal-line" size="1" >
-        <div ng-repeat="valor in agendamentos.dados[id.id]">
+        <div ng-repeat="valor in app.agendamentos[id.id]">
           <!-- Cabeçalho-->
           <div class="col ">{{valor.description}}</div>
           <div class="row">
@@ -52,4 +59,29 @@
 
   </ion-content>
 
-</ion-view>
+<ion-footer-bar>
+<div class="tabs tabs-icon-top " ng-class="app.color">
+
+  <a   ng-click="abreControle()" class="tab-item">
+    <i class="icon ion-cube"></i>
+    Controle
+  </a>
+  <a ng-click="abreCircuitos()" class="tab-item">
+    <i class="icon ion-usb"></i>
+    Circuitos
+  </a>
+  <img class="image-footer" ng-class="app.color" ng-click="closeAll()" src="img/logo-menu.png" alt="logo">
+  <a ng-click="abreAgendamento()" class="tab-item">
+    <i class="icon ion-calendar"></i>
+    Agenda
+  </a>
+  <a class="tab-item" ng-click="openConfig()">
+    <i class="icon ion-gear-a"></i>
+    Configuração
+  </a>
+</div>
+</ion-footer-bar>
+
+
+</ion-modal-view>
+

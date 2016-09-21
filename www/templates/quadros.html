@@ -1,4 +1,14 @@
 <ion-view view-title="{{app.quadro_detalhes.nome}}">
+
+<ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear  ion-stats-bars " ng-class="app.color" ng-click="openQuadros()" >
+      </button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+
+
+
     <ion-content class="backgound-content" >
 
         <div class="carrosel"  >
@@ -30,4 +40,29 @@
 
 
 </ion-content>
+
+<ion-footer-bar>
+<div class="tabs tabs-icon-top " ng-class="app.color">
+
+  <a   ng-click="abreControle()" class="tab-item">
+    <i class="icon ion-cube"></i>
+    Controle
+  </a>
+  <a ng-click="abreCircuitos()" class="tab-item">
+    <i class="icon ion-usb"></i>
+    Circuitos
+  </a>
+  <img class="image-footer" ng-class="app.color" ng-click="closeAll()" src="img/logo-menu.png" alt="logo">
+  <a ng-click="abreAgendamento()" class="tab-item">
+    <i class="icon ion-calendar"></i>
+    Agenda
+  </a>
+  <a class="tab-item" ng-click="openConfig()">
+    <i class="icon ion-gear-a"></i>
+    Configuração
+  </a>
+</div>
+</ion-footer-bar>
+
+
 </ion-view>

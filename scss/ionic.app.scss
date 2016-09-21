@@ -19,14 +19,14 @@ $vermelho     : #e04444;
 
 
 /*Cores de fundo*/
-.lilas        {background-color: $lilas        !important; color: white !important;}
-.azul_claro   {background-color: $azul_claro   !important; color: white !important;}
-.verde_claro  {background-color: $verde_claro  !important; color: white !important;}
-.verde_escuro {background-color: $verde_escuro !important; color: white !important;}
-.azul_escuro  {background-color: $azul_escuro  !important; color: white !important;}
-.rosa         {background-color: $rosa         !important; color: white !important;}
-.laranja      {background-color: $laranja      !important; color: white !important;}
-.vermelho     {background-color: $vermelho     !important; color: white !important;}
+.lilas        {background-color: $lilas        !important; color: white !important; border-color: $lilas        !important;}
+.azul_claro   {background-color: $azul_claro   !important; color: white !important; border-color: $azul_claro   !important;}
+.verde_claro  {background-color: $verde_claro  !important; color: white !important; border-color: $verde_claro  !important;}
+.verde_escuro {background-color: $verde_escuro !important; color: white !important; border-color: $verde_escuro !important;}
+.azul_escuro  {background-color: $azul_escuro  !important; color: white !important; border-color: $azul_escuro  !important;}
+.rosa         {background-color: $rosa         !important; color: white !important; border-color: $rosa         !important;}
+.laranja      {background-color: $laranja      !important; color: white !important; border-color: $laranja      !important;}
+.vermelho     {background-color: $vermelho     !important; color: white !important; border-color: $vermelho !important;}
 
 .rosa2         {color: $rosa         !important;}
 

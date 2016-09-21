@@ -9718,35 +9718,43 @@ a.button {
 /*Cores de fundo*/
 .lilas {
   background-color: #8b51ce !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #8b51ce !important; }
 
 .azul_claro {
   background-color: #40b5d2 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #40b5d2 !important; }
 
 .verde_claro {
   background-color: #42d19d !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #42d19d !important; }
 
 .verde_escuro {
   background-color: #87d438 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #87d438 !important; }
 
 .azul_escuro {
   background-color: #4250d1 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #4250d1 !important; }
 
 .rosa {
   background-color: #ce4ea7 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #ce4ea7 !important; }
 
 .laranja {
   background-color: #db9249 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #db9249 !important; }
 
 .vermelho {
   background-color: #e04444 !important;
-  color: white !important; }
+  color: white !important;
+  border-color: #e04444 !important; }
 
 .rosa2 {
   color: #ce4ea7 !important; }

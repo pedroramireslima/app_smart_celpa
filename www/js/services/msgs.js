@@ -12,7 +12,10 @@ ERROR:{
     no_controle     : "Você não possui nenhum controle cadastrado!",
     no_circuitos    : "Você não possui nehum ircuito cadastrado",
     no_agendamentos : "Você não possui nenhum agendamento cadastrado",
-    other_user      : "Você logou em outro dispositivo com esta mesma conta ou nossos servidores estão temporariamente indisponíveis."
+    other_user      : "Você logou em outro dispositivo com esta mesma conta ou nossos servidores estão temporariamente indisponíveis.",
+    sucess: "Operação realizada com sucesso!",
+    failure :"Erro durante o processo!",
+    confirm: "Você deseja realmente executar esta ação?"
 }
 
 });

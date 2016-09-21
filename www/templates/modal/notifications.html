@@ -10,7 +10,7 @@
         <div class="list item-text-wrap" ng-if="app.notificacao.length!==0">
             <div class="item item-icon-left" ng-repeat="data in app.notificacao" >
                 <i class="icon ion-email"></i>
-                <p>{{data.message}}</p>
+                {{data.message}}
             </div>
         </div>
     </ion-content>

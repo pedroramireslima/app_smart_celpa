@@ -1,11 +1,18 @@
-<ion-view view-title="{{app.quadro.break_panel.name}}" >
+<ion-modal-view >
+
+<ion-header-bar >
+    <h1 class="title">{{app.quadro.break_panel.name}}</h1>
+          <button class="button button-icon button-clear  ion-stats-bars " ng-class="app.color" ng-click="openQuadros()" >
+      </button>
+  </ion-header-bar>
+
   <ion-content  class="backgound-content">
 
-    <div class="box-alert" ng-if="app.has_data==false">
-      <h4>{{app.msg}}</h4>
+    <div class="box-alert" ng-if="app.has_data_controle==false">
+      <h4>{{app.msg_controle}}</h4>
     </div>
 
-    <div class="rowsqm" ng-if="app.has_data==true">
+    <div class="rowsqm" ng-if="app.has_data_controle==true">
 
           <!--modelo do bloco-->
           <div class="col controlebox" ng-repeat="circuito in app.dado">
@@ -35,7 +42,7 @@
                   </div>
 
                   <div class="progressBar">
-                    <div class="sup" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
+                    <div class="sup" ng-class="app.color" ng-style="{width: {{circuito.percent}} + '%'}"> </div>
                     <div class="text-bar">{{circuito.percent}}%</div>
                     <div class="text-bar-r" >{{circuito.value}}R$</div>
                   </div>
@@ -51,4 +58,29 @@
 
 
 </ion-content>
-</ion-view>
+
+<ion-footer-bar>
+<div class="tabs tabs-icon-top " ng-class="app.color">
+
+  <a   ng-click="abreControle()" class="tab-item">
+    <i class="icon ion-cube"></i>
+    Controle
+  </a>
+  <a ng-click="abreCircuitos()" class="tab-item">
+    <i class="icon ion-usb"></i>
+    Circuitos
+  </a>
+  <img class="image-footer" ng-class="app.color" ng-click="closeAll()" src="img/logo-menu.png" alt="logo">
+  <a ng-click="abreAgendamento()" class="tab-item">
+    <i class="icon ion-calendar"></i>
+    Agenda
+  </a>
+  <a class="tab-item" ng-click="openConfig()">
+    <i class="icon ion-gear-a"></i>
+    Configuração
+  </a>
+</div>
+</ion-footer-bar>
+
+
+</ion-modal-view>

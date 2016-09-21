@@ -1,7 +1,7 @@
 /**
 *  Controller da tela de login
 */
-angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet,$ionicPopup,localStorageService){
+angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet,$ionicPopup){
 
 var _quadroAtual = 0;
 smartqService.set_slide_position(_quadroAtual);
@@ -221,7 +221,9 @@ function getServerControle(id) {
 function getServeQuadroDetails(id){
   smartqService.getServerQuadrosDetails(id).then(function (json) {
     smartqService.setQuadroAtual(json.data);
-    $location.path( "app/principal");
+    //$location.path( "app/principal");
+    console.log("aqui");
+    $location.path( "quadros");
   },function (json) {
     console.log("problema pegando quadros");
     getServeQuadroDetails(id);

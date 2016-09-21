@@ -1,0 +1,96 @@
+
+<!--<ion-view view-title="{{app.quadro.break_panel.name}}" >-->
+<ion-modal-view >
+
+
+<ion-header-bar >
+    <h1 class="title">{{app.quadro.break_panel.name}}</h1>
+          <button class="button button-icon button-clear  ion-stats-bars " ng-class="app.color" ng-click="openQuadros()" >
+      </button>
+  </ion-header-bar>
+
+
+  <ion-content  class="backgound-content"  >
+
+    <div class="box-alert" ng-if="app.has_data_circuito==false">
+      <h4>{{app.msg_circuito}}</h4>
+    </div>
+
+    <div class="rowsqm" ng-if="app.has_data_circuito==true">
+
+      <!--modelo do bloco-->
+      <div class="col circuitobox" ng-repeat="circuito in app.circuitos ">
+        <div class="row ">
+          <div class="col col-80 circuito-title reduz" ng-click="openDetailsCircuits(circuito.break_panel_id,circuito.id)">
+            {{circuito.name}}
+          </div>
+          <div class="col ">
+            <label class="toggle toggle-small" >
+             <input type="checkbox"  ng-model="circuito.relay_state" ng-change="setState(circuito.break_panel_id,circuito.id,circuito.relay_state)">
+             <div class="track" >
+               <div class="handle" >
+
+               </div>
+             </div>
+           </label>
+
+         </div>
+       </div>
+       <hr class="horizontal-line" size="1" >
+       <div class="grafico-circuito" ng-click="openDetailsCircuits(circuito.break_panel_id,circuito.id)">
+         <div >
+          <div class="left-box" >
+            R$
+          </div>
+          <div class="center-box">
+            {{circuito.reais}}
+          </div>
+          <div class="right-box">
+            ,{{circuito.centavos}}
+          </div>
+
+        </div>
+        <div class="progressBar">
+          <div class="sup" ng-class="app.color" ng-style="{width: {{circuito.percent <= 100? circuito.percent : 100}} + '%'}" > </div>
+          <div class="text-bar">{{circuito.percent}}%</div>
+        </div>
+
+        <span class="icon-circuitos icone-circuito "></span >
+          <span class="pot-circuito"> {{circuito.total_energy.toFixed(2)}} KWh</span>
+
+        </div>
+
+      </div>
+
+
+
+    </div><!-- fim da row-->
+
+
+  </ion-content>
+
+<ion-footer-bar>
+<div class="tabs tabs-icon-top " ng-class="app.color">
+
+  <a   ng-click="abreControle()" class="tab-item">
+    <i class="icon ion-cube"></i>
+    Controle
+  </a>
+  <a ng-click="abreCircuitos()" class="tab-item">
+    <i class="icon ion-usb"></i>
+    Circuitos
+  </a>
+  <img class="image-footer" ng-class="app.color" ng-click="closeAll()" src="img/logo-menu.png" alt="logo">
+  <a ng-click="abreAgendamento()" class="tab-item">
+    <i class="icon ion-calendar"></i>
+    Agenda
+  </a>
+  <a class="tab-item" ng-click="openConfig()">
+    <i class="icon ion-gear-a"></i>
+    Configuração
+  </a>
+</div>
+</ion-footer-bar>
+
+<!--</ion-view>-->
+</ion-modal-view>

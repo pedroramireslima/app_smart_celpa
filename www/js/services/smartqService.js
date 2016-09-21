@@ -55,6 +55,7 @@ var _getControle = function (){
 
 
 var _setControle = function (value) {
+
   _circuito_controle=value;
 };
 
@@ -91,6 +92,43 @@ var _getCircuitoAtual = function (){
 
 var _setCircuitoAtual = function (value) {
   _circuito_atual=trata_circuito_atual(value);
+
+};
+
+var _trata_controle=function (dado_controle){
+
+  var auxiliar = [];
+   for (var i = 0; i < dado_controle.saved_circuits.length; i++) {
+          auxiliar.push({});
+          auxiliar[i].name     = dado_controle.saved_circuits[i].name;
+          auxiliar[i].value    = parseFloat(_quadro_atual.consumer_type.tax*dado_controle.saved_circuits[i].total_energy).toFixed(2);
+          auxiliar[i].reais    = parseInt( dado_controle.saved_circuits[i].value);
+          auxiliar[i].centavos = parseInt(parseFloat( dado_controle.saved_circuits[i].value -  auxiliar[i].reais).toFixed(2)*100);
+          if (auxiliar[i].centavos<10) {
+              auxiliar[i].centavos="0"+auxiliar[i].centavos;
+          }
+
+          for(var j=0; j<dado_controle.consumption_controls.length; j++) {
+            if(dado_controle.consumption_controls[j].circuit_id === dado_controle.saved_circuits[i].id) {
+                auxiliar[i].value_goal    = parseFloat(dado_controle.consumption_controls[j].threshold).toFixed(2);
+                auxiliar[i].reais_goal    = parseInt( auxiliar[i].value_goal);
+                auxiliar[i].centavos_goal = parseInt(parseFloat( auxiliar[i].value_goal -  auxiliar[i].reais_goal).toFixed(2)*100);
+                if (auxiliar[i].centavos_goal<10) {
+                  auxiliar[i].centavos_goal="0"+auxiliar[i].centavos_goal;
+                }
+                if (dado_controle.consumption_controls[j].always) {
+                  auxiliar[i].date="todo mês"
+                } else {
+                  var data=dado_controle.consumption_controls[j].expiration_date.split("T")[0];
+                  data=data.split("-");
+                  auxiliar[i].date="até "+data[2]+"/"+data[1]+"/"+data[0];
+                }
+
+            }
+          }
+        auxiliar[i].percent=Math.round(auxiliar[i].value/auxiliar[i].value_goal*100);
+    }
+return auxiliar
 
 };
 
@@ -344,7 +382,8 @@ return {
   getServerAgendamentos:_getServerAgendamentos,
   getServerNotifications:_getServerNotifications,
   set_slide_position:_set_slide_position,
-  get_slide_position:_get_slide_position
+  get_slide_position:_get_slide_position,
+  trata_controle: _trata_controle
 };
 
 

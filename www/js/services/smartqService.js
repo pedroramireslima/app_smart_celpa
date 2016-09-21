@@ -19,7 +19,7 @@ var _set_slide_position= function(value){
 
 var _get_slide_position= function(){
   return _slide_position;
-}
+};
 
 
 
@@ -117,7 +117,7 @@ var _trata_controle=function (dado_controle){
                   auxiliar[i].centavos_goal="0"+auxiliar[i].centavos_goal;
                 }
                 if (dado_controle.consumption_controls[j].always) {
-                  auxiliar[i].date="todo mês"
+                  auxiliar[i].date="todo mês";
                 } else {
                   var data=dado_controle.consumption_controls[j].expiration_date.split("T")[0];
                   data=data.split("-");
@@ -128,7 +128,7 @@ var _trata_controle=function (dado_controle){
           }
         auxiliar[i].percent=Math.round(auxiliar[i].value/auxiliar[i].value_goal*100);
     }
-return auxiliar
+return auxiliar;
 
 };
 
@@ -159,17 +159,23 @@ function trata_circuito_atual(json) {
               json.data.percent_local=0;
             }
             json.data.last_measure.voltage                = prevent(parseFloat(json.data.last_measure.voltage).toFixed(2));
+            json.data.last_measure.voltage_ab             = prevent(parseFloat(json.data.last_measure.voltage_ab).toFixed(2));
+            json.data.last_measure.voltage_ac             = prevent(parseFloat(json.data.last_measure.voltage_ac).toFixed(2));
+            json.data.last_measure.voltage_bc             = prevent(parseFloat(json.data.last_measure.voltage_bc).toFixed(2));
             json.data.last_measure.power_factor           = prevent(parseFloat(json.data.last_measure.power_factor).toFixed(2));
             json.data.last_measure.current                = prevent(parseFloat(json.data.last_measure.current).toFixed(2));
+            json.data.last_measure.current_a              = prevent(parseFloat(json.data.last_measure.current_a).toFixed(2));
+            json.data.last_measure.current_b              = prevent(parseFloat(json.data.last_measure.current_b).toFixed(2));
+            json.data.last_measure.current_c              = prevent(parseFloat(json.data.last_measure.current_c).toFixed(2));
             json.data.last_measure.import_active_energy   = prevent(parseFloat(json.data.last_measure.import_active_energy).toFixed(2));
             json.data.last_measure.import_reactive_energy = prevent(parseFloat(json.data.last_measure.import_reactive_energy).toFixed(2));
             json.data.last_measure.line_frequency         = prevent(parseFloat(json.data.last_measure.line_frequency).toFixed(2));
             json.data.goal_tuple                          = _convertTupla( json.data.goal_tuple);
             json.data.previsions_c_tuple_money            = _convertTupla( json.data.previsions_c_tuple_money);
-            json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a   = new Date(obj); return a.getDate();});
-            json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a = new Date(obj); return a.getDate();});
+            json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a                          = new Date(obj); return a.getDate();});
+            json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a                     = new Date(obj); return a.getDate();});
             json.data.measures_c_tuple_diff[1]            = json.data.measures_c_tuple_diff[1];
-            json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a  = new Date(obj); return a.getDate();});
+            json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a                                = new Date(obj); return a.getDate();});
             var dia                               = new Date();
             dia                                   = dia.getDate();
             var vec                               = [0,0,0,0];
@@ -343,8 +349,8 @@ var _getServerAgendamentos = function (panel_id) {
 
 //Limpa notificações
 var _clearNotification = function () {
-    return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/clear_alerts?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
-}
+  return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/clear_alerts?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
+};
 
 
 //Converte tupla para formato de gráficos

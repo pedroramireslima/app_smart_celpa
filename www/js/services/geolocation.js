@@ -46,7 +46,7 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
             debug: false,
             stopOnTerminate: false,
             locationService: 'ANDROID_DISTANCE_FILTER',
-            interval: 5000
+            interval: 60000
         });
 
 

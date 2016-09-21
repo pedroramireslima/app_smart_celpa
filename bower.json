@@ -12,6 +12,7 @@
   },
   "resolutions": {
     "angular-chart.js": "^0.8.8",
-    "Chart.js": "2.x"
+    "Chart.js": "2.x",
+    "angular": "1.4.3"
   }
 }

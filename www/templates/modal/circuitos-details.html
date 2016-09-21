@@ -74,14 +74,42 @@
     <h4>Dados</h4>
     <hr class="horizontal-line" size="1" >
 
-    <div class="row">
+    <div class="row" ng-if="app.circuito_trifasico==false">
       <div class="col col-70">Tensão</div>
       <div class="col col-30">{{app.circuitoAtual.last_measure.voltage+" V"}}</div>
     </div>
-    <div class="row">
+    <div class="row" ng-if="app.circuito_trifasico==false">
       <div class="col col-70">Corrente</div>
       <div class="col col-30">{{app.circuitoAtual.last_measure.current +" A"}}</div>
     </div>
+
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Tensão AB</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.voltage_ab +" V"}}</div>
+    </div>
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Tensão AC</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.voltage_ac +" V"}}</div>
+    </div>
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Tensão BC</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.voltage_bc +" V"}}</div>
+    </div>
+
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Corrente A</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.current_a +" A"}}</div>
+    </div>
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Corrente B</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.current_b +" A"}}</div>
+    </div>
+    <div class="row" ng-if="app.circuito_trifasico==true">
+      <div class="col col-70">Corrente C</div>
+      <div class="col col-30">{{app.circuitoAtual.last_measure.current_c +" A"}}</div>
+    </div>
+
+
     <div class="row">
       <div class="col col-70">Potência Ativa</div>
       <div class="col col-30">{{app.circuitoAtual.last_measure.active_power+" W"}}</div>

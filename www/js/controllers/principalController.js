@@ -215,7 +215,6 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
     $scope.openConfig= function(){
       smartqService.getServerNotifications().then(function (json) {
-
           $scope.app.notificacao=json.data;
           $scope.configModal.show();
         },function (argument) {
@@ -242,6 +241,7 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
     };
 
+
     /* MODAL Notification*/
     $ionicModal.fromTemplateUrl('templates/modal/notifications.html', {
         scope: $scope,
@@ -252,12 +252,17 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
 
     $scope.openNotification= function(){
+        for (var i = $scope.app.notificacao.length - 1; i >= 0; i--) {
+          $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<strong>/g,"");
+                    $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<\/strong>/g,"");
+        }
+        $scope.app.notificacao=$scope.app.notificacao;
         $scope.notificationModal.show();
         console.log($scope.app.notificacao);
         smartqService.clearNotification().then(function (json) {
           console.log(json.data);
         },function (argument) {
-          console.log("erro aqui");
+          console.log("erro aqui"+argument);
         });
     };
 
@@ -276,6 +281,13 @@ $scope.openDetailsCircuits= function(quadro,id){
   smartqService.getServeCircuitoDetails(quadro,id).then(function (json) {
             smartqService.setCircuitoAtual(json);
             $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
+            $scope.app.circuito_trifasico=true;
+            console.log($scope.app.circuitoAtual.last_measure.voltage_ab);
+            if ($scope.app.circuitoAtual.last_measure.voltage_ab==='-') {
+              $scope.app.circuito_trifasico=false;
+            }
+
+
             $scope.circuitosDetailsModal.show();
   });
 };

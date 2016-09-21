@@ -215,6 +215,7 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
     $scope.openConfig= function(){
       smartqService.getServerNotifications().then(function (json) {
+
           $scope.app.notificacao=json.data;
           $scope.configModal.show();
         },function (argument) {
@@ -253,6 +254,11 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
     $scope.openNotification= function(){
         $scope.notificationModal.show();
         console.log($scope.app.notificacao);
+        smartqService.clearNotification().then(function (json) {
+          console.log(json.data);
+        },function (argument) {
+          console.log("erro aqui");
+        });
     };
 
 

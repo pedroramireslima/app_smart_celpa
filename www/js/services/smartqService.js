@@ -341,6 +341,11 @@ var _getServerAgendamentos = function (panel_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/schedulings.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
+//Limpa notificações
+var _clearNotification = function () {
+    return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/clear_alerts?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
+}
+
 
 //Converte tupla para formato de gráficos
 var _convertTupla = function (data) {
@@ -383,7 +388,8 @@ return {
   getServerNotifications:_getServerNotifications,
   set_slide_position:_set_slide_position,
   get_slide_position:_get_slide_position,
-  trata_controle: _trata_controle
+  trata_controle: _trata_controle,
+  clearNotification: _clearNotification
 };
 
 

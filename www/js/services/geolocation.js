@@ -40,9 +40,9 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
         window.localStorage.setItem('bgGPS', 1);
 
         backgroundGeoLocation.configure(callbackFn, failureFn, {
-            desiredAccuracy: 5,//100,
-            stationaryRadius: 5,//500,
-            distanceFilter: 10,//200,
+            desiredAccuracy: 100,
+            stationaryRadius: 200,
+            distanceFilter: 200,
             debug: false,
             stopOnTerminate: false,
             locationService: 'ANDROID_DISTANCE_FILTER',

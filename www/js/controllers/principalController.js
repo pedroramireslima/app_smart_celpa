@@ -1,22 +1,19 @@
 angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location,$ionicPopup,msg){
     loading.show();
 
-    $scope.app                         = {};
-    $scope.app.slides                  = smartqService.getQuadros();
-    $scope.app.description             = $scope.app.slides[smartqService.get_slide_position()].description;
-    $scope.app._quadroAtual            = $scope.app.slides[smartqService.get_slide_position()].id;
-    $scope.app.color                   = get_color($scope.app.slides[smartqService.get_slide_position()].color);
-    $scope.app.quadro_detalhes         = smartqService.quadrosDetalhes();
-
-
-    $scope.app.circuitoAtual           = {};
+    $scope.app                 = {};
+    $scope.app.slides          = smartqService.getQuadros();
+    $scope.app.description     = $scope.app.slides[smartqService.get_slide_position()].description;
+    $scope.app._quadroAtual    = $scope.app.slides[smartqService.get_slide_position()].id;
+    $scope.app.color           = get_color($scope.app.slides[smartqService.get_slide_position()].color);
+    $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
+    $scope.app.circuitoAtual   = {};
     $scope.app.mostra_grafico_quadro   = true;
     $scope.app.mostra_grafico_circuito = true;
-    $scope.app.notifications           =[];
-
-    $scope.app.msg_circuito       = msg.ERROR.no_circuitos;
-    $scope.app.msg_controle=msg.ERROR.no_controle;
-    $scope.app.msg_agendamentos=msg.ERROR.no_agendamentos;
+    $scope.app.notifications    = [];
+    $scope.app.msg_circuito     = msg.ERROR.no_circuitos;
+    $scope.app.msg_controle     = msg.ERROR.no_controle;
+    $scope.app.msg_agendamentos = msg.ERROR.no_agendamentos;
 
 
 // MODIFICA O ESTADO DO CIRCUITO
@@ -33,12 +30,10 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
    template: msg.ERROR.confirm
  });
   confirmPopup.then(function(res) {
-   if(res) {
+    if(res) {
        //envia dado para o servidor
        console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado+" enviando para o servidor...");
-
       smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
-        console.log(json.data);
         if (json.data.Actuation=="OK") {
           var alertPopup = $ionicPopup.alert({
             title: 'Circuito',
@@ -50,31 +45,26 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
             title: 'Circuito',
             template: msg.ERROR.failure
           });
-        });
-   } else {
-      //mantém formato atual
-      $scope.app.circuitos=smartqService.getCircuitos();
+      });
+      $scope.abreCircuitos();
+    } else {
+      $scope.abreCircuitos();
     }
   });
-
-//TODO: Colocar para pegar os circuitos após setar o estado
-
 
 };
 
 
-
-
-    $scope.app.options  = {
-        'visible'     : 5,
-        'perspective' : 35,
-        'startSlide'  : 0,
-        'border'      : 3,
-        'dir'         : 'ltr',
-        'width'       : 200,
-        'height'      : 250,
-        'space'       : 120
-    };
+$scope.app.options  = {
+    'visible'     : 5,
+    'perspective' : 35,
+    'startSlide'  : 0,
+    'border'      : 3,
+    'dir'         : 'ltr',
+    'width'       : 200,
+    'height'      : 250,
+    'space'       : 120
+};
 
     function get_color(color) {
       if (color=='8b51ce') {
@@ -138,6 +128,18 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
 
     }
 
+    /*FUNÇÃO QUE ATUALIZA CIRCUITO*/
+    function getUpdateCircuitos(id){
+      smartqService.getServerCircuitos(id).then(function (json) {
+          smartqService.setCircuitos(json.data);
+      },function (json) {
+        console.log("problema pegando circuitos");
+        getUpdateCircuitos(id);
+      });
+
+    }
+
+
     /*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
     function getServerAgendamentos(id) {
       smartqService.getServerAgendamentos(id).then(function (json) {
@@ -168,11 +170,6 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
       smartqService.getServerQuadrosDetails(id).then(function (json) {
           smartqService.setQuadroAtual(json.data);
           $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
-
-
-
-
-
           loading.hide();
       },function (json) {
          console.log("problema pegando quadros");
@@ -190,13 +187,11 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
         smartqService.set_slide_position(index);
         $scope.app._quadroAtual=$scope.app.slides[index].id;
         $scope.app.color = get_color($scope.app.slides[index].color);
-
-
         getServerCircuitos($scope.app._quadroAtual);
     };
 
 
-     $scope.graficoQuadro=function (value) {
+    $scope.graficoQuadro=function (value) {
         $scope.app.mostra_grafico_quadro  = value;
     };
 
@@ -212,7 +207,7 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
         $scope.configModal = modal;
     });
 
-
+    /*Abre configurações*/
     $scope.openConfig= function(){
       smartqService.getServerNotifications().then(function (json) {
           $scope.app.notificacao=json.data;
@@ -226,7 +221,6 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
     };
 
     $scope.logout = function () {
-
       var confirmPopup = $ionicPopup.confirm({
         title: 'Sair',
         template: 'Você desja realmente executar esta ação?'
@@ -254,7 +248,7 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
     $scope.openNotification= function(){
         for (var i = $scope.app.notificacao.length - 1; i >= 0; i--) {
           $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<strong>/g,"");
-                    $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<\/strong>/g,"");
+          $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<\/strong>/g,"");
         }
         $scope.app.notificacao=$scope.app.notificacao;
         $scope.notificationModal.show();
@@ -272,23 +266,21 @@ $scope.setState=function (quadro_id,circuito_id,estado) {
     $ionicModal.fromTemplateUrl('templates/modal/circuitos-details.html', {
       scope: $scope,
       animation: 'slide-in-up'
-  }).then(function(modal) {
+    }).then(function(modal) {
       $scope.circuitosDetailsModal = modal;
-  });
+    });
 
 
 $scope.openDetailsCircuits= function(quadro,id){
   smartqService.getServeCircuitoDetails(quadro,id).then(function (json) {
-            smartqService.setCircuitoAtual(json);
-            $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
-            $scope.app.circuito_trifasico=true;
-            console.log($scope.app.circuitoAtual.last_measure.voltage_ab);
-            if ($scope.app.circuitoAtual.last_measure.voltage_ab==='-') {
-              $scope.app.circuito_trifasico=false;
-            }
-
-
-            $scope.circuitosDetailsModal.show();
+    smartqService.setCircuitoAtual(json);
+    $scope.app.circuitoAtual=smartqService.getCircuitoAtual();
+    $scope.app.circuito_trifasico=true;
+    console.log($scope.app.circuitoAtual.last_measure.voltage_ab);
+    if ($scope.app.circuitoAtual.last_measure.voltage_ab==='-') {
+      $scope.app.circuito_trifasico=false;
+    }
+    $scope.circuitosDetailsModal.show();
   });
 };
 
@@ -298,16 +290,16 @@ $scope.openDetailsCircuits= function(quadro,id){
   $ionicModal.fromTemplateUrl('templates/modal/quadros_details.html', {
     scope: $scope,
     animation: 'slide-in-up'
-}).then(function(modal) {
+  }).then(function(modal) {
     $scope.quadrosModal = modal;
-});
+  });
 
 
 $scope.openQuadros= function(){
-    $scope.app.color = get_color($scope.app.slides[smartqService.get_slide_position()].color);
-    $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
-    $scope.app.quadro_detalhes.circuitos=$filter('orderBy')($scope.app.quadro_detalhes.circuitos, "percent",true);
-    $scope.quadrosModal.show();
+  $scope.app.color = get_color($scope.app.slides[smartqService.get_slide_position()].color);
+  $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
+  $scope.app.quadro_detalhes.circuitos=$filter('orderBy')($scope.app.quadro_detalhes.circuitos, "percent",true);
+  $scope.quadrosModal.show();
 };
 
 
@@ -346,14 +338,13 @@ $scope.closeAll=function () {
 };
 
 $scope.abreCircuitos=function () {
-  $scope.app.circuitos = $filter('orderBy')(smartqService.getCircuitos(), "percent",true);
+  getUpdateCircuitos($scope.app._quadroAtual);
   $scope.app.quadro    = smartqService.getQuadroAtual();
+  $scope.app.circuitos = $filter('orderBy')(smartqService.getCircuitos(), "percent",true);
   $scope.app.has_data_circuito  = true;
   if ( $scope.app.circuitos === null || $scope.app.circuitos.length ===0) {
     $scope.app.has_data_circuito=false;
   }
-
-
     $scope.circuitosModal.show();
     $scope.controleModal.hide();
     $scope.agendamentoModal.hide();
@@ -367,28 +358,23 @@ $scope.abreControle=function () {
         $scope.app.has_data_controle=false;
   }
   $scope.app.dado=smartqService.trata_controle($scope.app.controle);
-
-
-console.log($scope.app.controle);
-    $scope.circuitosModal.hide();
-    $scope.controleModal.show();
-    $scope.agendamentoModal.hide();
+  $scope.circuitosModal.hide();
+  $scope.controleModal.show();
+  $scope.agendamentoModal.hide();
 };
 
 $scope.abreAgendamento=function () {
   $scope.app.agendamentos=smartqService.getAgendamentos();
-
-$scope.app.has_data_agendamentos=true;
-if ( $scope.app.agendamentos.ids === null || $scope.app.agendamentos.ids.length ===0) {
-    $scope.app.has_data_agendamentos=false;
-}
-
-    $scope.circuitosModal.hide();
-    $scope.controleModal.hide();
-    $scope.agendamentoModal.show();
+  $scope.app.has_data_agendamentos=true;
+  if ( $scope.app.agendamentos.ids === null || $scope.app.agendamentos.ids.length ===0) {
+      $scope.app.has_data_agendamentos=false;
+  }
+  $scope.circuitosModal.hide();
+  $scope.controleModal.hide();
+  $scope.agendamentoModal.show();
 };
 
 
-          loading.hide();
+  loading.hide();
 
 });

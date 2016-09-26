@@ -8,13 +8,11 @@ smartqService.set_slide_position(_quadroAtual);
 
 //Parte para teste no navegador
 
-/*
 
-localStorageService.set('code',"a7c14eb101ea193fe54aa682e0c8d534");
-localStorageService.set('access_token',"fef01ae326e1f27a874b6c51d13c20d5");
-localStorageService.set('refresh_token',"f2b622cbf3f64fea93b73ef7a5e28e5b");
+localStorageService.set('code',"047829edbd8d9e2b9b7fb11670935e21");
+localStorageService.set('access_token',"d9217c3f749d28f51eb01840d1406224");
+localStorageService.set('refresh_token',"13b1e8b5b0c97bb9baefdb913bc0c43a");
 localStorageService.set('user_id',"1");
-*/
 
 
 
@@ -89,8 +87,7 @@ function login() {
         loading.show();
 
         //Pega tokens a parti do código
-        console.log(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code);
-         $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{},{timeout: 10000})
+        $http.post(config.SERVER.url+':'+config.SERVER.port+'/oauth/token.json?client_id=' + config.OAUTH80.client_id + '&client_secret='+config.OAUTH80.client_secret+'&code='+code,{},{timeout: 10000})
         .then(function (json) {
           access_token  = json.data.access_token;
           refresh_token = json.data.refresh_token;
@@ -99,7 +96,6 @@ function login() {
           if (access_token === undefined) {
             loading.hide();
             alerta.msg('Erro', msg.ERROR.operacao);
-            console.log("token");
           }else{
             //Pega id e dados do user
             $http.get(config.SERVER.url+':'+config.SERVER.port+'/users/get/user.json?access_token='+access_token)
@@ -127,7 +123,6 @@ function login() {
         },function (argument) {
           loading.hide();
           alerta.msg('Erro', msg.ERROR.operacao );
-          console.log("erro aqui");
         });
 
 
@@ -136,7 +131,6 @@ function login() {
       }
     });
   },function(event){
-    console.log("Erro pegando oauth");
     $cordovaInAppBrowser.close();
   });
 

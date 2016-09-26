@@ -9,7 +9,7 @@ var _quadro_atual      = {};
 var _circuito_atual    = {};
 var _circuito_controle = {};
 var _agendamentos      = {};
-var _slide_position              = 0;
+var _slide_position    = 0;
 
 //funções para pegar dado local
 
@@ -75,9 +75,11 @@ var _getCircuitos = function (){
 
 var _setCircuitos = function (value) {
   _circuitos=value;
+//  formata_circuito();
 };
 
 var _getQuadroAtual = function (){
+  formata_circuito();
   return _quadro_atual;
 };
 

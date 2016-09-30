@@ -8,12 +8,12 @@ smartqService.set_slide_position(_quadroAtual);
 
 //Parte para teste no navegador
 
-
+/*
 localStorageService.set('code',"047829edbd8d9e2b9b7fb11670935e21");
 localStorageService.set('access_token',"d9217c3f749d28f51eb01840d1406224");
 localStorageService.set('refresh_token',"13b1e8b5b0c97bb9baefdb913bc0c43a");
 localStorageService.set('user_id',"1");
-
+*/
 
 
 /*
@@ -25,14 +25,11 @@ console.log("user_id: "+localStorageService.get('user_id'));
 
 if (localStorageService.get('code')!==null) {
   if(internet.isOnline){
-  //Se tem usuário logado entra
   loading.show();
   getServeQuadros();
-
   }else{
     alerta.msg(msg.ERROR.not_internet,'');
   }
-
 }
 
 
@@ -144,37 +141,32 @@ function getServeQuadros() {
 loading.show();
   smartqService.getServerQuadros()
   .then(function(json){
-   smartqService.setQuadros(json.data);
-          if (json.data.length===0) {
-            loading.hide();
-            $location.path( "nodata");
-          } else {
-            _quadroAtual=json.data[0].id;
-            getServerCircuitos(_quadroAtual);
-
-          }
-        },function(json){
-          loading.hide();
-          alerta.msg(msg.ERROR.other_user,'');
-          localStorageService.clearAll();
-
-//          getServeQuadros();
-        });
+    smartqService.setQuadros(json.data);
+    if (json.data.length===0) {
+      loading.hide();
+      $location.path( "nodata");
+    } else {
+      _quadroAtual=json.data[0].id;
+      getServerCircuitos(_quadroAtual);
+    }
+  },function(json){
+    loading.hide();
+    alerta.msg(msg.ERROR.other_user,'');
+    localStorageService.clearAll();
+  });
 }
 
 
-    /*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
-    function getServerAgendamentos(id) {
-            smartqService.getServerAgendamentos(id).then(function (json) {
-                smartqService.setAgendamentos(json.data);
-
-
-                getServerControle(_quadroAtual);
-            },function (json) {
-                getServerAgendamentos(id);
-                console.log("problema pegando agendamentos");
-            });
-    }
+/*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
+function getServerAgendamentos(id) {
+        smartqService.getServerAgendamentos(id).then(function (json) {
+            smartqService.setAgendamentos(json.data);
+            getServerControle(_quadroAtual);
+        },function (json) {
+            getServerAgendamentos(id);
+            console.log("problema pegando agendamentos");
+        });
+}
 
 
 
@@ -182,24 +174,18 @@ loading.show();
 /*FUNÇÃO QUE PEGA CIRCUITO*/
 function getServerCircuitos(id){
   smartqService.getServerCircuitos(id).then(function (json) {
-
-        smartqService.setCircuitos(json.data);
-        getServerAgendamentos(_quadroAtual);
-
-
- //getServeQuadroDetails(_quadroAtual);
-
+    smartqService.setCircuitos(json.data);
+    getServerAgendamentos(_quadroAtual);
   },function (json) {
     getServerCircuitos(id);
     console.log("problema pegando circuitos");
   });
-
 }
+
 
 /*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
 function getServerControle(id) {
   smartqService.getServeControle(id).then(function (json) {
-    //console.log(json.data);
     smartqService.setControle(json.data);
     getServeQuadroDetails(_quadroAtual);
   },function (argument) {
@@ -211,8 +197,6 @@ function getServerControle(id) {
 function getServeQuadroDetails(id){
   smartqService.getServerQuadrosDetails(id).then(function (json) {
     smartqService.setQuadroAtual(json.data);
-    //$location.path( "app/principal");
-    console.log("aqui");
     $location.path( "quadros");
   },function (json) {
     console.log("problema pegando quadros");

@@ -1,5 +1,4 @@
 angular.module('smartq').controller('nodataController',  function($scope,$ionicPopup,localStorageService,$location,msg){
-
     $scope.mensagem=msg.ERROR.no_quadro;
     $scope.logout = function () {
         var confirmPopup = $ionicPopup.confirm({
@@ -14,6 +13,4 @@ angular.module('smartq').controller('nodataController',  function($scope,$ionicP
         }
       });
     };
-
-
 });

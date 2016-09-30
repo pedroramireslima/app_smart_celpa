@@ -40,57 +40,8 @@ $stateProvider.state('login',{
     controller  : 'principalController'
   });
 
-////////////////////////////////////////////
-/*
-  $stateProvider.state('app', {
-    url         : '/app',
-    abstract    : true,
-    templateUrl : 'templates/menu.html',
-    controller  : 'principalController'
-  });
 
-  $stateProvider.state('app.principal', {
-    url   : '/principal',
-    views : {
-      'menuContent': {
-        templateUrl : 'templates/principal.html',
-        controller  : 'principalController'
-      }
-    }
-  });
-
-  $stateProvider.state('app.circuitos', {
-    url   : '/circuitos',
-    views : {
-      'menuContent': {
-        templateUrl : 'templates/circuitos.html',
-        controller  : 'principalController'
-      }
-    }
-  });
-
-   $stateProvider.state('app.controle', {
-    url   : '/controle',
-    views : {
-      'menuContent': {
-        templateUrl : 'templates/controle.html',
-        controller  : 'principalController'
-      }
-    }
-  });
-
-   $stateProvider.state('app.agendamento', {
-    url   : '/agendamento',
-    views : {
-      'menuContent': {
-        templateUrl : 'templates/agendamento.html',
-        controller  : 'principalController'
-      }
-    }
-  });
-*/
-
-  // if none of the above states are matched, use this as the fallback
+// if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
 });

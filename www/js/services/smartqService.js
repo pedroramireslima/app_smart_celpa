@@ -144,52 +144,51 @@ function prevent(argument) {
 
 
 function trata_circuito_atual(json) {
-            json.data.measures_c_tuple=_convertTupla( json.data.measures_c_tuple);
-            json.data.measures_c_tuple_diff=_convertTupla( json.data.measures_c_tuple_diff);
-            json.data.value=parseFloat((json.data.circuit.total_energy) *(json.data.consumer_type.tax)).toFixed(2);
-            json.data.reais=parseInt(json.data.value);
-            json.data.centavos=parseInt(parseFloat(json.data.value - json.data.reais).toFixed(2)*100);
-            if (json.data.centavos<10) {
-              json.data.centavos="0"+json.data.centavos;
-            }
-
-            json.data.total=parseFloat((json.data.circuit.goal) *(json.data.consumer_type.tax)).toFixed(2);
-            json.data.percent_money=Math.round(json.data.value/json.data.total*100);
-            json.data.percent_consumo=Math.round(json.data.circuit.total_energy/json.data.break_panel.total_energy*100);
-            json.data.percent_local=Math.round(json.data.circuit.total_energy/json.data.circuit.goal*100);
-            if (json.data.percent_local==Infinity) {
-              json.data.percent_local=0;
-            }
-            json.data.last_measure.voltage                = prevent(parseFloat(json.data.last_measure.voltage).toFixed(2));
-            json.data.last_measure.voltage_ab             = prevent(parseFloat(json.data.last_measure.voltage_ab).toFixed(2));
-            json.data.last_measure.voltage_ac             = prevent(parseFloat(json.data.last_measure.voltage_ac).toFixed(2));
-            json.data.last_measure.voltage_bc             = prevent(parseFloat(json.data.last_measure.voltage_bc).toFixed(2));
-            json.data.last_measure.power_factor           = prevent(parseFloat(json.data.last_measure.power_factor).toFixed(2));
-            json.data.last_measure.current                = prevent(parseFloat(json.data.last_measure.current).toFixed(2));
-            json.data.last_measure.current_a              = prevent(parseFloat(json.data.last_measure.current_a).toFixed(2));
-            json.data.last_measure.current_b              = prevent(parseFloat(json.data.last_measure.current_b).toFixed(2));
-            json.data.last_measure.current_c              = prevent(parseFloat(json.data.last_measure.current_c).toFixed(2));
-            json.data.last_measure.import_active_energy   = prevent(parseFloat(json.data.last_measure.import_active_energy).toFixed(2));
-            json.data.last_measure.import_reactive_energy = prevent(parseFloat(json.data.last_measure.import_reactive_energy).toFixed(2));
-            json.data.last_measure.line_frequency         = prevent(parseFloat(json.data.last_measure.line_frequency).toFixed(2));
-            json.data.goal_tuple                          = _convertTupla( json.data.goal_tuple);
-            json.data.previsions_c_tuple_money            = _convertTupla( json.data.previsions_c_tuple_money);
-            json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a                          = new Date(obj); return a.getDate();});
-            json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a                     = new Date(obj); return a.getDate();});
-            json.data.measures_c_tuple_diff[1]            = json.data.measures_c_tuple_diff[1];
-            json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a                                = new Date(obj); return a.getDate();});
-            var dia                               = new Date();
-            dia                                   = dia.getDate();
-            var vec                               = [0,0,0,0];
-            var a                                 = json.data.goal_tuple[0].indexOf(dia);
-            json.data.goal_tuple[0]               = json.data.goal_tuple[0].slice(a-3,a+4);
-            json.data.measures_c_tuple[1]         = json.data.measures_c_tuple[1].slice(a-3,a+4);
-            json.data.previsions_c_tuple_money[1] = vec.concat(json.data.previsions_c_tuple_money[1].slice(0,3));
-            json.data.previsions_c_tuple_money[1] = json.data.previsions_c_tuple_money[1].map(Math.round);
-            json.data.goal_tuple[1]               = json.data.goal_tuple[1].slice(a-3,a+4);
-            json.data.measures_c_tuple_diff[1]    = json.data.measures_c_tuple_diff[1].slice(a-3,a+4);
-            json.data.measures_c_tuple_diff[0]    = json.data.measures_c_tuple_diff[0].slice(a-3,a+4);
-            return json.data;
+  json.data.measures_c_tuple=_convertTupla( json.data.measures_c_tuple);
+  json.data.measures_c_tuple_diff=_convertTupla( json.data.measures_c_tuple_diff);
+  json.data.value=parseFloat((json.data.circuit.total_energy) *(json.data.consumer_type.tax)).toFixed(2);
+  json.data.reais=parseInt(json.data.value);
+  json.data.centavos=parseInt(parseFloat(json.data.value - json.data.reais).toFixed(2)*100);
+  if (json.data.centavos<10) {
+    json.data.centavos="0"+json.data.centavos;
+  }
+  json.data.total=parseFloat((json.data.circuit.goal) *(json.data.consumer_type.tax)).toFixed(2);
+  json.data.percent_money=Math.round(json.data.value/json.data.total*100);
+  json.data.percent_consumo=Math.round(json.data.circuit.total_energy/json.data.break_panel.total_energy*100);
+  json.data.percent_local=Math.round(json.data.circuit.total_energy/json.data.circuit.goal*100);
+  if (json.data.percent_local==Infinity) {
+    json.data.percent_local=0;
+  }
+  json.data.last_measure.voltage                = prevent(parseFloat(json.data.last_measure.voltage).toFixed(2));
+  json.data.last_measure.voltage_ab             = prevent(parseFloat(json.data.last_measure.voltage_ab).toFixed(2));
+  json.data.last_measure.voltage_ac             = prevent(parseFloat(json.data.last_measure.voltage_ac).toFixed(2));
+  json.data.last_measure.voltage_bc             = prevent(parseFloat(json.data.last_measure.voltage_bc).toFixed(2));
+  json.data.last_measure.power_factor           = prevent(parseFloat(json.data.last_measure.power_factor).toFixed(2));
+  json.data.last_measure.current                = prevent(parseFloat(json.data.last_measure.current).toFixed(2));
+  json.data.last_measure.current_a              = prevent(parseFloat(json.data.last_measure.current_a).toFixed(2));
+  json.data.last_measure.current_b              = prevent(parseFloat(json.data.last_measure.current_b).toFixed(2));
+  json.data.last_measure.current_c              = prevent(parseFloat(json.data.last_measure.current_c).toFixed(2));
+  json.data.last_measure.import_active_energy   = prevent(parseFloat(json.data.last_measure.import_active_energy).toFixed(2));
+  json.data.last_measure.import_reactive_energy = prevent(parseFloat(json.data.last_measure.import_reactive_energy).toFixed(2));
+  json.data.last_measure.line_frequency         = prevent(parseFloat(json.data.last_measure.line_frequency).toFixed(2));
+  json.data.goal_tuple                          = _convertTupla( json.data.goal_tuple);
+  json.data.previsions_c_tuple_money            = _convertTupla( json.data.previsions_c_tuple_money);
+  json.data.measures_c_tuple[0]                 = json.data.measures_c_tuple[0].map(function(obj){var a                          = new Date(obj); return a.getDate();});
+  json.data.measures_c_tuple_diff[0]            = json.data.measures_c_tuple_diff[0].map(function(obj){var a                     = new Date(obj); return a.getDate();});
+  json.data.measures_c_tuple_diff[1]            = json.data.measures_c_tuple_diff[1];
+  json.data.goal_tuple[0]                       = json.data.goal_tuple[0].map(function(obj){var a                                = new Date(obj); return a.getDate();});
+  var dia                               = new Date();
+  dia                                   = dia.getDate();
+  var vec                               = [0,0,0,0];
+  var a                                 = json.data.goal_tuple[0].indexOf(dia);
+  json.data.goal_tuple[0]               = json.data.goal_tuple[0].slice(a-3,a+4);
+  json.data.measures_c_tuple[1]         = json.data.measures_c_tuple[1].slice(a-3,a+4);
+  json.data.previsions_c_tuple_money[1] = vec.concat(json.data.previsions_c_tuple_money[1].slice(0,3));
+  json.data.previsions_c_tuple_money[1] = json.data.previsions_c_tuple_money[1].map(Math.round);
+  json.data.goal_tuple[1]               = json.data.goal_tuple[1].slice(a-3,a+4);
+  json.data.measures_c_tuple_diff[1]    = json.data.measures_c_tuple_diff[1].slice(a-3,a+4);
+  json.data.measures_c_tuple_diff[0]    = json.data.measures_c_tuple_diff[0].slice(a-3,a+4);
+  return json.data;
 }
 
 
@@ -336,7 +335,7 @@ var _putLocation = function (latitude_value,longitude_value) {
 
 
     return $http.put(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/update_location.json?access_token="+localStorageService.get('access_token'),dado);
-  };
+};
 
 
 //Liga/desliga circuito

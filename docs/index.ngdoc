@@ -1,0 +1,32 @@
+@ngdoc overview
+@id index
+@name index
+@description
+
+# Documentação Smart Quadro APP
+
+##Instalando os plugins
+Use 
+
+	ionic state reset
+
+para resetar o estado e baixar os plugis necessários
+
+##Login com o servidor
+O login com o servidor é realizado através de Oauth, a aplicação foi registrada com os seguintes dados:
+
+	Name: 	 smartqapp
+	Client Id:  2055b5edad6a6a60bf2c310761e586e3
+	Secret: 	747798d6dc09df944ece50b7039c9267
+
+No aplicativo é feito um redirecionamento para a url a seguir mostrada abaixo, essa abre a tela de login e, após efetuado o mesmo, retorna o code necessário para adquirir o access token do usuário.
+	
+	http://dev.smartquadro.com.br:3600/oauth/new?client_id=2055b5edad6a6a60bf2c310761e586e3&client_secret=747798d6dc09df944ece50b7039c9267&redirect_uri=http://localhost
+O endereço de redirecionamento foi o **localhost** para ser redirecionado novamente para o aplicativo.
+	
+Para a aquisição do access token é feito o uso da url:
+
+	curl -X POST -d '' 'http://dev.smartquadro.com.br:3600/oauth/token.json?client_id=2055b5edad6a6a60bf2c310761e586e3&client_secret=747798d6dc09df944ece50b7039c9267&code=dfc6f69bbf1d7c45e684a4683252e67a'
+
+com isso é possível acessar os dados do usuário necessários para o aplicativo.
+

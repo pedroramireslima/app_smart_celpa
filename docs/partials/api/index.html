@@ -1,0 +1,21 @@
+<h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><div class="index-page"><h2 id="documenta-o-smart-quadro-app" id="documentação-smart-quadro-app">Documentação Smart Quadro APP</h2>
+<h3 id="instalando-os-plugins" id="documentação-smart-quadro-app_instalando-os-plugins">Instalando os plugins</h3>
+<p>Use </p>
+<pre><code>ionic state reset
+</code></pre><p>para resetar o estado e baixar os plugis necessários</p>
+<h3 id="login-com-o-servidor" id="documentação-smart-quadro-app_login-com-o-servidor">Login com o servidor</h3>
+<p>O login com o servidor é realizado através de Oauth, a aplicação foi registrada com os seguintes dados:</p>
+<pre><code>Name:      smartqapp
+Client Id:  2055b5edad6a6a60bf2c310761e586e3
+Secret:     747798d6dc09df944ece50b7039c9267
+</code></pre><p>No aplicativo é feito um redirecionamento para a url a seguir mostrada abaixo, essa abre a tela de login e, após efetuado o mesmo, retorna o code necessário para adquirir o access token do usuário.</p>
+<pre><code>http://dev.smartquadro.com.br:3600/oauth/new?client_id=2055b5edad6a6a60bf2c310761e586e3&amp;client_secret=747798d6dc09df944ece50b7039c9267&amp;redirect_uri=http://localhost
+</code></pre><p>O endereço de redirecionamento foi o <strong>localhost</strong> para ser redirecionado novamente para o aplicativo.</p>
+<p>Para a aquisição do access token é feito o uso da url:</p>
+<pre><code>curl -X POST -d &#39;&#39; &#39;http://dev.smartquadro.com.br:3600/oauth/token.json?client_id=2055b5edad6a6a60bf2c310761e586e3&amp;client_secret=747798d6dc09df944ece50b7039c9267&amp;code=dfc6f69bbf1d7c45e684a4683252e67a&#39;
+</code></pre><p>com isso é possível acessar os dados do usuário necessários para o aplicativo.</p>
+</div></div>

@@ -1,27 +1,13 @@
 /**
-*  Controller da tela de login
-*/
+ * @ngdoc controller
+ * @name smartq.controller: loginController
+ * @description Controller responsável pelo login da aplicação. Verifica se o usuário já está logado, faz requisições das informações ao servidor.
+ */
 angular.module('smartq').controller('loginController', function($scope,$http,smartqService,loading,$location,config,$cordovaInAppBrowser,$rootScope,alerta,msg,localStorageService,internet,$ionicPopup){
 
 var _quadroAtual = 0;
 smartqService.set_slide_position(_quadroAtual);
 
-//Parte para teste no navegador
-
-/*
-localStorageService.set('code',"047829edbd8d9e2b9b7fb11670935e21");
-localStorageService.set('access_token',"d9217c3f749d28f51eb01840d1406224");
-localStorageService.set('refresh_token',"13b1e8b5b0c97bb9baefdb913bc0c43a");
-localStorageService.set('user_id',"1");
-*/
-
-
-/*
-console.log("code: "+localStorageService.get('code'));
-console.log("access_token: "+localStorageService.get('access_token'));
-console.log("refresh_token: "+localStorageService.get('refresh_token'));
-console.log("user_id: "+localStorageService.get('user_id'));
-*/
 
 if (localStorageService.get('code')!==null) {
   if(internet.isOnline){
@@ -32,7 +18,12 @@ if (localStorageService.get('code')!==null) {
   }
 }
 
-
+/**
+ * @ngdoc method
+ * @name  doLogin
+ * @methodOf smartq.controller: loginController
+ * @description Verifica se o usuário já está logado, se sim redireciona para tela principal da aplicação, se não, redireciona para o login.
+ */
 $scope.doLogin = function () {
 if(internet.isOnline){
 
@@ -52,6 +43,12 @@ if(internet.isOnline){
 };
 
 
+/**
+ * @ngdoc method
+ * @name  login
+ * @methodOf smartq.controller: loginController
+ * @description Método utilizado para registrar usuário quando ainda não possui login ativo.
+ */
 function login() {
 
   var options = {
@@ -136,7 +133,12 @@ function login() {
 
 }
 
-
+/**
+ * @ngdoc method
+ * @name  getServerQuadros
+ * @methodOf smartq.controller: loginController
+ * @description Método que faz requisição ao servidor e salva os dados localmente dos quadros do usuário.
+*/
 function getServeQuadros() {
 loading.show();
   smartqService.getServerQuadros()
@@ -157,7 +159,13 @@ loading.show();
 }
 
 
-/*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
+/**
+ * @ngdoc method
+ * @name  getServerAgendamentos
+ * @methodOf smartq.controller: loginController
+ * @description Método que faz requisição ao servidor e salva os dados localmente dos agendamentos do usuário.
+ * @param {Number} id Identificador do quadro
+ */
 function getServerAgendamentos(id) {
         smartqService.getServerAgendamentos(id).then(function (json) {
             smartqService.setAgendamentos(json.data);
@@ -171,7 +179,13 @@ function getServerAgendamentos(id) {
 
 
 
-/*FUNÇÃO QUE PEGA CIRCUITO*/
+/**
+ * @ngdoc method
+ * @name  getServerCircuitos
+ * @methodOf smartq.controller: loginController
+ * @description Método que faz requisição ao servidor e salva os dados localmente dos Circuitos do usuário.
+ * @param {Number} id Identificador do quadro
+ */
 function getServerCircuitos(id){
   smartqService.getServerCircuitos(id).then(function (json) {
     smartqService.setCircuitos(json.data);
@@ -183,7 +197,13 @@ function getServerCircuitos(id){
 }
 
 
-/*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
+/**
+ * @ngdoc method
+ * @name  getServerControle
+ * @methodOf smartq.controller: loginController
+ * @description Método que faz requisição ao servidor e salva os dados localmente dos controles de demanda do usuário.
+ * @param {Number} id Identificador do quadro
+ */
 function getServerControle(id) {
   smartqService.getServeControle(id).then(function (json) {
     smartqService.setControle(json.data);
@@ -193,7 +213,13 @@ function getServerControle(id) {
   });
 }
 
-/*FUNÇÃO QUE PEGA DETALHES DO QUADRO ATUAL*/
+/**
+ * @ngdoc method
+ * @name  getServerQuadroDetails
+ * @methodOf smartq.controller: loginController
+ * @description Método que faz requisição ao servidor e salva os dados localmente das informações de um quadro específico do usuário.
+ * @param {Number} id Identificador do quadro
+ */
 function getServeQuadroDetails(id){
   smartqService.getServerQuadrosDetails(id).then(function (json) {
     smartqService.setQuadroAtual(json.data);

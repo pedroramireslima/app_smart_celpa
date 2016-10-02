@@ -1,0 +1,107 @@
+<h1><code ng:non-bindable=""> principalController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">smartq</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="smartq-controller-page smartq-controller-principalcontroller-page"><p>Controller principal da aplicação, responsável por fazer requisições ao servidor e atualizar as telas que mostram os dados do smart quadro ao usuário.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_abreagendamento">abreAgendamento()</h3>
+<div class="abreagendamento"><div class="abreagendamento-page"><p>Abre o modal de agendamento</p>
+</div></div>
+</li>
+<li><h3 id="methods_abrecircuitos">abreCircuitos()</h3>
+<div class="abrecircuitos"><div class="abrecircuitos-page"><p>Abre o modal de circuito</p>
+</div></div>
+</li>
+<li><h3 id="methods_abrecontrole">abreControle()</h3>
+<div class="abrecontrole"><div class="abrecontrole-page"><p>Abre o modal de controle</p>
+</div></div>
+</li>
+<li><h3 id="methods_changequadro">changeQuadro(index)</h3>
+<div class="changequadro"><div class="changequadro-page"><p>Método que identifica que o quadro atual foi modificado e dará início ao processo de fazer as requisições da informações para o novo quadro desejado.</p>
+</div><h5 id="methods_changequadro_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>index</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="changequadro-page"><p>Índice do quadro atualmente selecionado</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_changeslide">changeSlide(index)</h3>
+<div class="changeslide"><div class="changeslide-page"><p>Método que identifica que o carrossel foi utilizado e muda a descrição apresentada na UI</p>
+</div><h5 id="methods_changeslide_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>index</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="changeslide-page"><p>Índice no array que indica o slide atualmente no centro</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_closeall">closeAll()</h3>
+<div class="closeall"><div class="closeall-page"><p>Fecha todos os modais com menu(circuito,controle,agendamento)</p>
+</div></div>
+</li>
+<li><h3 id="methods_getserveragendamentos">getServerAgendamentos(id)</h3>
+<div class="getserveragendamentos"><div class="getserveragendamentos-page"><p>Método que faz requisição ao servidor e salva os dados localmente dos agendamentos do usuário.</p>
+</div><h5 id="methods_getserveragendamentos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getserveragendamentos-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getservercircuitos">getServerCircuitos(id)</h3>
+<div class="getservercircuitos"><div class="getservercircuitos-page"><p>Método que faz requisição ao servidor e salva os dados localmente dos Circuitos do usuário.</p>
+</div><h5 id="methods_getservercircuitos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getservercircuitos-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getservercontrole">getServerControle(id)</h3>
+<div class="getservercontrole"><div class="getservercontrole-page"><p>Método que faz requisição ao servidor e salva os dados localmente dos controles de demanda do usuário.</p>
+</div><h5 id="methods_getservercontrole_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getservercontrole-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getserverquadrodetails">getServerQuadroDetails(id)</h3>
+<div class="getserverquadrodetails"><div class="getserverquadrodetails-page"><p>Método que faz requisição ao servidor e salva os dados localmente das informações de um quadro específico do usuário.</p>
+</div><h5 id="methods_getserverquadrodetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getserverquadrodetails-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getupdatecircuitos">getUpdateCircuitos(id)</h3>
+<div class="getupdatecircuitos"><div class="getupdatecircuitos-page"><p>Método que faz requisição ao servidor e atualiza os dados locais de circuitos do usuário.</p>
+</div><h5 id="methods_getupdatecircuitos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getupdatecircuitos-page"><p>Identificador do circuito</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_get_color">get_color(color)</h3>
+<div class="get_color"><div class="get-color-page"><p>Método que retorna qual a classe que deve ser aplicada nos componentes da UI do aplicativo, mudando assim a cor.</p>
+</div><h5 id="methods_get_color_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>color</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="get-color-page"><p>Código html da cor a ser aplicada</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_graficocircuito">graficoCircuito(value)</h3>
+<div class="graficocircuito"><div class="graficocircuito-page"><p>Método que modifica o visível entre os dois gráficos de detalhes dos circuitos.</p>
+</div><h5 id="methods_graficocircuito_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="graficocircuito-page"><p>Indica qual o gráfico que deve ser visível atualmente</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_graficoquadro">graficoQuadro(value)</h3>
+<div class="graficoquadro"><div class="graficoquadro-page"><p>Método que modifica o visível entre os dois gráficos de detalhes dos quadros.</p>
+</div><h5 id="methods_graficoquadro_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="graficoquadro-page"><p>Indica qual o gráfico que deve ser visível atualmente</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_logout">logout()</h3>
+<div class="logout"><div class="logout-page"><p>Método que faz o logout do usuário na aplicação</p>
+</div></div>
+</li>
+<li><h3 id="methods_openconfig">openConfig()</h3>
+<div class="openconfig"><div class="openconfig-page"><p>Abre o modal de configurações</p>
+</div></div>
+</li>
+<li><h3 id="methods_opendetailscircuits">openDetailsCircuits(quadro_id, id)</h3>
+<div class="opendetailscircuits"><div class="opendetailscircuits-page"><p>Abre o modal de detalhes dos circuitos</p>
+</div><h5 id="methods_opendetailscircuits_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>quadro_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="opendetailscircuits-page"><p>Identificador do quadro</p>
+</div></td></tr><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="opendetailscircuits-page"><p>Identificador do circuito</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_opennotification">openNotification()</h3>
+<div class="opennotification"><div class="opennotification-page"><p>Abre o modal de notificações</p>
+</div></div>
+</li>
+<li><h3 id="methods_openquadros">openquadros()</h3>
+<div class="openquadros"><div class="openquadros-page"><p>Abre o modal de detalhes do quadro</p>
+</div></div>
+</li>
+<li><h3 id="methods_setstate">setState(quadro_id, circuito_id, estado)</h3>
+<div class="setstate"><div class="setstate-page"><p>Método que modifica o estado atual de um circuito(ligado/desligado)</p>
+</div><h5 id="methods_setstate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>quadro_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="setstate-page"><p>Identificador do quadro</p>
+</div></td></tr><tr><td>circuito_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="setstate-page"><p>Identificador do circuito</p>
+</div></td></tr><tr><td>estado</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="setstate-page"><p>Estado do circuito</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

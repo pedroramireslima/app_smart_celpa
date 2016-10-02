@@ -1,5 +1,8 @@
-//Service para aquisição de dados e envio de dados
-
+/**
+ * @ngdoc service
+ * @name smartq.service: smartqService
+ * @description Service responsável por fazer as requisições http ao servidor, tratar, salvar e armazenar os dados.
+ */
 angular.module('smartq').factory('smartqService', function($http,config,localStorageService){
 
 //variáveis que guardam os valores dos jsons localmente
@@ -11,23 +14,47 @@ var _circuito_controle = {};
 var _agendamentos      = {};
 var _slide_position    = 0;
 
-//funções para pegar dado local
-
+/**
+* @ngdoc method
+* @name set_slide_position
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _slide_position.
+* @param {Number} value Valor a ser atribuído à variável
+*/
 var _set_slide_position= function(value){
   _slide_position = value;
 };
 
+/**
+* @ngdoc method
+* @name _get_slide_position
+* @methodOf smartq.service: smartqService
+* @description Pega o valor da variável _slide_position.
+* @return {Number} Valor da variável
+*/
 var _get_slide_position= function(){
   return _slide_position;
 };
 
 
-
+/**
+* @ngdoc method
+* @name _getAgendamentos
+* @methodOf smartq.service: smartqService
+* @description Pega o valor da variável _agendamentos.
+* @return {Object}  Valor da variável
+*/
 var _getAgendamentos = function (){
   return _agendamentos;
 };
 
-
+/**
+* @ngdoc method
+* @name _setAgendamentos
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _agendamentos.
+* @param {Object} value Valor a ser atribuído à variável
+*/
 var _setAgendamentos = function (value) {
   var groupedData = {ids:[]};
 
@@ -48,55 +75,130 @@ var _setAgendamentos = function (value) {
 };
 
 
-
+/**
+* @ngdoc method
+* @name _getControle
+* @methodOf smartq.service: smartqService
+* @description Retorna valor da variável _circuito_controle.
+* @return {Object}  Valor da variável
+*/
 var _getControle = function (){
   return _circuito_controle;
 };
 
-
+/**
+* @ngdoc method
+* @name _setControle
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _circuito_controle.
+* @param {Object} _circuito_controle Valor a ser atribuído à variável
+*/
 var _setControle = function (value) {
 
   _circuito_controle=value;
 };
 
 
-
+/**
+* @ngdoc method
+* @name _getquadros
+* @methodOf smartq.service: smartqService
+* @description Retorna o valor da variável _quadros.
+* @return {Object}  Valor da variável
+*/
 var _getQuadros = function (){
   return _quadros;
 };
 
+/**
+* @ngdoc method
+* @name _setQuadros
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _quadros.
+* @param {Object} value Valor a ser atribuído à variável
+*/
 var _setQuadros = function (value) {
   _quadros=value;
 };
 
+/**
+* @ngdoc method
+* @name _getCircuitos
+* @methodOf smartq.service: smartqService
+* @description Retorna o valor da variável _circuitos.
+* @return {Object}  Valor da variável
+*/
 var _getCircuitos = function (){
   return _circuitos;
 };
 
+/**
+* @ngdoc method
+* @name _setCircuitos
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _circuitos.
+* @param {Object} value Valor a ser atribuído à variável
+*/
 var _setCircuitos = function (value) {
   _circuitos=value;
 //  formata_circuito();
 };
 
+/**
+* @ngdoc method
+* @name _getQuadroAtual
+* @methodOf smartq.service: smartqService
+* @description Retorna o valor da variável _quadro_atual.
+* @return {Object}  Valor da variável
+*/
 var _getQuadroAtual = function (){
   formata_circuito();
   return _quadro_atual;
 };
 
+/**
+* @ngdoc method
+* @name _setQuadroAtual
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _quadro_atual.
+* @param {Object} value Valor a ser atribuído à variável
+*/
 var _setQuadroAtual = function (value) {
   _quadro_atual=value;
   formata_circuito();
 };
 
+/**
+* @ngdoc method
+* @name _getCircuitoAtual
+* @methodOf smartq.service: smartqService
+* @description Retorna o valor da variável _circuito_atual.
+* @return {Object}  Valor da variável
+*/
 var _getCircuitoAtual = function (){
   return _circuito_atual;
 };
 
+/**
+* @ngdoc method
+* @name _setCircuitoAtual
+* @methodOf smartq.service: smartqService
+* @description Modifica o valor da variável _circuito_atual.
+* @return {Object} value Valor da variável
+*/
 var _setCircuitoAtual = function (value) {
   _circuito_atual=trata_circuito_atual(value);
 
 };
 
+/**
+* @ngdoc method
+* @name _trata_controle
+* @methodOf smartq.service: smartqService
+* @description Formata o objeto contendo informações do controle adicionando informações adicionais.
+* @param {Object} dado_controle Obejto contendo informações do controle
+* @return {Object} Objeto com informações adicionais
+*/
 var _trata_controle=function (dado_controle){
 
   var auxiliar = [];
@@ -134,6 +236,14 @@ return auxiliar;
 
 };
 
+/**
+* @ngdoc method
+* @name prevent
+* @methodOf smartq.service: smartqService
+* @description Remove os valores NAN.
+* @param {Object} argument Valor a ser verificado
+* @return {Object} Dado formatado para exibição
+*/
 function prevent(argument) {
   if (isNaN(argument)) {
     return "-";
@@ -142,7 +252,14 @@ function prevent(argument) {
   }
 }
 
-
+/**
+* @ngdoc method
+* @name trata_circuito_atual
+* @methodOf smartq.service: smartqService
+* @description Formata o objeto contendo informações do circuito atual adicionando informações.
+* @param {Object} json Objeto a ser tratado
+* @return {Object} Objeto formatado
+*/
 function trata_circuito_atual(json) {
   json.data.measures_c_tuple=_convertTupla( json.data.measures_c_tuple);
   json.data.measures_c_tuple_diff=_convertTupla( json.data.measures_c_tuple_diff);
@@ -191,7 +308,12 @@ function trata_circuito_atual(json) {
   return json.data;
 }
 
-
+/**
+* @ngdoc method
+* @name formata_circuito
+* @methodOf smartq.service: smartqService
+* @description Formata o objeto contendo informações do circuito.
+*/
 function formata_circuito() {
     for (var i = 0; i < _circuitos.length; i++) {
       _circuitos[i].value =parseFloat(_quadro_atual.consumer_type.tax*_circuitos[i].total_energy).toFixed(2);
@@ -205,7 +327,13 @@ function formata_circuito() {
 
 }
 
-
+/**
+* @ngdoc method
+* @name _quadroDetalhes
+* @methodOf smartq.service: smartqService
+* @description Formata e retorna informações dos detalhes do quadro.
+* @return {Object} Objeto formatado
+*/
 var _quadrosDetalhes=function () {
 
   nome=  _quadro_atual.break_panel.name;
@@ -289,43 +417,91 @@ var _quadrosDetalhes=function () {
 
 
 
-//     SERVIDOR
+/**
+* @ngdoc method
+* @name _getServerNotifications
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para notificações.
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServerNotifications = function(){
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/alerts.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
-//funções para pegar dado no servidor
+/**
+* @ngdoc method
+* @name _getServerQuadros
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para quadros.
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServerQuadros = function (){
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
-//funções para pegar circuitos do quadro atual no servidor
+/**
+* @ngdoc method
+* @name _getServerCircuitos
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para Circuitos.
+* @param {Number} id Identificador do quadro
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServerCircuitos = function (id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+id+"/circuits.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
-//Pega detalhes de um circuito
-
+/**
+* @ngdoc method
+* @name
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisiçãoo http para detalhes do circuito.
+* @param {Number} panel_id Identificador do quadro
+* @param {Number} circuito_id Identificador do circuito
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServeCircuitoDetails = function (panel_id,circuito_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/circuits/"+circuito_id+".json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
-//Pega controle
+/**
+* @ngdoc method
+* @name _getServerControle
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para controles de demanda.
+* @param {Number} panel_id Identificador do quadro
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServeControle = function (panel_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/consumption_controls.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
 
-//Pega detalhes de um quadro
+/**
+* @ngdoc method
+* @name _getServerQuadrosDetails
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para detalhes dos quadros.
+* @param {Number} id Identificador do quadro
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServerQuadrosDetails = function (id){
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+id+".json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 
 };
 
-//Envia localização para o servidor
+/**
+* @ngdoc method
+* @name _putLocation
+* @methodOf smartq.service: smartqService
+* @description Envia localização para o servidor.
+* @param {Number} latitude_value Valor da latitude do usuário
+* @param {Number} longitude_value Valor da longitude do usuário
+* @return {Object} Promise a ser analisada no controller
+*/
 var _putLocation = function (latitude_value,longitude_value) {
   var dado =JSON.stringify( {
     user:{
@@ -338,23 +514,52 @@ var _putLocation = function (latitude_value,longitude_value) {
 };
 
 
-//Liga/desliga circuito
+/**
+* @ngdoc method
+* @name _setEstadoCircuito
+* @methodOf smartq.service: smartqService
+* @description Modifica o estado do circuito enviando comando via http.
+* @param {Number} panel_id Identificador do quadro
+* @param {Number} circuito_id Identificador do circuito
+* @param {Number} estado Estado a ser atribuido ao circuito
+* @return {Object} Promise a ser analisada no controller
+*/
 var _setEstadoCircuito = function (panel_id,circuito_id,estado) {
   return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/circuits/"+circuito_id+"/action_circuit/"+estado+".json?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
 };
 
-//Pega vetor de agendamentos do painel
+/**
+* @ngdoc method
+* @name _getServerAgendamentos
+* @methodOf smartq.service: smartqService
+* @description Retorna promise da requisição http para agendamentos.
+* @param {Number} panel_id i/dentificador do quadro
+* @return {Object} Promise a ser analisada no controller
+*/
 var _getServerAgendamentos = function (panel_id) {
   return  $http.get(config.SERVER.url+":"+config.SERVER.port+"/users/"+localStorageService.get('user_id')+"/break_panels/"+panel_id+"/schedulings.json?access_token="+localStorageService.get('access_token'),{timeout: 30000});
 };
 
-//Limpa notificações
+/**
+* @ngdoc method
+* @name _clearNotifications
+* @methodOf smartq.service: smartqService
+* @description Informa ao servidor que as notificações foram visualizadas.
+* @return {Object} Promise a ser analisada no controller
+*/
 var _clearNotification = function () {
   return  $http.post(config.SERVER.url+":"+config.SERVER.port+"/clear_alerts?access_token="+localStorageService.get('access_token'),{},{timeout: 30000});
 };
 
 
-//Converte tupla para formato de gráficos
+/**
+* @ngdoc method
+* @name _convertTupla
+* @methodOf smartq.service: smartqService
+* @description Formata os dados vindos do servidor que serão usados para gráficos, colocando-os em um formato que possa ser utilizado na biblioteca de gráficos utilizada no app.
+* @param {Array} data Array com dados para gráficos
+* @return {Array} Dado formatado
+*/
 var _convertTupla = function (data) {
   var array_1=[];
   var array_2=[];

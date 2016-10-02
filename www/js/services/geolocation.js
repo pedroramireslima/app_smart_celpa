@@ -1,6 +1,17 @@
+/**
+ * @ngdoc service
+ * @name smartq.service: BackgroundGeolocationService
+ * @description Service responsável pelo serviço em background de localização do usuário.
+ */
 angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http','smartqService','localStorageService','$cordovaLocalNotification', function ($q, $http,smartqService,localStorageService,$cordovaLocalNotification) {
 
-
+    /**
+    * @ngdoc method
+    * @name  doLogin
+    * @methodOf smartq.service: BackgroundGeolocationService
+    * @description Função de callback executada quando uma nova coordenada gps é adquirida, envia dados de posição para o servidor e pega notificações.
+    * @param {Object} location Objeto contendo informações de geolocalização
+    */
     var callbackFn = function(location) {
       console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
       if (localStorageService.get('user_id')!==null){
@@ -24,12 +35,23 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
     }
   },
 
-
+    /**
+    * @ngdoc method
+    * @name  failureFn
+    * @methodOf smartq.service: BackgroundGeolocationService
+    * @description Método executado ao ocorrer erro pegando coordenadas
+    * @param {Object} error Objeto contendo informações de erro
+    */
   failureFn = function(error) {
       console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
   },
 
-    //Enable background geolocation
+    /**
+    * @ngdoc method
+    * @name  start
+    * @methodOf smartq.service: BackgroundGeolocationService
+    * @description Método que inicia a geolocalização em background
+    */
   start = function () {
     window.localStorage.setItem('bgGPS', 1);
     backgroundGeoLocation.configure(callbackFn, failureFn, {
@@ -54,7 +76,12 @@ angular.module('smartq').factory('BackgroundGeolocationService', ['$q', '$http',
       }
     },
 
-      // Stop data tracking
+    /**
+    * @ngdoc method
+    * @name  stop
+    * @methodOf smartq.service: BackgroundGeolocationService
+    * @description Método que para a geolocalização.
+    */
     stop: function () {
       window.localStorage.setItem('bgGPS', 0);
       backgroundGeoLocation.stop();

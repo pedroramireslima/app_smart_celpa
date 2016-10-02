@@ -1,3 +1,8 @@
+/**
+ * @ngdoc controller
+ * @name smartq.controller: principalController
+ * @description Controller principal da aplicação, responsável por fazer requisições ao servidor e atualizar as telas que mostram os dados do smart quadro ao usuário.
+ */
 angular.module('smartq').controller('principalController', function($scope, $ionicModal,smartqService,loading,$filter,localStorageService,$location,$ionicPopup,msg){
 
   loading.show();
@@ -16,7 +21,15 @@ angular.module('smartq').controller('principalController', function($scope, $ion
   $scope.app.msg_agendamentos = msg.ERROR.no_agendamentos;
 
 
-  // MODIFICA O ESTADO DO CIRCUITO
+  /**
+   * @ngdoc method
+   * @name  setState
+   * @methodOf smartq.controller: principalController
+   * @description Método que modifica o estado atual de um circuito(ligado/desligado)
+   * @param {Number} quadro_id Identificador do quadro
+   * @param {Number} circuito_id Identificador do circuito
+   * @param {Boolean} estado Estado do circuito
+   */
   $scope.setState=function (quadro_id,circuito_id,estado) {
     if (estado===true) {
       estado=1;
@@ -31,7 +44,6 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     confirmPopup.then(function(res) {
       if(res) {
          //envia dado para o servidor
-         console.log("O circuito "+circuito_id+" do quadro "+quadro_id+" foi para o estado "+estado+" enviando para o servidor...");
         smartqService.setEstadoCircuito(quadro_id,circuito_id,estado).then(function (json) {
           if (json.data.Actuation=="OK") {
             var alertPopup = $ionicPopup.alert({
@@ -65,6 +77,14 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       'space'       : 120
   };
 
+
+  /**
+   * @ngdoc method
+   * @name  get_color
+   * @methodOf smartq.controller: principalController
+   * @description Método que retorna qual a classe que deve ser aplicada nos componentes da UI do aplicativo, mudando assim a cor.
+   * @param {String} color Código html da cor a ser aplicada
+   */
   function get_color(color) {
     if (color=='8b51ce') {
       return 'lilas';
@@ -114,7 +134,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 
 
-  /*FUNÇÃO QUE PEGA CIRCUITO*/
+  /**
+   * @ngdoc method
+   * @name  getServerCircuitos
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz requisição ao servidor e salva os dados localmente dos Circuitos do usuário.
+   * @param {Number} id Identificador do quadro
+   */
   function getServerCircuitos(id){
     loading.show();
     smartqService.getServerCircuitos(id).then(function (json) {
@@ -127,7 +153,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
   }
 
-  /*FUNÇÃO QUE ATUALIZA CIRCUITO*/
+  /**
+   * @ngdoc method
+   * @name  getUpdateCircuitos
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz requisição ao servidor e atualiza os dados locais de circuitos do usuário.
+   * @param {Number} id Identificador do circuito
+   */
   function getUpdateCircuitos(id){
     smartqService.getServerCircuitos(id).then(function (json) {
         smartqService.setCircuitos(json.data);
@@ -139,7 +171,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
   }
 
 
-  /*FUNÇÃO QUE PEGA OS AGENDAMENTOS DO QUADRO*/
+  /**
+   * @ngdoc method
+   * @name  getServerAgendamentos
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz requisição ao servidor e salva os dados localmente dos agendamentos do usuário.
+   * @param {Number} id Identificador do quadro
+   */
   function getServerAgendamentos(id) {
     smartqService.getServerAgendamentos(id).then(function (json) {
         smartqService.setAgendamentos(json.data);
@@ -151,7 +189,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
   }
 
 
-  /*FUNÇÃO QUE PEGA CONTROLE DOS CIRCUITOS*/
+  /**
+   * @ngdoc method
+   * @name  getServerControle
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz requisição ao servidor e salva os dados localmente dos controles de demanda do usuário.
+   * @param {Number} id Identificador do quadro
+   */
   function getServerControle(id) {
     smartqService.getServeControle(id).then(function (json) {
         smartqService.setControle(json.data);
@@ -163,7 +207,13 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 
 
-  /*FUNÇÃO QUE PEGA DETALHES DO QUADRO ATUAL*/
+  /**
+   * @ngdoc method
+   * @name  getServerQuadroDetails
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz requisição ao servidor e salva os dados localmente das informações de um quadro específico do usuário.
+   * @param {Number} id Identificador do quadro
+   */
   function getServeQuadroDetails(id){
     smartqService.getServerQuadrosDetails(id).then(function (json) {
         smartqService.setQuadroAtual(json.data);
@@ -175,12 +225,24 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     });
   }
 
-  /*FUNÇÃO QUE DETECTA SE SLIDE MODIFICOU*/
+  /**
+   * @ngdoc method
+   * @name  changeSlide
+   * @methodOf smartq.controller: principalController
+   * @description Método que identifica que o carrossel foi utilizado e muda a descrição apresentada na UI
+   * @param {Number} index Índice no array que indica o slide atualmente no centro
+   */
   $scope.changeSlide=function(index){
       $scope.app.description=$scope.app.slides[index].description;
   };
 
-  /*FUNÇÃO QUE MODIFICA O QUADRO ATUAL*/
+  /**
+   * @ngdoc method
+   * @name  changeQuadro
+   * @methodOf smartq.controller: principalController
+   * @description Método que identifica que o quadro atual foi modificado e dará início ao processo de fazer as requisições da informações para o novo quadro desejado.
+   * @param {Number} index Índice do quadro atualmente selecionado
+   */
   $scope.changeQuadro=function(index){
       smartqService.set_slide_position(index);
       $scope.app._quadroAtual=$scope.app.slides[index].id;
@@ -188,16 +250,29 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       getServerCircuitos($scope.app._quadroAtual);
   };
 
-
+  /**
+   * @ngdoc method
+   * @name  graficoQuadro
+   * @methodOf smartq.controller: principalController
+   * @description Método que modifica o visível entre os dois gráficos de detalhes dos quadros.
+   * @param {Boolean} value Indica qual o gráfico que deve ser visível atualmente
+   */
   $scope.graficoQuadro=function (value) {
       $scope.app.mostra_grafico_quadro  = value;
   };
 
+  /**
+   * @ngdoc method
+   * @name  graficoCircuito
+   * @methodOf smartq.controller: principalController
+   * @description Método que modifica o visível entre os dois gráficos de detalhes dos circuitos.
+   * @param {Boolean} value Indica qual o gráfico que deve ser visível atualmente
+   */
   $scope.graficoCircuito=function (value) {
       $scope.app.mostra_grafico_circuito  = value;
   };
 
-  /* MODAL CONFIG*/
+  /* MODAL CONFIGURAÇÕES*/
   $ionicModal.fromTemplateUrl('templates/modal/config.html', {
       scope: $scope,
       animation: 'slide-in-up'
@@ -205,7 +280,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       $scope.configModal = modal;
   });
 
-  /*Abre configurações*/
+  /**
+   * @ngdoc method
+   * @name  openConfig
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de configurações
+   */
   $scope.openConfig= function(){
     smartqService.getServerNotifications().then(function (json) {
         $scope.app.notificacao=json.data;
@@ -216,6 +296,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       });
   };
 
+  /**
+   * @ngdoc method
+   * @name  logout
+   * @methodOf smartq.controller: principalController
+   * @description Método que faz o logout do usuário na aplicação
+   */
   $scope.logout = function () {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Sair',
@@ -239,7 +325,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       $scope.notificationModal = modal;
   });
 
-
+  /**
+   * @ngdoc method
+   * @name  openNotification
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de notificações
+   */
   $scope.openNotification= function(){
       for (var i = $scope.app.notificacao.length - 1; i >= 0; i--) {
         $scope.app.notificacao[i].message=$scope.app.notificacao[i].message.replace(/<strong>/g,"");
@@ -265,7 +356,14 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.circuitosDetailsModal = modal;
   });
 
-
+  /**
+   * @ngdoc method
+   * @name  openDetailsCircuits
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de detalhes dos circuitos
+   * @param {Number} quadro_id Identificador do quadro
+   * @param {Number} id Identificador do circuito
+   */
   $scope.openDetailsCircuits= function(quadro,id){
     smartqService.getServeCircuitoDetails(quadro,id).then(function (json) {
       smartqService.setCircuitoAtual(json);
@@ -289,7 +387,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.quadrosModal = modal;
   });
 
-
+  /**
+   * @ngdoc method
+   * @name  openquadros
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de detalhes do quadro
+   */
   $scope.openQuadros= function(){
     $scope.app.color = get_color($scope.app.slides[smartqService.get_slide_position()].color);
     $scope.app.quadro_detalhes = smartqService.quadrosDetalhes();
@@ -325,13 +428,24 @@ angular.module('smartq').controller('principalController', function($scope, $ion
 
 
 
-
+  /**
+   * @ngdoc method
+   * @name  closeAll
+   * @methodOf smartq.controller: principalController
+   * @description Fecha todos os modais com menu(circuito,controle,agendamento)
+   */
   $scope.closeAll=function () {
       $scope.circuitosModal.hide();
       $scope.controleModal.hide();
       $scope.agendamentoModal.hide();
   };
 
+  /**
+   * @ngdoc method
+   * @name  abreCircuitos
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de circuito
+   */
   $scope.abreCircuitos=function () {
     getUpdateCircuitos($scope.app._quadroAtual);
     $scope.app.quadro    = smartqService.getQuadroAtual();
@@ -345,6 +459,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
       $scope.agendamentoModal.hide();
   };
 
+  /**
+   * @ngdoc method
+   * @name  abreControle
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de controle
+   */
   $scope.abreControle=function () {
     $scope.app.quadro    = smartqService.getQuadroAtual();
     $scope.app.has_data_controle=true;
@@ -358,6 +478,12 @@ angular.module('smartq').controller('principalController', function($scope, $ion
     $scope.agendamentoModal.hide();
   };
 
+  /**
+   * @ngdoc method
+   * @name  abreAgendamento
+   * @methodOf smartq.controller: principalController
+   * @description Abre o modal de agendamento
+   */
   $scope.abreAgendamento=function () {
     $scope.app.agendamentos=smartqService.getAgendamentos();
     $scope.app.has_data_agendamentos=true;

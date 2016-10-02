@@ -1,5 +1,8 @@
-// SQapp Starter
-
+/**
+ * @ngdoc  object
+ * @name smartq
+ * @description Módulo da aplicação, é aqui que são definidas as rotas que são utilizadas no aplicativo bem como as configurações.
+ */
 angular.module('smartq', ['ionic','angular-carousel-3d','chart.js','ngCordova','LocalStorageModule'])
 
 .run(function($ionicPlatform,BackgroundGeolocationService) {

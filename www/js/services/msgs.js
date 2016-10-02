@@ -1,5 +1,8 @@
-//Mensagens de alerta e erros
-
+/**
+ * @ngdoc service
+ * @name smartq.service: msg
+ * @description Service contendo as mensagens que são exibidas para o usuário.
+ */
 angular.module('smartq').constant('msg',{
 
 ERROR:{

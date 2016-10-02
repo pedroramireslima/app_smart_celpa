@@ -1,5 +1,8 @@
-//constantes de configuração
-
+/**
+ * @ngdoc service
+ * @name smartq.service: config
+ * @description Service contendo dados do servidor e do protocolo de login. (url, porta, id da aplicação oauth).
+ */
 angular.module('smartq').constant('config',{
 
 SERVER:{

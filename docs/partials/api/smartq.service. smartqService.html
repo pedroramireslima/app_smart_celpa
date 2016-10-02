@@ -1,0 +1,176 @@
+<h1><code ng:non-bindable=""> smartqService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">smartq</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="smartq-service-page smartq-service-smartqservice-page"><p>Service responsável por fazer as requisições http ao servidor, tratar, salvar e armazenar os dados.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods">(panel_id, circuito_id)</h3>
+<div class=""><div class="docs-page"><p>Retorna promise da requisiçãoo http para detalhes do circuito.</p>
+</div><h5 id="methods_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>panel_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="docs-page"><p>Identificador do quadro</p>
+</div></td></tr><tr><td>circuito_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="docs-page"><p>Identificador do circuito</p>
+</div></td></tr></tbody></table><h5 id="methods_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="docs-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__clearnotifications">_clearNotifications()</h3>
+<div class="_clearnotifications"><div class="-clearnotifications-page"><p>Informa ao servidor que as notificações foram visualizadas.</p>
+</div><h5 id="methods__clearnotifications_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-clearnotifications-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__converttupla">_convertTupla(data)</h3>
+<div class="_converttupla"><div class="-converttupla-page"><p>Formata os dados vindos do servidor que serão usados para gráficos, colocando-os em um formato que possa ser utilizado na biblioteca de gráficos utilizada no app.</p>
+</div><h5 id="methods__converttupla_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="-converttupla-page"><p>Array com dados para gráficos</p>
+</div></td></tr></tbody></table><h5 id="methods__converttupla_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="-converttupla-page"><p>Dado formatado</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getagendamentos">_getAgendamentos()</h3>
+<div class="_getagendamentos"><div class="-getagendamentos-page"><p>Pega o valor da variável _agendamentos.</p>
+</div><h5 id="methods__getagendamentos_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getagendamentos-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getcircuitoatual">_getCircuitoAtual()</h3>
+<div class="_getcircuitoatual"><div class="-getcircuitoatual-page"><p>Retorna o valor da variável _circuito_atual.</p>
+</div><h5 id="methods__getcircuitoatual_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getcircuitoatual-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getcircuitos">_getCircuitos()</h3>
+<div class="_getcircuitos"><div class="-getcircuitos-page"><p>Retorna o valor da variável _circuitos.</p>
+</div><h5 id="methods__getcircuitos_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getcircuitos-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getcontrole">_getControle()</h3>
+<div class="_getcontrole"><div class="-getcontrole-page"><p>Retorna valor da variável _circuito_controle.</p>
+</div><h5 id="methods__getcontrole_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getcontrole-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getquadroatual">_getQuadroAtual()</h3>
+<div class="_getquadroatual"><div class="-getquadroatual-page"><p>Retorna o valor da variável _quadro_atual.</p>
+</div><h5 id="methods__getquadroatual_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getquadroatual-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getserveragendamentos">_getServerAgendamentos(panel_id)</h3>
+<div class="_getserveragendamentos"><div class="-getserveragendamentos-page"><p>Retorna promise da requisição http para agendamentos.</p>
+</div><h5 id="methods__getserveragendamentos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>panel_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-getserveragendamentos-page"><p>i/dentificador do quadro</p>
+</div></td></tr></tbody></table><h5 id="methods__getserveragendamentos_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getserveragendamentos-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getservercircuitos">_getServerCircuitos(id)</h3>
+<div class="_getservercircuitos"><div class="-getservercircuitos-page"><p>Retorna promise da requisição http para Circuitos.</p>
+</div><h5 id="methods__getservercircuitos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-getservercircuitos-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table><h5 id="methods__getservercircuitos_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getservercircuitos-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getservercontrole">_getServerControle(panel_id)</h3>
+<div class="_getservercontrole"><div class="-getservercontrole-page"><p>Retorna promise da requisição http para controles de demanda.</p>
+</div><h5 id="methods__getservercontrole_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>panel_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-getservercontrole-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table><h5 id="methods__getservercontrole_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getservercontrole-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getservernotifications">_getServerNotifications()</h3>
+<div class="_getservernotifications"><div class="-getservernotifications-page"><p>Retorna promise da requisição http para notificações.</p>
+</div><h5 id="methods__getservernotifications_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getservernotifications-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getserverquadros">_getServerQuadros()</h3>
+<div class="_getserverquadros"><div class="-getserverquadros-page"><p>Retorna promise da requisição http para quadros.</p>
+</div><h5 id="methods__getserverquadros_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getserverquadros-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getserverquadrosdetails">_getServerQuadrosDetails(id)</h3>
+<div class="_getserverquadrosdetails"><div class="-getserverquadrosdetails-page"><p>Retorna promise da requisição http para detalhes dos quadros.</p>
+</div><h5 id="methods__getserverquadrosdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-getserverquadrosdetails-page"><p>Identificador do quadro</p>
+</div></td></tr></tbody></table><h5 id="methods__getserverquadrosdetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getserverquadrosdetails-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__get_slide_position">_get_slide_position()</h3>
+<div class="_get_slide_position"><div class="-get-slide-position-page"><p>Pega o valor da variável _slide_position.</p>
+</div><h5 id="methods__get_slide_position_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-get-slide-position-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__getquadros">_getquadros()</h3>
+<div class="_getquadros"><div class="-getquadros-page"><p>Retorna o valor da variável _quadros.</p>
+</div><h5 id="methods__getquadros_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-getquadros-page"><p>Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__putlocation">_putLocation(latitude_value, longitude_value)</h3>
+<div class="_putlocation"><div class="-putlocation-page"><p>Envia localização para o servidor.</p>
+</div><h5 id="methods__putlocation_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>latitude_value</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-putlocation-page"><p>Valor da latitude do usuário</p>
+</div></td></tr><tr><td>longitude_value</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-putlocation-page"><p>Valor da longitude do usuário</p>
+</div></td></tr></tbody></table><h5 id="methods__putlocation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-putlocation-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__quadrodetalhes">_quadroDetalhes()</h3>
+<div class="_quadrodetalhes"><div class="-quadrodetalhes-page"><p>Formata e retorna informações dos detalhes do quadro.</p>
+</div><h5 id="methods__quadrodetalhes_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-quadrodetalhes-page"><p>Objeto formatado</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__setagendamentos">_setAgendamentos(value)</h3>
+<div class="_setagendamentos"><div class="-setagendamentos-page"><p>Modifica o valor da variável _agendamentos.</p>
+</div><h5 id="methods__setagendamentos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setagendamentos-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__setcircuitoatual">_setCircuitoAtual()</h3>
+<div class="_setcircuitoatual"><div class="-setcircuitoatual-page"><p>Modifica o valor da variável _circuito_atual.</p>
+</div><h5 id="methods__setcircuitoatual_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setcircuitoatual-page"><p>value Valor da variável</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__setcircuitos">_setCircuitos(value)</h3>
+<div class="_setcircuitos"><div class="-setcircuitos-page"><p>Modifica o valor da variável _circuitos.</p>
+</div><h5 id="methods__setcircuitos_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setcircuitos-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__setcontrole">_setControle(_circuito_controle)</h3>
+<div class="_setcontrole"><div class="-setcontrole-page"><p>Modifica o valor da variável _circuito_controle.</p>
+</div><h5 id="methods__setcontrole_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>_circuito_controle</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setcontrole-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__setestadocircuito">_setEstadoCircuito(panel_id, circuito_id, estado)</h3>
+<div class="_setestadocircuito"><div class="-setestadocircuito-page"><p>Modifica o estado do circuito enviando comando via http.</p>
+</div><h5 id="methods__setestadocircuito_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>panel_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-setestadocircuito-page"><p>Identificador do quadro</p>
+</div></td></tr><tr><td>circuito_id</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-setestadocircuito-page"><p>Identificador do circuito</p>
+</div></td></tr><tr><td>estado</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="-setestadocircuito-page"><p>Estado a ser atribuido ao circuito</p>
+</div></td></tr></tbody></table><h5 id="methods__setestadocircuito_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setestadocircuito-page"><p>Promise a ser analisada no controller</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods__setquadroatual">_setQuadroAtual(value)</h3>
+<div class="_setquadroatual"><div class="-setquadroatual-page"><p>Modifica o valor da variável _quadro_atual.</p>
+</div><h5 id="methods__setquadroatual_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setquadroatual-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__setquadros">_setQuadros(value)</h3>
+<div class="_setquadros"><div class="-setquadros-page"><p>Modifica o valor da variável _quadros.</p>
+</div><h5 id="methods__setquadros_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-setquadros-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__trata_controle">_trata_controle(dado_controle)</h3>
+<div class="_trata_controle"><div class="-trata-controle-page"><p>Formata o objeto contendo informações do controle adicionando informações adicionais.</p>
+</div><h5 id="methods__trata_controle_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dado_controle</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-trata-controle-page"><p>Obejto contendo informações do controle</p>
+</div></td></tr></tbody></table><h5 id="methods__trata_controle_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-trata-controle-page"><p>Objeto com informações adicionais</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_formata_circuito">formata_circuito()</h3>
+<div class="formata_circuito"><div class="formata-circuito-page"><p>Formata o objeto contendo informações do circuito.</p>
+</div></div>
+</li>
+<li><h3 id="methods_prevent">prevent(argument)</h3>
+<div class="prevent"><div class="prevent-page"><p>Remove os valores NAN.</p>
+</div><h5 id="methods_prevent_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>argument</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="prevent-page"><p>Valor a ser verificado</p>
+</div></td></tr></tbody></table><h5 id="methods_prevent_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="prevent-page"><p>Dado formatado para exibição</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_set_slide_position">set_slide_position(value)</h3>
+<div class="set_slide_position"><div class="set-slide-position-page"><p>Modifica o valor da variável _slide_position.</p>
+</div><h5 id="methods_set_slide_position_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="set-slide-position-page"><p>Valor a ser atribuído à variável</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_trata_circuito_atual">trata_circuito_atual(json)</h3>
+<div class="trata_circuito_atual"><div class="trata-circuito-atual-page"><p>Formata o objeto contendo informações do circuito atual adicionando informações.</p>
+</div><h5 id="methods_trata_circuito_atual_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>json</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="trata-circuito-atual-page"><p>Objeto a ser tratado</p>
+</div></td></tr></tbody></table><h5 id="methods_trata_circuito_atual_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="trata-circuito-atual-page"><p>Objeto formatado</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>
